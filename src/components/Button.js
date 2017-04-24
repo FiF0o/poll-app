@@ -6,7 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 
 export const DebugButton = ({...props}) => {
     // console.log({...props})
-    return ( <FlatButton label="Default" primary={props.primary}/> )
+    return ( <FlatButton label="Default" primary={props.primary}/> );
 };
 
-export const NewButton = () => ( <DebugButton primary={true} /> )
+export const NewButton = () => ( <DebugButton primary={true} /> );

@@ -6,7 +6,7 @@ injectTapEventPlugin();
 
 import './App.css';
 // import logo from './logo.svg';
-import { Container } from './components/Container'
+import { Container } from './components/shell/Container';
 
 /**
  *

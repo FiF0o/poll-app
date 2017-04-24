@@ -3,6 +3,8 @@
  */
 import React, { Component } from 'react';
 
+import { database } from '../../database/firebase';
+console.log(database)
 import { NewButton } from '../Button';
 
 
