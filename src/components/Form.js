@@ -1,0 +1,57 @@
+/**
+ * Created by jonlazarini on 25/04/17.
+ */
+import React, { Component } from 'react';
+import TextField from 'material-ui/TextField';
+import FlatButton from 'material-ui/FlatButton';
+
+import { database } from '../database/firebase';
+
+
+
+export default class Form extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            newData: ''
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+
+    }
+
+    handleChange(e) {
+        // update newData
+        const newData = e.target.value
+        this.setState({ newData })
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        const newData = this.state.newData
+        // sends to database
+        database.ref().child('node').push(newData)
+    }
+
+    render() {
+
+        return(
+            <form>
+                <TextField
+                    floatingLabelText="Floating Label Text"
+                    type="text"
+                    onChange={ this.handleChange }
+                />
+                <br />
+                <FlatButton
+                    label="Submit"
+                    onTouchTap={ this.handleSubmit }
+                />
+                <br />
+            </form>
+        )
+    }
+}
