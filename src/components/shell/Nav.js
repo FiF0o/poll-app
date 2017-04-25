@@ -3,10 +3,19 @@
  */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import MenuItem from 'material-ui/MenuItem';
 
-export const Nav = () => (
+export const Nav = ({ handleClose }) => (
     <div>
-        <Link to='/'>Home</Link>
-        <Link to='/page2'>Page2</Link>
+        <Link to='/'>
+            <MenuItem onTouchTap={handleClose} >
+                Home
+            </MenuItem>
+        </Link>
+        <Link to='/page2'>
+            <MenuItem onTouchTap={handleClose} >
+                Page2
+            </MenuItem>
+        </Link>
     </div>
 );
