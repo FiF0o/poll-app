@@ -14,7 +14,7 @@ import { NewButton } from '../Button';
  */
 try {
     // debug - gets /hello node
-    database.ref('/').child('/hello').on('value', (snapshot) => {
+    database.ref('/').child('/world').on('value', (snapshot) => {
         console.log('ON - hello node: ', snapshot.val());
     });
 }
@@ -60,9 +60,9 @@ class Poll extends Component {
     }
 
     render() {
-
-        // const { hello } = this.state.data
-        // console.log(hello)
+        // avoids js runtime error returning this.state.data.null on fist render before and shows spinner in case
+        if(this.state.data === null) return <CircularProgress size={60} thickness={7}/>
+        const { world } = this.state.data
 
         if(this.state.hasError) {
             return (
@@ -74,6 +74,7 @@ class Poll extends Component {
             <section className="poll-page">
                 <div className="poll-page poll-page-content">
                     {
+                        /* show spinner before loading its content  */
                         !this.state.hasLoaded ?
                             <CircularProgress size={60} thickness={7}/>
                        :
@@ -83,6 +84,7 @@ class Poll extends Component {
                                 <NewButton />
                             </div>
                     }
+                    <div>hello {world}</div>
                 </div>
             </section>
         )
