@@ -15,8 +15,10 @@ export default class Form extends Component {
         super(props);
 
         this.state = {
-            newData: ''
+            newData: null
         };
+
+        this.dataRef = null;
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,15 +27,16 @@ export default class Form extends Component {
 
     handleChange(e) {
         // update newData
-        const newData = e.target.value
-        this.setState({ newData })
+        const newData = e.target.value;
+        this.setState({ newData });
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        const newData = this.state.newData
+        const newData = this.state.newData;
+        this.dataRef = database.ref();
         // sends to database
-        database.ref().child('node').push(newData)
+        this.dataRef.child('node').push(newData);
     }
 
     render() {

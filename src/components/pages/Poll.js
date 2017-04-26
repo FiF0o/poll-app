@@ -12,16 +12,6 @@ import { NewButton } from '../Button';
 /**
  * "rules":{ ".read": "true" , ".write": "true"}
  */
-try {
-    // debug - gets /hello node
-    database.ref('/').child('/world').on('value', (snapshot) => {
-        console.log('ON - hello node: ', snapshot.val());
-    });
-}
-catch(err) {
-    console.log(err)
-}
-
 
 class Poll extends Component {
     constructor(props) {
@@ -35,55 +25,57 @@ class Poll extends Component {
             error: 'no error!'
         }
 
+        // stores data on the instance of the component for reading data - read/write
+        this.dataRef = null;
+
     }
 
     componentDidMount() {
-        database.ref('/').once('value')
-            .then((snapshot) => {
-                /* debug error handling */
-                // throw new Error('No bueno!');
+
+        // reads from / in database
+        this.dataRef = database.ref('/');
+        try
+        {
+            /* debug error handling */
+            // throw new Error('No bueno!');
+            this.dataRef.on('value', ((snapshot) => {
                 const data = snapshot.val();
 
                 this.setState({
                     data: data,
                     hasLoaded: !this.state.hasLoaded
                 });
-            })
-            .catch((err) => {
-                console.error(err)
-
-                this.setState({
-                    hasError: !this.state.hasLoaded,
-                    error: err.message
-                });
+            }))
+        }
+        catch(err)
+        {
+            console.error(err);
+            this.setState({
+                hasError: !this.state.hasError,
+                error: err.message
             });
+
+        }
     }
 
     render() {
+
+        if(this.state.hasError) {
+            return <div className="poll-page poll-page-error">{ this.state.error }</div>
+        }
+
         // avoids js runtime error returning this.state.data.null on fist render before and shows spinner in case
         if(this.state.data === null) return <CircularProgress size={60} thickness={7}/>
         const { world } = this.state.data
 
-        if(this.state.hasError) {
-            return (
-                <div className="poll-page poll-page-error">{ this.state.error }</div>
-            )
-        }
-
         return (
             <section className="poll-page">
                 <div className="poll-page poll-page-content">
-                    {
-                        /* show spinner before loading its content  */
-                        !this.state.hasLoaded ?
-                            <CircularProgress size={60} thickness={7}/>
-                       :
-                            <div className="">
-                                <Form />
-                                { JSON.stringify(this.state.data, null, 2) }
-                                <NewButton />
-                            </div>
-                    }
+                    <div className="">
+                        <Form />
+                        { JSON.stringify(this.state.data, null, 2) }
+                        <NewButton />
+                    </div>
                     <div>hello {world}</div>
                 </div>
             </section>
