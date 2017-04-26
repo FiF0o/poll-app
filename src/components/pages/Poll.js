@@ -8,6 +8,7 @@ import { database } from '../../database/firebase';
 
 import Form from '../Form';
 import { NewButton } from '../Button';
+import SignIn from '../SignIn';
 
 /**
  * "rules":{ ".read": "true" , ".write": "true"}
@@ -73,6 +74,7 @@ class Poll extends Component {
                 <div className="poll-page poll-page-content">
                     <div className="">
                         <Form />
+                        <SignIn />
                         { JSON.stringify(this.state.data, null, 2) }
                         <NewButton />
                     </div>
