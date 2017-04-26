@@ -3,13 +3,13 @@
  */
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { Nav } from './Nav';
 
-import RaisedButton from 'material-ui/RaisedButton';
 import Drawer from 'material-ui/Drawer';
+import AppBar from 'material-ui/AppBar';
 
 import Poll from '../pages/Poll';
 import Page2 from '../pages/Page2';
+import { Nav } from './Nav';
 
 const routes = [
     {
@@ -18,7 +18,7 @@ const routes = [
         // nav: () => <Nav />,
         main: () => <Poll />
     },
-]
+];
 
 export default class Container extends Component {
 
@@ -43,11 +43,10 @@ export default class Container extends Component {
             <div className="container">
                 {/** Renders home page - use map in case we need to render routes elements in several places **/}
                 <section className="container container-menu">
-                    <RaisedButton
-                        label="Open Drawer"
-                        onTouchTap={this.handleToggle}
+                    <AppBar
+                        title='title'
+                        onLeftIconButtonTouchTap={this.handleToggle}
                     />
-
                     <Drawer
                         docked={false}
                         width={200}
@@ -58,7 +57,7 @@ export default class Container extends Component {
                     </Drawer>
                 </section>
 
-                <section className="container container-section">
+                <section className='container container-section'>
                     {
                         routes.map((route, index) => (
                             <Route
