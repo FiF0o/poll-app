@@ -4,15 +4,24 @@
 import React, { Component } from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
 
-import { database } from '../../database/firebase';
+import { database, auth } from '../../database/firebase';
 
 import Form from '../Form';
-import { NewButton } from '../Button';
 import SignIn from '../SignIn';
+import UserProfile from '../UserProfile'
 
 /**
  * "rules":{ ".read": "true" , ".write": "true"}
  */
+
+// database.ref('/node').once('value').then((snapshot) => {
+//     console.log(snapshot.key)
+//     snapshot.forEach((childItem) => {
+//         let cKey = childItem.key
+//         let cData = childItem.val()
+//         console.log(`${cKey} : ${cData}`)
+//     })
+// });
 
 class Poll extends Component {
     constructor(props) {
@@ -23,8 +32,10 @@ class Poll extends Component {
             newData: null,
             hasLoaded: false,
             hasError: false,
-            error: 'no error!'
-        }
+            error: 'no error!',
+            currentUser: null
+        };
+
 
         // stores data on the instance of the component for reading data - read/write
         this.dataRef = null;
@@ -32,6 +43,11 @@ class Poll extends Component {
     }
 
     componentDidMount() {
+
+        //TODO Promisify or create a separate module for separation of concerns, Container should not care of data/error passed in
+        auth.onAuthStateChanged((user) => {
+            this.setState({ currentUser: user });
+        });
 
         // reads from / in database
         this.dataRef = database.ref('/');
@@ -55,8 +71,8 @@ class Poll extends Component {
                 hasError: !this.state.hasError,
                 error: err.message
             });
-
         }
+
     }
 
     render() {
@@ -67,18 +83,24 @@ class Poll extends Component {
 
         // avoids js runtime error returning this.state.data.null on fist render before and shows spinner in case
         if(this.state.data === null) return <CircularProgress size={60} thickness={7}/>
-        const { world } = this.state.data
+
+        const { currentUser } = this.state;
 
         return (
             <section className="poll-page">
                 <div className="poll-page poll-page-content">
                     <div className="">
                         <Form />
-                        <SignIn />
-                        { JSON.stringify(this.state.data, null, 2) }
-                        <NewButton />
+                        {
+                            /* null or anonymous */
+                            !currentUser || currentUser.isAnonymous ?
+                                <SignIn />
+                                :
+                                <div>
+                                    <UserProfile currentUser={ currentUser } />
+                                </div>
+                        }
                     </div>
-                    <div>hello {world}</div>
                 </div>
             </section>
         )

@@ -36,7 +36,7 @@ export default class Form extends Component {
         const newData = this.state.newData;
         this.dataRef = database.ref();
         // sends to database
-        this.dataRef.child('node').push(newData);
+        this.dataRef.child('node').push({name: newData});
     }
 
     render() {
