@@ -2,6 +2,7 @@
  * Created by jonlazarini on 24/04/17.
  */
 import React, { Component } from 'react';
+import GridsExmple from '../Grids'
 
 class Page2 extends Component {
     constructor(props) {
@@ -21,7 +22,7 @@ class Page2 extends Component {
 
         return(
             <div>
-                Page 2
+                <GridsExmple />
             </div>
         )
     }
