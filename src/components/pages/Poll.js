@@ -8,7 +8,8 @@ import { database, auth } from '../../database/firebase';
 
 import Form from '../Form';
 import SignIn from '../SignIn';
-import UserProfile from '../UserProfile'
+import UserProfile from '../UserProfile';
+import Cards from '../Cards';
 
 /**
  * "rules":{ ".read": "true" , ".write": "true"}
@@ -28,12 +29,13 @@ class Poll extends Component {
         super(props);
 
         this.state = {
-            data: null,
+            data: null, // gets all the data
             newData: null,
             hasLoaded: false,
             hasError: false,
             error: 'no error!',
-            currentUser: null
+            currentUser: null,
+            polls: null
         };
 
 
@@ -57,9 +59,11 @@ class Poll extends Component {
             // throw new Error('No bueno!');
             this.dataRef.on('value', ((snapshot) => {
                 const data = snapshot.val();
+                const polls = snapshot.child('polls').val()
 
                 this.setState({
                     data: data,
+                    polls: polls,
                     hasLoaded: !this.state.hasLoaded
                 });
             }))
@@ -84,7 +88,7 @@ class Poll extends Component {
         // avoids js runtime error returning this.state.data.null on fist render before and shows spinner in case
         if(this.state.data === null) return <CircularProgress size={60} thickness={7}/>
 
-        const { currentUser } = this.state;
+        const { currentUser, polls } = this.state;
 
         return (
             <section className="poll-page">
@@ -97,6 +101,7 @@ class Poll extends Component {
                                 <SignIn />
                                 :
                                 <div>
+                                    <Cards polls={ polls } currentUser={ currentUser }  />
                                     <UserProfile currentUser={ currentUser } />
                                 </div>
                         }

@@ -7,12 +7,12 @@ import MenuItem from 'material-ui/MenuItem';
 
 export const Nav = ({ handleClose }) => (
     <div>
-        <Link to='/'>
+        <Link style={{textDecoration: 'none'}} to='/'>
             <MenuItem onTouchTap={handleClose} >
                 Home
             </MenuItem>
         </Link>
-        <Link to='/page2'>
+        <Link style={{textDecoration: 'none'}} to='/page2'>
             <MenuItem onTouchTap={handleClose} >
                 Page2
             </MenuItem>

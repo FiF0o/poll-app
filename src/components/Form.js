@@ -7,6 +7,11 @@ import FlatButton from 'material-ui/FlatButton';
 
 import { database } from '../database/firebase';
 
+const styles = {
+    form: {
+        textAlign: 'center'
+    }
+};
 
 
 export default class Form extends Component {
@@ -42,18 +47,16 @@ export default class Form extends Component {
     render() {
 
         return(
-            <form>
+            <form style={styles.form} >
                 <TextField
                     floatingLabelText="Floating Label Text"
                     type="text"
                     onChange={ this.handleChange }
                 />
-                <br />
                 <FlatButton
                     label="Submit"
                     onTouchTap={ this.handleSubmit }
                 />
-                <br />
             </form>
         )
     }
