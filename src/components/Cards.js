@@ -71,13 +71,13 @@ export default class Cards extends Component {
                      {/* cast the vote handleVote with the key/node id,
                        needs an anonymous function to be passed a cb() otherwise function will be called instantaneously... */}
                      {
-                         map(polls, (poll, key) => (
+                         map(polls, (singlePoll, key) => (
                              <Card key={ key }
-                                   name={ poll.name }
+                                   name={ singlePoll.name }
                                    handleVote={() => {this.handleVote(key)} }
                                    handleUnvote={() => {this.handleUnvote(key)} }
                                    displayName={currentUser.displayName}
-                                   {...polls}
+                                   {...singlePoll}
                                    {...currentUser}
                              />
                          ))
