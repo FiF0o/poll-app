@@ -3,10 +3,25 @@
  */
 import React, { Component } from 'react';
 
+import { GridList, GridTile } from 'material-ui/GridList';
+import Subheader from 'material-ui/Subheader';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import { auth } from '../database/firebase';
 
+//TODO Extract into an own stylesheet
+const styles = {
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+    },
+    gridList: {
+        width: 380,
+        height: 'auto',
+        overflowY: 'auto',
+    },
+};
 
 export default class UserProfile extends Component {
 
@@ -15,15 +30,32 @@ export default class UserProfile extends Component {
         const { currentUser } = this.props;
 
         return (
-            <div>
-                <p>{currentUser.displayName}</p>
-                <p>{currentUser.email}</p>
-                <p>{currentUser.photoURL}</p>
-                <RaisedButton
-                    label='Sign Out'
-                    primary={ true }
-                    onTouchTap={ () => { auth.signOut() } }
-                />
+            <div style={styles.root}>
+                <GridList
+                    cellHeight={styles.gridList.width}
+                    style={styles.gridList}
+                    padding={15}
+                    cols={1}
+                >
+                    <Subheader>Profile</Subheader>
+                    <GridTile
+                        title={ <b>{currentUser.displayName}</b> }
+                        subtitle={ <span>{currentUser.email}</span> }
+                        cols={1}
+                        rows={1}
+                        actionIcon={
+                            <RaisedButton
+                                label='Sign Out'
+                                primary={ true }
+                                onTouchTap={ () => { auth.signOut() } }
+                                style={{marginRight: 16}}
+                            />
+                        }
+                    >
+                        <img src={ currentUser.photoURL } alt={ currentUser.displayName } />
+                    </GridTile>
+
+                </GridList>
             </div>
         );
     }
