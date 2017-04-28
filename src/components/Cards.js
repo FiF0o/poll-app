@@ -7,6 +7,7 @@ import { GridList } from 'material-ui/GridList';
 import Subheader from 'material-ui/Subheader';
 
 import map from 'lodash/map';
+import { database } from '../database/firebase';
 
 import { CardExampleWithAvatar as Card } from './Card';
 
@@ -23,6 +24,35 @@ const styles = {
 };
 
 export default class Cards extends Component {
+    constructor(props) {
+        super(props);
+        this.handleVote = this.handleVote.bind(this);
+        this.handleUnvote = this.handleUnvote.bind(this);
+        this.userRef = this.props.currentUser; // get user reference
+
+        this.uid = this.props.currentUser.uid;
+        this.displayName = this.props.currentUser.displayName;
+    }
+
+    handleVote(vote) {
+        /* finds a vote in the poll arr to assign an arr of votes
+         * to cast a vote on his behalf
+        */
+        database.ref('/polls')
+                .child(vote)
+                .child('/votes')
+                .child(this.uid)
+                .set(this.displayName)
+    }
+
+    handleUnvote(vote) {
+        database.ref('/polls')
+                .child(vote)
+                .child('/votes')
+                .child(this.uid)
+                .remove()
+    }
+
 
     render() {
 
@@ -38,10 +68,14 @@ export default class Cards extends Component {
                 >
                     <Subheader><b>Polls</b></Subheader>
                      {/* can also use the classic map sythax */}
+                     {/* cast the vote handleVote with the key/node id,
+                       needs an anonymous function to be passed a cb() otherwise function will be called instantaneously... */}
                      {
                          map(polls, (poll, key) => (
                              <Card key={ key }
                                    name={ poll.name }
+                                   handleVote={() => {this.handleVote(key)} }
+                                   handleUnvote={() => {this.handleUnvote(key)} }
                                    displayName={currentUser.displayName}
                                    {...polls}
                                    {...currentUser}

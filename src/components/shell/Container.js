@@ -25,7 +25,7 @@ export default class Container extends Component {
     constructor(props) {
 
         super(props);
-        this.state = { open:false};
+        this.state = {open:false};
         this.handleToggle = this.handleToggle.bind(this);
         this.handleClose = this.handleClose.bind(this);
     }
@@ -44,7 +44,7 @@ export default class Container extends Component {
                 {/** Renders home page - use map in case we need to render routes elements in several places **/}
                 <section className="container container-menu">
                     <AppBar
-                        title='title'
+                        title='Poll'
                         onLeftIconButtonTouchTap={this.handleToggle}
                     />
                     <Drawer

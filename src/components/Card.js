@@ -5,8 +5,7 @@ import React from 'react';
 import {Card, CardActions, CardHeader, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
-export const CardExampleWithAvatar = ({ name, displayName, ...props}) => {
-    // console.log({...props})
+export const CardExampleWithAvatar = ({ name, displayName, handleVote, handleUnvote, ...props}) => {
     return (
         <Card>
             <CardHeader
@@ -23,8 +22,8 @@ export const CardExampleWithAvatar = ({ name, displayName, ...props}) => {
                 Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
             </CardText>
             <CardActions>
-                <FlatButton label="Action1" />
-                <FlatButton label="Action2" />
+                <FlatButton label="Vote" onTouchTap={handleVote}/>
+                <FlatButton label="Unvote" onTouchTap={handleUnvote} />
             </CardActions>
         </Card>
     );
