@@ -11,7 +11,12 @@ import map from 'lodash/map';
 
 export const CardExampleWithAvatar = ({ name, displayName, handleVote, handleUnvote, ...props}) => {
     // console.log('PROPS', {...props})
-    const { votes, photoURL } = props // gets votes node from destructured item in parent component
+    const { votes, photoURL, uid } = props; // gets votes node from destructured item in parent component
+    const userHasVoted = votes && Object.keys(votes).includes(uid); // votes exists and checks if there is a uid
+    const toggleVote = userHasVoted ?
+        <FlatButton label="Unvote" secondary={true} onTouchTap={handleUnvote} />
+        :
+        <FlatButton label="Vote" primary={true} onTouchTap={handleVote} />;
 
         return (
             <Card>
@@ -23,10 +28,11 @@ export const CardExampleWithAvatar = ({ name, displayName, handleVote, handleUnv
 
                 <CardTitle title={name} subtitle={props.email} />
                 <CardText>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-                    Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-                    Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+                    {/*Lorem ipsum dolor sit amet, consectetur adipiscing elit.*/}
+                    {/*Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.*/}
+                    {/*Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.*/}
+                    {/*Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.*/}
+                    <b>Voters:</b><br/>
                     {
                         votes && map(votes, (vote, key) => (
                             <Vote key={key}
@@ -40,8 +46,8 @@ export const CardExampleWithAvatar = ({ name, displayName, handleVote, handleUnv
                     }
                 </CardText>
                 <CardActions>
-                    <FlatButton label="Vote" onTouchTap={handleVote}/>
-                    <FlatButton label="Unvote" onTouchTap={handleUnvote} />
+                    { toggleVote }
+                    <FlatButton style={{float: 'right'}}  label="Delete My Poll" onTouchTap={props.deletePoll} />
                 </CardActions>
             </Card>
         );

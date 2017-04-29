@@ -28,10 +28,19 @@ export default class Cards extends Component {
         super(props);
         this.handleVote = this.handleVote.bind(this);
         this.handleUnvote = this.handleUnvote.bind(this);
+        this.deletePoll = this.deletePoll.bind(this);
+
         this.userRef = this.props.currentUser; // get user reference
 
         this.uid = this.props.currentUser.uid;
         this.displayName = this.props.currentUser.displayName;
+        this.pollRef = database.ref('polls');
+    }
+
+    deletePoll(key) {
+        this.pollRef
+            .child(key)
+            .remove();
     }
 
     handleVote(vote) {
@@ -77,6 +86,7 @@ export default class Cards extends Component {
                                    handleVote={() => {this.handleVote(key)} }
                                    handleUnvote={() => {this.handleUnvote(key)} }
                                    displayName={currentUser.displayName}
+                                   deletePoll={()=> {this.deletePoll(key)} }
                                    {...singlePoll}
                                    {...currentUser}
                              />
