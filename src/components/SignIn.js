@@ -8,14 +8,40 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 export default class SignIn extends Component {
 
+    constructor(props) {
+        super(props);
+        this.SignIn = this.SignIn.bind(this);
+        this.SignOut = this.SignOut.bind(this);
+    }
+
+    SignIn() {
+        auth.signInWithPopup(googleAuthProvider);
+    }
+
+    SignOut() {
+        auth.signOut();
+    }
+
     render() {
+
+        const { currentUser } = this.props;
+
         return (
             <div className='auth auth-signin'>
-                <RaisedButton
-                    label='Sign In'
-                    secondary={ true }
-                    onTouchTap={ () => { auth.signInWithPopup(googleAuthProvider) } }
-                />
+                {
+                    !currentUser || currentUser.isAnonymous ?
+                        <RaisedButton
+                            label={'Sign In'}
+                            secondary={ true }
+                            onTouchTap={this.SignIn}
+                        />
+                        :
+                        <RaisedButton
+                            label={'Sign Out'}
+                            secondary={ true }
+                            onTouchTap={this.SignOut}
+                        />
+                }
             </div>
         )
     }

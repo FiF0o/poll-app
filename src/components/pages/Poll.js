@@ -4,27 +4,19 @@
 import React, { Component } from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
 
-import pick from 'lodash/pick';
+// import pick from 'lodash/pick';
 
-import { database, auth } from '../../database/firebase';
+import { database } from '../../database/firebase';
 
 import Form from '../Form';
-import SignIn from '../SignIn';
-import UserProfile from '../UserProfile';
 import Cards from '../Cards';
+
+// import { getPolls } from '../../services/firebaseServices';
 
 /**
  * "rules":{ ".read": "true" , ".write": "true"}
  */
 
-// database.ref('/node').once('value').then((snapshot) => {
-//     console.log(snapshot.key)
-//     snapshot.forEach((childItem) => {
-//         let cKey = childItem.key
-//         let cData = childItem.val()
-//         console.log(`${cKey} : ${cData}`)
-//     })
-// });
 
 class Poll extends Component {
     constructor(props) {
@@ -36,7 +28,7 @@ class Poll extends Component {
             hasLoaded: false,
             hasError: false,
             error: 'no error!',
-            currentUser: null,
+            currentUser: this.props.currentUser, // gets currentUser prop from parent
             users: {},
             polls: null
         };
@@ -49,42 +41,44 @@ class Poll extends Component {
     }
 
     componentDidMount() {
+    //TODO Promisify or create a separate module for separation of concerns, Container should not care of data/error passed in
+    //TODO Bug fix when sign out.....
+    //     auth.onAuthStateChanged((user) => {
+    //         const {uid} = user;
+    //         if (user !== null && !user.isAnonymous) {
+    //             this.setState({currentUser: user});
+    //             this.usersRef = database.ref('/users');
+    //             this.currentUserRef = this.usersRef.child(uid);
+    //
+    //             this.currentUserRef.once('value')
+    //                 .then((snapshot) => {
+    //                     // user already exists in the DB
+    //                     if (snapshot.val()) return;
+    //                     // creates a new obj to be set in the DB
+    //                     const userData = pick(user, ['displayName', 'photoURL', 'email', 'uid']);
+    //                     console.log('userData', userData)
+    //                     this.currentUserRef.set(userData);
+    //                 })
+    //                 .catch((err) => console.error(err));
+    //
+    //             this.usersRef.on('value', (snapshot) => {
+    //                 const users = snapshot.val();
+    //                 this.setState({users});
+    //             });
+    //         }
+    //
+    //     });
 
-        //TODO Promisify or create a separate module for separation of concerns, Container should not care of data/error passed in
-        auth.onAuthStateChanged((currentUser) => {
-            const { uid } = currentUser;
-            if (currentUser) {
-                this.setState({currentUser});
-                this.usersRef = database.ref('/users');
-                this.currentUserRef = this.usersRef.child(uid);
-
-                this.currentUserRef.once('value')
-                    .then((snapshot) => {
-                        // user already exists in the DB
-                        if (snapshot.val()) return;
-                        // creates a new obj to be set in the DB
-                        const userData = pick(currentUser, ['displayName', 'photoURL', 'email', 'uid']);
-                        this.currentUserRef.set(userData);
-                    })
-                    .catch((err) => console.error(err) );
-
-                this.usersRef.on('value', (snapshot) => {
-                    const users = snapshot.val();
-                    this.setState({users});
-                });
-            }
-
-        });
-
-        // reads from / in database
-        this.dataRef = database.ref('/');
         try
         {
+            // reads from / in database
+            this.dataRef = database.ref('/');
+
             /* debug error handling */
             // throw new Error('No bueno!');
             this.dataRef.on('value', ((snapshot) => {
                 const data = snapshot.val();
-                const polls = snapshot.child('polls').val()
+                const polls = snapshot.child('polls').val();
 
                 this.setState({
                     data: data,
@@ -107,11 +101,11 @@ class Poll extends Component {
     render() {
 
         if(this.state.hasError) {
-            return <div className="poll-page poll-page-error">{ this.state.error }</div>
+            return <div className="poll-page poll-page-error" style={{textAlign:'center'}} >{ this.state.error }</div>
         }
 
         // avoids js runtime error returning this.state.data.null on fist render before and shows spinner in case
-        if(this.state.data === null) return <CircularProgress size={60} thickness={7}/>
+        if(this.state.data === null) return <div style={{textAlign:'center'}}><CircularProgress size={60} thickness={7}/></div>;
 
         const { currentUser, polls } = this.state;
 
@@ -123,11 +117,10 @@ class Poll extends Component {
                         {
                             /* null or anonymous */
                             !currentUser || currentUser.isAnonymous ?
-                                <SignIn />
+                                <div style={{textAlign:'center', fontSize:'2em', padding:'1em'}} >Please login to access your polls</div>
                                 :
                                 <div>
                                     <Cards polls={ polls } currentUser={ currentUser }  />
-                                    <UserProfile currentUser={ currentUser } />
                                 </div>
                         }
                     </div>

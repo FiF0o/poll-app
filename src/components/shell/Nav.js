@@ -12,6 +12,16 @@ export const Nav = ({ handleClose }) => (
                 Home
             </MenuItem>
         </Link>
+        <Link style={{textDecoration: 'none'}} to='/polls'>
+            <MenuItem onTouchTap={handleClose} >
+                Polls
+            </MenuItem>
+        </Link>
+        <Link style={{textDecoration: 'none'}} to='/profile'>
+            <MenuItem onTouchTap={handleClose} >
+                Profile
+            </MenuItem>
+        </Link>
         <Link style={{textDecoration: 'none'}} to='/page2'>
             <MenuItem onTouchTap={handleClose} >
                 Page2
