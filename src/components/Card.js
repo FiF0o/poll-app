@@ -28,10 +28,8 @@ export const CardExampleWithAvatar = ({ name, displayName, handleVote, handleUnv
 
                 <CardTitle title={name} subtitle={props.email} />
                 <CardText>
-                    {/*Lorem ipsum dolor sit amet, consectetur adipiscing elit.*/}
-                    {/*Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.*/}
-                    {/*Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.*/}
-                    {/*Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.*/}
+                    <b>Description:</b><br/>
+                    { props.description }<br/><br/>
                     <b>Voters:</b><br/>
                     {
                         votes && map(votes, (vote, key) => (

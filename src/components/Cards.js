@@ -32,7 +32,7 @@ export default class Cards extends Component {
 
         this.userRef = this.props.currentUser; // get user reference
 
-        this.uid = this.props.currentUser.uid;
+        this.uid = this.userRef.uid;
         this.displayName = this.props.currentUser.displayName;
         this.pollRef = database.ref('polls');
     }

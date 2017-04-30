@@ -10,6 +10,9 @@ import { database } from '../database/firebase';
 const styles = {
     form: {
         textAlign: 'center'
+    },
+    fields: {
+        marginRight: '20px'
     }
 };
 
@@ -20,42 +23,57 @@ export default class Form extends Component {
         super(props);
 
         this.state = {
-            newData: null
+            name: null,
+            description: null
         };
 
         this.dataRef = null;
 
-        this.handleChange = this.handleChange.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
 
-    handleChange(e) {
-        // update newData
-        const newData = e.target.value;
-        this.setState({ newData });
+    handleInputChange(e) {
+        const { target } = e;
+        // give same name fields for our states for simplicity when referencing them below
+        const { value, name } = target;
+
+        this.setState({
+            // access computed values to set our state with field values depending on field names
+            [name]: value
+        });
     }
 
     handleSubmit(e) {
-        e.preventDefault();
-        const newData = this.state.newData;
         this.dataRef = database.ref();
-        // sends to database
-        this.dataRef.child('polls').push({name: newData});
+        e.preventDefault();
+
+        const submittedForm = {...this.state}; // reference to all the form fields in the state - flattened
+        this.dataRef.child('polls').push({...submittedForm}); // sends the whole form destructured to have it flat and not nested under submittedForm
     }
 
     render() {
 
         return(
-            <form style={styles.form} >
+            <form style={styles.form} onSubmit={this.handleSubmit}>
                 <TextField
-                    floatingLabelText="Floating Label Text"
+                    name="name"
+                    floatingLabelText="Your new poll"
                     type="text"
-                    onChange={ this.handleChange }
+                    onChange={ this.handleInputChange }
+                    style={styles.fields}
+                />
+                <TextField
+                    name="description"
+                    floatingLabelText="Enter a short description"
+                    type="text"
+                    onChange={ this.handleInputChange }
+                    style={styles.fields}
                 />
                 <FlatButton
                     label="Submit"
-                    onTouchTap={ this.handleSubmit }
+                    type="submit"
                 />
             </form>
         )
