@@ -4,6 +4,8 @@
 import React, { Component } from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
 
+import pick from 'lodash/pick';
+
 import { database, auth } from '../../database/firebase';
 
 import Form from '../Form';
@@ -35,9 +37,11 @@ class Poll extends Component {
             hasError: false,
             error: 'no error!',
             currentUser: null,
+            users: {},
             polls: null
         };
-
+        this.currentUserRef = null;
+        this.usersRef = null;
 
         // stores data on the instance of the component for reading data - read/write
         this.dataRef = null;
@@ -47,8 +51,29 @@ class Poll extends Component {
     componentDidMount() {
 
         //TODO Promisify or create a separate module for separation of concerns, Container should not care of data/error passed in
-        auth.onAuthStateChanged((user) => {
-            this.setState({ currentUser: user });
+        auth.onAuthStateChanged((currentUser) => {
+            const { uid } = currentUser;
+            if (currentUser) {
+                this.setState({currentUser});
+                this.usersRef = database.ref('/users');
+                this.currentUserRef = this.usersRef.child(uid);
+
+                this.currentUserRef.once('value')
+                    .then((snapshot) => {
+                        // user already exists in the DB
+                        if (snapshot.val()) return;
+                        // creates a new obj to be set in the DB
+                        const userData = pick(currentUser, ['displayName', 'photoURL', 'email', 'uid']);
+                        this.currentUserRef.set(userData);
+                    })
+                    .catch((err) => console.error(err) );
+
+                this.usersRef.on('value', (snapshot) => {
+                    const users = snapshot.val();
+                    this.setState({users});
+                });
+            }
+
         });
 
         // reads from / in database
