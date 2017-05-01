@@ -24,16 +24,12 @@ class Poll extends Component {
 
         this.state = {
             data: null, // gets all the data
-            newData: null,
             hasLoaded: false,
             hasError: false,
             error: 'no error!',
             currentUser: this.props.currentUser, // gets currentUser prop from parent
-            users: {},
             polls: null
         };
-        this.currentUserRef = null;
-        this.usersRef = null;
 
         // stores data on the instance of the component for reading data - read/write
         this.dataRef = null;
@@ -42,33 +38,6 @@ class Poll extends Component {
 
     componentDidMount() {
     //TODO Promisify or create a separate module for separation of concerns, Container should not care of data/error passed in
-    //TODO Bug fix when sign out.....
-    //     auth.onAuthStateChanged((user) => {
-    //         const {uid} = user;
-    //         if (user !== null && !user.isAnonymous) {
-    //             this.setState({currentUser: user});
-    //             this.usersRef = database.ref('/users');
-    //             this.currentUserRef = this.usersRef.child(uid);
-    //
-    //             this.currentUserRef.once('value')
-    //                 .then((snapshot) => {
-    //                     // user already exists in the DB
-    //                     if (snapshot.val()) return;
-    //                     // creates a new obj to be set in the DB
-    //                     const userData = pick(user, ['displayName', 'photoURL', 'email', 'uid']);
-    //                     console.log('userData', userData)
-    //                     this.currentUserRef.set(userData);
-    //                 })
-    //                 .catch((err) => console.error(err));
-    //
-    //             this.usersRef.on('value', (snapshot) => {
-    //                 const users = snapshot.val();
-    //                 this.setState({users});
-    //             });
-    //         }
-    //
-    //     });
-
         try
         {
             // reads from / in database

@@ -8,6 +8,7 @@
 
 # production
 /public
+/build
 
 # misc
 .DS_Store
@@ -19,3 +20,6 @@ yarn-error.log*
 
 # tokens
 src/config/tokens.js
+
+#cloud functions
+functions/node_modules

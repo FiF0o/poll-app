@@ -15,11 +15,15 @@ export default class SignIn extends Component {
     }
 
     SignIn() {
-        auth.signInWithPopup(googleAuthProvider);
+        auth.signInWithPopup(googleAuthProvider)
+            .then((data) => console.log(data))
+            .catch((err) => console.error(err));
     }
 
     SignOut() {
-        auth.signOut();
+        auth.signOut()
+            .then((data) => console.log(data))
+            .catch((err) => console.error(err));
     }
 
     render() {

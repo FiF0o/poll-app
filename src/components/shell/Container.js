@@ -7,6 +7,8 @@ import { Route } from 'react-router-dom';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
 
+import pick from 'lodash/pick';
+
 import SignIn from '../SignIn';
 import UserProfile from '../UserProfile';
 
@@ -15,7 +17,7 @@ import Poll from '../pages/Poll';
 import Page2 from '../pages/Page2';
 import { Nav } from './Nav';
 
-import { auth } from '../../database/firebase';
+import { auth, database } from '../../database/firebase';
 
 
 const routes = [
@@ -34,8 +36,12 @@ export default class Container extends Component {
         super(props);
         this.state = {
             open:false,
-            currentUser: null
+            currentUser: null,
+            users: {}
         };
+
+        this.currentUserRef = null;
+        this.usersRef = null;
 
         this.handleToggle = this.handleToggle.bind(this);
         this.handleClose = this.handleClose.bind(this);
@@ -51,8 +57,29 @@ export default class Container extends Component {
     }
 
     componentDidMount() {
+        //TODO Bug fix when sign out... Works with simple setState
         auth.onAuthStateChanged((currentUser) => {
-           this.setState({currentUser});
+            // user is logged in
+            if (currentUser.email !== null || !currentUser.isAnonymous) {
+                this.setState({currentUser});
+                this.usersRef = database.ref('/users');
+                this.currentUserRef = this.usersRef.child(currentUser.uid);
+
+                this.currentUserRef.once('value')
+                    .then((snapshot) => {
+                        const existingUser = snapshot.val();
+                        if (existingUser) return;
+                        const newUser = pick(currentUser,['displayName', 'photoURL', 'email', 'uid']);
+                        this.currentUserRef.set(newUser);
+                    })
+                    .catch((err) => console.error(err));
+
+                this.usersRef.on('value', (snapshot) => {
+                    const users = snapshot.val();
+                    this.setState({users});
+                });
+            }
+
         });
     }
 
