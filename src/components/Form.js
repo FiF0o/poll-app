@@ -24,10 +24,13 @@ export default class Form extends Component {
 
         this.state = {
             name: null,
-            description: null
+            description: null,
+            user: this.props.currentUser
         };
 
         this.dataRef = null;
+        this.userRef = null;
+        this.usersRef = {};
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -49,8 +52,17 @@ export default class Form extends Component {
         this.dataRef = database.ref();
         e.preventDefault();
 
-        const submittedForm = {...this.state}; // reference to all the form fields in the state - flattened
-        this.dataRef.child('polls').push({...submittedForm}); // sends the whole form destructured to have it flat and not nested under submittedForm
+        const { currentUser } = this.props;
+
+        const {name, description} = this.state; // reference to all the form fields in the state - could be flattened with obj destructuring
+        this.dataRef.child('polls')
+            .push({name: name, description: description});
+
+        // also push the new data to the user/polls node
+        database.ref('users')
+            .child(currentUser.uid)
+            .child('polls')
+            .push({name: name, description: description})
     }
 
     render() {
