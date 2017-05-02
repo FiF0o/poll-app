@@ -59,8 +59,17 @@ export default class Container extends Component {
     componentDidMount() {
         //TODO Bug fix when sign out... Works with simple setState
         auth.onAuthStateChanged((currentUser) => {
-            // user is logged in
-            if (currentUser.email !== null || !currentUser.isAnonymous) {
+            //TODO Hack... Why state is not synchronized - initial state render with currentUser === null...
+            //TODO user has always a scope of null, can we get pass it in auth() ?
+            // Signing Out user and resetting state...
+            if (currentUser === null) {
+                this.currentUserRef.on('value', (snap) => {
+                    this.setState({currentUser: null});
+                });
+
+            }
+            // user is logged in, we store it in the DB
+            else if (currentUser.email !== null || !currentUser.isAnonymous) {
                 this.setState({currentUser});
                 this.usersRef = database.ref('/users');
                 this.currentUserRef = this.usersRef.child(currentUser.uid);
@@ -79,6 +88,7 @@ export default class Container extends Component {
                     this.setState({users});
                 });
             }
+
 
         });
     }
