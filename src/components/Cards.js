@@ -41,6 +41,9 @@ export default class Cards extends Component {
         this.pollRef
             .child(key)
             .remove();
+
+        database.ref(`/users/${this.uid}/polls/${key}`)
+            .remove();
     }
 
     handleVote(vote) {
@@ -48,18 +51,25 @@ export default class Cards extends Component {
          * to cast a vote on his behalf
         */
         database.ref('/polls')
-                .child(vote)
-                .child('/votes')
-                .child(this.uid)
-                .set(this.displayName)
+            .child(vote)
+            .child('/votes')
+            .child(this.uid)
+            .set(this.displayName);
+
+        // saves the new vote to the /users node
+        database.ref(`/users/${this.uid}/polls/${vote}/votes/${this.uid}/`)
+            .set(this.displayName);
     }
 
     handleUnvote(vote) {
         database.ref('/polls')
-                .child(vote)
-                .child('/votes')
-                .child(this.uid)
-                .remove()
+            .child(vote)
+            .child('/votes')
+            .child(this.uid)
+            .remove();
+
+        database.ref(`/users/${this.uid}/polls/${vote}/votes/${this.uid}/`)
+            .remove();
     }
 
 
@@ -79,7 +89,9 @@ export default class Cards extends Component {
                      {/* can also use the classic map sythax */}
                      {/* cast the vote handleVote with the key/node id,
                        needs an anonymous function to be passed a cb() otherwise function will be called instantaneously... */}
-                     {
+                    { polls === null  ?
+                        <div>You have no poll available yet!</div>
+                        :
                          map(polls, (singlePoll, key) => (
                              <Card key={ key }
                                    name={ singlePoll.name }
@@ -91,7 +103,9 @@ export default class Cards extends Component {
                                    {...currentUser}
                              />
                          ))
-                     }
+
+
+                    }
                 </GridList>
             </div>
         )

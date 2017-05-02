@@ -82,7 +82,7 @@ class Poll extends Component {
             <section className="poll-page">
                 <div className="poll-page poll-page-content">
                     <div className="">
-                        <Form />
+                        <Form currentUser={currentUser} />
                         {
                             /* null or anonymous */
                             !currentUser || currentUser.isAnonymous ?

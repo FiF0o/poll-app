@@ -55,14 +55,16 @@ export default class Form extends Component {
         const { currentUser } = this.props;
 
         const {name, description} = this.state; // reference to all the form fields in the state - could be flattened with obj destructuring
-        this.dataRef.child('polls')
+        const newPostRef = this.dataRef.child('polls')
             .push({name: name, description: description});
 
+        const pollId = newPostRef.key;
         // also push the new data to the user/polls node
         database.ref('users')
             .child(currentUser.uid)
             .child('polls')
-            .push({name: name, description: description})
+            .child(pollId)
+            .set({name: name, description: description});
     }
 
     render() {
