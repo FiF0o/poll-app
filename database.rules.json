@@ -3,7 +3,20 @@
     ".read": "auth != null",
     "polls": {
       ".read": true,
-      ".write": "auth.uid !== null"
+      ".write": "auth.uid !== null",
+      "$pollId": {
+        ".validate": "newData.hasChildren(['name','description'])"
+      }
+    },
+    "users": {
+      ".write": "auth.uid !== null",
+      "$userId": {
+        ".write": "$userId === auth.uid",
+        ".validate": "newData.hasChildren(['displayName', 'email','uid'])",
+        "$pollId": {
+          ".write": "auth.uid !== null"
+        }
+      }
     }
   }
 }
