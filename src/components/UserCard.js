@@ -8,17 +8,27 @@ import Vote from './Vote'
 
 import map from 'lodash/map';
 
+import {hasVoted} from '../utils/VoteMethods';
+
 
 export const CardExampleWithAvatar = ({ name, handleVote, handleUnvote, ...props}) => {
-    const { votes, uid } = props; // gets votes node from destructured item in parent component
-    const userHasVoted = votes && Object.keys(votes).includes(uid); // votes exists and checks if there is a uid
-    const toggleVote = userHasVoted ?
+
+    const { votes, photoURL, uid } = props;
+
+    const toggleVote = hasVoted(votes, uid) ?
         <FlatButton label="Unvote" secondary={true} onTouchTap={handleUnvote} />
         :
         <FlatButton label="Vote" primary={true} onTouchTap={handleVote} />;
 
         return (
             <Card>
+                {/*<CardHeader*/}
+                    {/*title={props.displayName}*/}
+                    {/*email={props.email}*/}
+                    {/*subtitle={props.uid}*/}
+                    {/*avatar={props.photoURL}*/}
+                {/*/>*/}
+
                 <CardTitle title={name} />
                 <CardText>
                     <b>Description:</b><br/>
@@ -28,6 +38,7 @@ export const CardExampleWithAvatar = ({ name, handleVote, handleUnvote, ...props
                         votes && map(votes, (vote, key) => (
                             <Vote key={key}
                                   children={vote}
+                                  photoUrl={photoURL}
                                   handleUnvote={handleUnvote}
                                   {...props}
                             />

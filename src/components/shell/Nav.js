@@ -14,7 +14,7 @@ export const Nav = ({ handleClose }) => (
         </Link>
         <Link style={{textDecoration: 'none'}} to='/polls'>
             <MenuItem onTouchTap={handleClose} >
-                Polls
+                Current Polls
             </MenuItem>
         </Link>
         <Link style={{textDecoration: 'none'}} to='/profile'>
@@ -24,7 +24,7 @@ export const Nav = ({ handleClose }) => (
         </Link>
         <Link style={{textDecoration: 'none'}} to='/page2'>
             <MenuItem onTouchTap={handleClose} >
-                Page2
+                GridList page example
             </MenuItem>
         </Link>
         <Link style={{textDecoration: 'none'}} to='/all_polls'>

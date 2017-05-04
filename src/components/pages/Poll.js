@@ -4,8 +4,6 @@
 import React, { Component } from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
 
-// import pick from 'lodash/pick';
-
 import { database } from '../../database/firebase';
 
 import Form from '../Form';
@@ -89,7 +87,7 @@ class Poll extends Component {
                                 <div style={{textAlign:'center', fontSize:'2em', padding:'1em'}} >Please login to access your polls</div>
                                 :
                                 <div>
-                                    <Cards polls={ polls } currentUser={ currentUser }  />
+                                    <Cards polls={ polls } currentUser={currentUser} />
                                 </div>
                         }
                     </div>

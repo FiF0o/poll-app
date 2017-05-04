@@ -101,7 +101,7 @@ export default class Container extends Component {
                 {/** Renders home page - use map in case we need to render routes elements in several places **/}
                 <section className="container container-menu">
                     <AppBar
-                        title='Po-Poll'
+                        title={`Po' Poll`}
                         onLeftIconButtonTouchTap={this.handleToggle}
                         iconElementRight={ <SignIn currentUser={currentUser} /> }
                     />
@@ -122,6 +122,7 @@ export default class Container extends Component {
                                 key={ index }
                                 path={ route.path }
                                 exact={ route.exact }
+                                currentUser={currentUser}
                                 component={ route.main }
                             />
                             )
