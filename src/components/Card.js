@@ -9,9 +9,9 @@ import Vote from './Vote'
 import map from 'lodash/map';
 
 
-export const CardExampleWithAvatar = ({ name, displayName, handleVote, handleUnvote, ...props}) => {
+export const CardExampleWithAvatar = ({ name, handleVote, handleUnvote, ...props}) => {
     // console.log('PROPS', {...props})
-    const { votes, photoURL, uid } = props; // gets votes node from destructured item in parent component
+    const { votes, uid } = props; // gets votes node from destructured item in parent component
     const userHasVoted = votes && Object.keys(votes).includes(uid); // votes exists and checks if there is a uid
     const toggleVote = userHasVoted ?
         <FlatButton label="Unvote" secondary={true} onTouchTap={handleUnvote} />
@@ -20,13 +20,7 @@ export const CardExampleWithAvatar = ({ name, displayName, handleVote, handleUnv
 
         return (
             <Card>
-                <CardHeader
-                    title={displayName}
-                    subtitle={props.uid}
-                    avatar={props.photoURL}
-                />
-
-                <CardTitle title={name} subtitle={props.email} />
+                <CardTitle title={name} />
                 <CardText>
                     <b>Description:</b><br/>
                     { props.description }<br/><br/>
@@ -35,7 +29,6 @@ export const CardExampleWithAvatar = ({ name, displayName, handleVote, handleUnv
                         votes && map(votes, (vote, key) => (
                             <Vote key={key}
                                   children={vote}
-                                  photoUrl={photoURL}
                                   handleUnvote={handleUnvote}
                                   {...props}
                             />

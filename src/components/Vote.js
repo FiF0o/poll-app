@@ -22,7 +22,7 @@ const styles = {
 export default class Vote extends React.Component {
 
     render() {
-        const { children, photoURL, handleUnvote } = this.props;
+        const { children, handleUnvote } = this.props;
         return (
             <div style={styles.wrapper}>
 
@@ -30,7 +30,6 @@ export default class Vote extends React.Component {
                     onRequestDelete={handleUnvote}
                     style={styles.chip}
                 >
-                    <Avatar src={photoURL} />
                     {children}
                 </Chip>
 
