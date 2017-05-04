@@ -27,5 +27,10 @@ export const Nav = ({ handleClose }) => (
                 Page2
             </MenuItem>
         </Link>
+        <Link style={{textDecoration: 'none'}} to='/all_polls'>
+            <MenuItem onTouchTap={handleClose} >
+                All Polls
+            </MenuItem>
+        </Link>
     </div>
 );

@@ -15,6 +15,7 @@ import UserProfile from '../UserProfile';
 import { Home } from '../pages/Home';
 import Poll from '../pages/Poll';
 import Page2 from '../pages/Page2';
+import AllPolls from '../pages/AllPolls';
 import { Nav } from './Nav';
 
 import { auth, database } from '../../database/firebase';
@@ -142,6 +143,10 @@ export default class Container extends Component {
                     <Route
                         path='/page2'
                         component={ () => <Page2 /> }
+                    />
+                    <Route
+                        path='/all_Polls'
+                        component={ () => <AllPolls currentUser={currentUser} /> }
                     />
 
                 </section>
