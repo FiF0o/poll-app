@@ -18,6 +18,12 @@ import Container from './components/shell/Container';
 * */
 
 
+//TODO Clean pages
+//TODO Proptypes
+//TODO Clean Repo
+//TODO Routing client side
+//TODO Testing
+//TODO CI/CD
 class App extends Component {
   render() {
     return (
