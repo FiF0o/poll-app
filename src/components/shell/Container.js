@@ -11,7 +11,6 @@ import pick from 'lodash/pick';
 
 import SignIn from '../SignIn';
 import UserProfile from '../UserProfile';
-
 import { Home } from '../pages/Home';
 import Poll from '../pages/Poll';
 import Page2 from '../pages/Page2';
@@ -19,7 +18,6 @@ import AllPolls from '../pages/AllPolls';
 import { Nav } from './Nav';
 
 import { auth, database } from '../../database/firebase';
-
 
 
 export default class Container extends Component {

@@ -30,7 +30,7 @@ export default class SignIn extends Component {
                 // init FCM - and service workers job once server token is successfully given/assigned to the user
                 RequestMessagingPermissions(user);
 
-        })
+            })
             .catch((err) => console.error(err));
     }
 

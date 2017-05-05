@@ -39,6 +39,7 @@ export default class Cards extends Component {
 
         this.usersRef = database.ref('/users');
         this.pollsRef = database.ref('/polls');
+        this.userRef = props.currentUser;
     }
 
     deletePoll(key, user) {
@@ -125,6 +126,7 @@ export default class Cards extends Component {
                                                     deletePoll={()=> {this.deletePoll(key, uid)} }
                                                     uid={uid}
                                                     {...userPolls}
+                                                    currentUser={this.userRef}
                                                 />
                                             );
                                         })

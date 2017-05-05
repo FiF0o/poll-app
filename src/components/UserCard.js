@@ -9,6 +9,7 @@ import Vote from './Vote'
 import map from 'lodash/map';
 
 import {hasVoted} from '../utils/VoteMethods';
+import {isTheCurrentUser} from '../utils/UserAuth';
 
 
 export const CardExampleWithAvatar = ({ name, handleVote, handleUnvote, ...props}) => {
@@ -48,7 +49,13 @@ export const CardExampleWithAvatar = ({ name, handleVote, handleUnvote, ...props
                 </CardText>
                 <CardActions>
                     { toggleVote }
-                    <FlatButton style={{float: 'right'}}  label="Delete My Poll" onTouchTap={props.deletePoll} />
+                    {
+                        isTheCurrentUser(props.currentUser, uid) &&
+                        <FlatButton style={{float: 'right'}}
+                                    label="Delete My Poll"
+                                    onTouchTap={props.deletePoll}
+                        />
+                    }
                 </CardActions>
             </Card>
         );

@@ -62,7 +62,9 @@ export default class AllPolls extends Component {
                         isUserLogged(loggedUser) &&
                         <section>
                             <Form currentUser={user} />
-                            <UserCards listPolls={ data } />
+                            <UserCards currentUser={user}
+                                       listPolls={ data }
+                            />
                         </section>
                     }
                 </div>
