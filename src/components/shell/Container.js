@@ -21,14 +21,6 @@ import { Nav } from './Nav';
 import { auth, database } from '../../database/firebase';
 
 
-const routes = [
-    {
-        path: '/',
-        exact: true,
-        // nav: () => <Nav />,
-        main: () => <Home />
-    }
-];
 
 export default class Container extends Component {
 
@@ -96,6 +88,17 @@ export default class Container extends Component {
 
         const { currentUser } = this.state;
 
+        const routes = [
+            {
+                path: '/',
+                exact: true,
+                // nav: () => <Nav />,
+                main: () => <Home currentUser={currentUser}
+                />
+            }
+        ];
+
+
         return (
             <div className="container">
                 {/** Renders home page - use map in case we need to render routes elements in several places **/}
@@ -122,7 +125,6 @@ export default class Container extends Component {
                                 key={ index }
                                 path={ route.path }
                                 exact={ route.exact }
-                                currentUser={currentUser}
                                 component={ route.main }
                             />
                             )

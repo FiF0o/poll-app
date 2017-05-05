@@ -5,25 +5,37 @@ import React, { Component } from 'react';
 import { auth, googleAuthProvider } from '../database/firebase';
 import RaisedButton from 'material-ui/RaisedButton';
 
+import { RequestMessagingPermissions } from '../../functions/RequestMessagingPermissions';
+
 
 export default class SignIn extends Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            user: props.currentUser
+        };
+
         this.SignIn = this.SignIn.bind(this);
         this.SignOut = this.SignOut.bind(this);
     }
 
     SignIn() {
         auth.signInWithPopup(googleAuthProvider)
-            .then((data) => console.log(data))
+            //TODO ? can trigger RequestMessagingPermissions in promise here
+            .then((snap) => {
+                // grab the user from the Promise
+                const { user } = snap;
+                // init FCM - and service workers job once server token is successfully given/assigned to the user
+                RequestMessagingPermissions(user);
+
+        })
             .catch((err) => console.error(err));
     }
 
     SignOut() {
-        auth.signOut()
-            .then((data) => console.log(data))
-            .catch((err) => console.error(err));
+        auth.signOut();
     }
 
     render() {
