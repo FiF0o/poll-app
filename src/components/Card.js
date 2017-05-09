@@ -8,6 +8,8 @@ import Vote from './Vote'
 
 import map from 'lodash/map';
 
+import {isTheCurrentUser} from '../utils/UserAuth';
+
 
 export const CardExampleWithAvatar = ({ name, handleVote, handleUnvote, ...props}) => {
     const { votes, uid } = props; // gets votes node from destructured item in parent component
@@ -37,7 +39,7 @@ export const CardExampleWithAvatar = ({ name, handleVote, handleUnvote, ...props
                 </CardText>
                 <CardActions>
                     { toggleVote }
-                    <FlatButton style={{float: 'right'}}  label="Delete My Poll" onTouchTap={props.deletePoll} />
+                    {isTheCurrentUser(props.userRef, uid) && <FlatButton style={{float: 'right'}} label="Delete My Poll" onTouchTap={props.deletePoll} />}
                 </CardActions>
             </Card>
         );

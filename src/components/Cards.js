@@ -101,6 +101,7 @@ export default class Cards extends Component {
                                    deletePoll={()=> {this.deletePoll(key)} }
                                    {...singlePoll}
                                    {...currentUser}
+                                   userRef={currentUser}
                              />
                          ))
 

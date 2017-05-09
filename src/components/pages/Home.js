@@ -8,21 +8,24 @@ import { RequestMessagingPermissions } from '../../../functions/RequestMessaging
 
 
 export const Home = ({currentUser}) => (
-    <div>
-        <br/>
-        <br/>
-        <Link style={{textDecoration: 'none'}} to='/polls'>
-            <b>Link to poll page</b>
-        </Link>
-        <br/>
-        <br/>
-        <Link style={{textDecoration: 'none'}} to='/all_polls'>
-            <b>Link to all the polls</b>
-        </Link>
-        <br/>
-        <br/>
+    currentUser !== null ?
         <div>
-            <button onClick={() => {RequestMessagingPermissions(currentUser)} }>get token</button>
+            <br/>
+            <br/>
+            <Link style={{textDecoration: 'none'}} to='/polls'>
+                <b>Link to poll page</b>
+            </Link>
+            <br/>
+            <br/>
+            <Link style={{textDecoration: 'none'}} to='/all_polls'>
+                <b>Link to all the polls</b>
+            </Link>
+            <br/>
+            <br/>
+            <div>
+                <button onClick={() => {RequestMessagingPermissions(currentUser)} }>get token</button>
+            </div>
         </div>
-    </div>
-);
+        :
+        <div>You are not logged in</div>
+)
