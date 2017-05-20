@@ -26,5 +26,8 @@ export const initialState = {
             email: 'trompette@kikou.com',
             photoURL: 'http://placehold.it/150x150'
         }
+    },
+    routing: {
+
     }
 };

@@ -1,20 +1,21 @@
 /**
  * Created by jonlazarini on 20/05/17.
  */
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import Polls from '../components/Polls';
-// import { destroyMessage } from '../actions/messages';
+import {Polls} from '../components/Polls';
 
 
-const mapStateToProps = ({ polls }) => {
-    //state.messages (reducer) from our store
-    console.log('polls', {polls});
-    return { polls };
+const mapStateToProps = (state) => {
+    return {
+        polls: state.polls,
+        users: state.users
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        destroyMessage(key) {
+        onClickBtn() {
             return () => console.log('func fired!');
         }
     };

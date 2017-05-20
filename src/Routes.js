@@ -7,27 +7,22 @@ import { Route } from 'react-router-dom';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
 
-import pick from 'lodash/pick';
-
 import SignIn from './components/SignIn/SignIn';
 import { Home } from './components/pages/Home';
-import Poll from './components/pages/Poll';
 import { Nav } from './components/Nav/Nav';
+import PollPage from './components/pages/PollPage';
 
 
 
 export default class Routes extends Component {
 
     constructor(props) {
-
         super(props);
         this.state = {
             open:false,
         };
-
         this.handleToggle = this.handleToggle.bind(this);
         this.handleClose = this.handleClose.bind(this);
-
     }
 
     handleToggle() {
@@ -75,6 +70,7 @@ export default class Routes extends Component {
 
     render() {
 
+        // used in case we needed to render components on several places
         const routes = [
             {
                 path: '/',
@@ -118,11 +114,10 @@ export default class Routes extends Component {
                     {/* debug route for another page */}
                     <Route
                         path='/polls'
-                        component={ () => <Poll
-                            exact={true}
+                        component={ () => <PollPage /> }
 
-                        /> }
                     />
+
                     <Route
                         path='/profile'
                         component={ () => <div>User profile</div> }

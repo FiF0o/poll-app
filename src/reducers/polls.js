@@ -7,7 +7,6 @@ import {initialState} from '../initialState';
 
 
 export default function polls(state=initialState.polls, action) {
-    console.log('state REDUCER', state)
 
     const { type, key, name, description, uid, timeStamp } = action;
 

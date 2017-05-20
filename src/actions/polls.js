@@ -3,13 +3,13 @@
  */
 import {ADD_POLL} from '../actionTypes';
 
-export const addPoll = (name, description, key = Date.now(), uid) => {
+export const addPoll = (name, description, uid, key = Date.now()) => {
     return {
         type: ADD_POLL,
         name,
         description,
+        uid,
         key,
-        timeStamp: Date.now(),
-        uid
+        timeStamp: Date.now()
     }
 };
