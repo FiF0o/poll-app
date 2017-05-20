@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 
-import { database } from '../database/firebase';
+import { database } from '../../database/firebase';
 
 const styles = {
     form: {

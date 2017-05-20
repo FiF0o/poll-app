@@ -22,15 +22,5 @@ export const Nav = ({ handleClose }) => (
                 Profile
             </MenuItem>
         </Link>
-        <Link style={{textDecoration: 'none'}} to='/page2'>
-            <MenuItem onTouchTap={handleClose} >
-                GridList page example
-            </MenuItem>
-        </Link>
-        <Link style={{textDecoration: 'none'}} to='/all_polls'>
-            <MenuItem onTouchTap={handleClose} >
-                All Polls
-            </MenuItem>
-        </Link>
     </div>
 );

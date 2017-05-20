@@ -6,8 +6,8 @@ import CircularProgress from 'material-ui/CircularProgress';
 
 import { database } from '../../database/firebase';
 
-import Form from '../Form';
-import Cards from '../Cards';
+import Form from '../Form/Form';
+import Cards from '../Cards/Cards';
 
 // import { getPolls } from '../../services/firebaseServices';
 

@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
 
-import Form from '../Form';
+import Form from '../Form/Form';
 import UserCards from '../UserCards';
 
 import { database } from '../../database/firebase';

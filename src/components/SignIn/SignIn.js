@@ -2,10 +2,10 @@
  * Created by jonlazarini on 26/04/17.
  */
 import React, { Component } from 'react';
-import { auth, googleAuthProvider } from '../database/firebase';
+import { auth, googleAuthProvider } from '../../database/firebase';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import { RequestMessagingPermissions } from '../../functions/RequestMessagingPermissions';
+import { RequestMessagingPermissions } from '../../../functions/RequestMessagingPermissions';
 
 
 export default class SignIn extends Component {

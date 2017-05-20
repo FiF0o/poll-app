@@ -4,11 +4,11 @@
 import React from 'react';
 import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
-import Vote from './Vote'
+import Vote from '../Votes/Vote'
 
 import map from 'lodash/map';
 
-import {isTheCurrentUser} from '../utils/UserAuth';
+import {isTheCurrentUser} from '../../utils/UserAuth';
 
 
 export const CardExampleWithAvatar = ({ name, handleVote, handleUnvote, ...props}) => {

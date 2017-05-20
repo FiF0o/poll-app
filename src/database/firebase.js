@@ -24,3 +24,4 @@ export const database = firebase.database()
 export const auth = firebase.auth()
 export const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
 export const anonymousAuthProvider = new firebase.auth().signInAnonymously()
+export const messaging = firebase.messaging();

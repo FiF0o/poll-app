@@ -7,7 +7,7 @@ import { GridList } from 'material-ui/GridList';
 import Subheader from 'material-ui/Subheader';
 
 import map from 'lodash/map';
-import { database } from '../database/firebase';
+import { database } from '../../database/firebase';
 
 import { CardExampleWithAvatar as Card } from './Card';
 
