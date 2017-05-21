@@ -1,9 +1,9 @@
 /**
  * Created by jonlazarini on 20/05/17.
  */
-import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {Polls} from '../components/Polls';
+import {removePoll} from '../actions/polls';
 
 
 const mapStateToProps = (state) => {
@@ -15,8 +15,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onClickBtn() {
-            return () => console.log('func fired!');
+        deletePoll(key) {
+            return () => dispatch(removePoll(key));
         }
     };
 };
