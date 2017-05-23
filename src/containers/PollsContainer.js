@@ -9,7 +9,8 @@ import {removePoll} from '../actions/polls';
 const mapStateToProps = (state) => {
     return {
         polls: state.polls,
-        users: state.users
+        users: state.users,
+        auth: state.auth
     };
 };
 
