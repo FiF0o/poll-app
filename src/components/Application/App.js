@@ -1,26 +1,18 @@
 import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
 
-import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 
-import {store, history as RouterHistory} from '../../store';
+import {history as RouterHistory} from '../../store';
 
-
-import './App.css';
 import Routes from '../../Routes';
 
-const App = () => (
-    <MuiThemeProvider>
-        <Provider store={store} >
-            <ConnectedRouter history={RouterHistory} >
-                <Routes />
-            </ConnectedRouter>
-        </Provider>
-    </MuiThemeProvider>
-);
+import './App.css';
 
+
+const App = ({auth, signIn, signOut}) => (
+    <ConnectedRouter history={RouterHistory} >
+        <Routes />
+    </ConnectedRouter>
+);
 
 export default App;

@@ -24,10 +24,9 @@ export const initialState = {
         'firstUser': {
             displayName: 'Marv Zgegouz',
             email: 'trompette@kikou.com',
-            photoURL: 'http://placehold.it/150x150'
+            photoURL: 'http://placehold.it/150x150',
+            uid: 'firstUser'
         }
     },
-    routing: {
-
-    }
+    routing: {}
 };
