@@ -11,7 +11,11 @@ import './App.css';
 
 const App = ({auth, signIn, signOut}) => (
     <ConnectedRouter history={RouterHistory} >
-        <Routes />
+        <Routes
+            auth={auth}
+            signIn={signIn}
+            signOut={signOut}
+        />
     </ConnectedRouter>
 );
 

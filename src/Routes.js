@@ -13,7 +13,6 @@ import { Nav } from './components/Nav/Nav';
 import PollPage from './components/pages/PollPage';
 
 
-
 export default class Routes extends Component {
 
     constructor(props) {
@@ -70,6 +69,8 @@ export default class Routes extends Component {
 
     render() {
 
+        const { auth, signIn, signOut } = this.props;
+
         // used in case we needed to render components on several places
         const routes = [
             {
@@ -87,7 +88,13 @@ export default class Routes extends Component {
                     <AppBar
                         title={`Po' Poll`}
                         onLeftIconButtonTouchTap={this.handleToggle}
-                        iconElementRight={ <SignIn /> }
+                        iconElementRight={
+                            <SignIn
+                                signIn={signIn}
+                                signOut={signOut}
+                                auth={auth}
+                            />
+                        }
                     />
                     <Drawer
                         docked={false}
