@@ -118,12 +118,15 @@ export default class Routes extends Component {
                             )
                         )
                     }
-                    {/* debug route for another page */}
-                    <Route
-                        path='/polls'
-                        component={ () => <PollPage /> }
-
-                    />
+                    {
+                        auth.status === 'SIGNED_IN' ?
+                            <Route
+                                path='/polls'
+                                component={ () => <PollPage /> }
+                            />
+                            :
+                            <div>Please login to view your polls</div>
+                    }
 
                     <Route
                         path='/profile'
