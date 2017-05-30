@@ -8,7 +8,7 @@ import FlatButton from 'material-ui/FlatButton';
 import {UserAvatar} from '../Avatars';
 import {isTheCurrentUser} from '../../utils/UserAuth';
 
-export const Poll = ({name, description, onDeletePoll, user, pollCreator, ...props}) => (
+export const Poll = ({name, description, onDeletePoll, user, id, ...props}) => (
     <article>
         <UserAvatar user={user} />
         <Card>
@@ -20,13 +20,14 @@ export const Poll = ({name, description, onDeletePoll, user, pollCreator, ...pro
             </CardText>
             <CardActions>
                 {
-                    isTheCurrentUser(user, pollCreator) ?
-                    <FlatButton label="Unvote" secondary={true} onTouchTap={()=>console.log('click')} />
-                    :
-                    <FlatButton label="Vote" secondary={true} onTouchTap={()=>console.log('click')} />
+                    /* Toggle button func will include checking whether it has existing votes & vote.key has a uid (a user) */
+                    <div>
+                        <FlatButton label="Unvote" secondary={true} onTouchTap={() => console.log('click')}/>
+                        <FlatButton label="Vote" secondary={true} onTouchTap={() => console.log('click')}/>
+                    </div>
                 }
                 {
-                    user ? <FlatButton label="Delete My Poll" onTouchTap={onDeletePoll}/> : null
+                    isTheCurrentUser(user, user.uid) ? <FlatButton label="Delete My Poll" onTouchTap={onDeletePoll}/> : null
                 }
             </CardActions>
         </Card>

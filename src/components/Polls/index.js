@@ -6,7 +6,7 @@ import map from 'lodash/map';
 import {Poll} from './Poll';
 import Subheader from 'material-ui/Subheader';
 
-export const Polls = ({polls, users, deletePoll, ...props}) => (
+export const Polls = ({polls, users, deletePoll, auth, ...props}) => (
     <div>
         <Subheader><b>Polls</b></Subheader>
         {
@@ -16,11 +16,12 @@ export const Polls = ({polls, users, deletePoll, ...props}) => (
                     name={poll.name}
                     description={poll.description}
                     user={users[poll.uid]}
-                    pollCreator={poll.uid}
+                    id={auth.uid}
                     {...poll}
                     onDeletePoll={deletePoll(key)}
                 />
-            ))
+                )
+            )
         }
     </div>
 );
