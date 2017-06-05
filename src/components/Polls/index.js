@@ -4,11 +4,14 @@
 import React from 'react';
 import map from 'lodash/map';
 import {Poll} from './Poll';
-import Subheader from 'material-ui/Subheader';
+import {Grid} from '../Grids/';
 
-export const Polls = ({polls, users, deletePoll, auth, ...props}) => (
-    <div>
-        <Subheader><b>Polls</b></Subheader>
+export const Polls = ({polls, users, deletePoll, auth, addVote, removeVote, votes, ...props}) => (
+    <Grid
+        cellHeight={'auto'}
+        cols={2}
+        padding={50}
+    >
         {
             map(polls, (poll, key) => (
                 <Poll
@@ -16,12 +19,15 @@ export const Polls = ({polls, users, deletePoll, auth, ...props}) => (
                     name={poll.name}
                     description={poll.description}
                     user={users[poll.uid]}
-                    id={auth.uid}
+                    auth={auth}
                     {...poll}
                     onDeletePoll={deletePoll(key)}
+                    votes={votes}
+                    addVote={addVote}
+                    removeVote={removeVote}
+                    pollId={key}
                 />
-                )
-            )
+            ))
         }
-    </div>
+    </Grid>
 );

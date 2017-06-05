@@ -3,12 +3,16 @@
  */
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+// import { withRouter } from 'react-router-dom';
 import {signIn, signOut} from '../actions/auth';
 import App from '../components/Application/App';
 
 
 const mapStateToProps = (state) => {
-    return {auth: state.auth}
+    return {
+        auth: state.auth,
+        errors: state.errors
+    }
 };
 
 const mapDispatchToProps = (dispatch) =>

@@ -15,9 +15,22 @@ export const initialState = {
             description: 'Marv Luvvhini est un peu un vier.',
             timeStamp: Date.now() - 600,
             uid: 'firstUser',
-            votes: {
-                firstUser: 'Marv Zgegouz'
-            }
+        },
+        'secondPoll': {
+            name: 'poll name 2',
+            description: 'lorem ipsum.',
+            timeStamp: Date.now() - 600,
+            uid: 'secondUser',
+        }
+    },
+    votes: {
+        'firstPoll': {
+            'firstUser': 'Marv Zgegouz',
+            'secondUser': 'Tromblinator',
+        },
+        'secondPoll': {
+            'secondUser': 'Tromblinator',
+            'thirdUser': 'thirdUser Name',
         }
     },
     users: {
@@ -26,7 +39,20 @@ export const initialState = {
             email: 'trompette@kikou.com',
             photoURL: 'http://placehold.it/150x150',
             uid: 'firstUser'
+        },
+        'secondUser': {
+            displayName: 'Tromblinator',
+            email: 'trompette@kikou.com',
+            photoURL: 'http://placehold.it/150x150',
+            uid: 'secondUser'
+        },
+        'thirdUser': {
+            displayName: 'thirdUser Name',
+            email: 'third@kikou.com',
+            photoURL: 'http://placehold.it/150x150',
+            uid: 'thirdUser'
         }
     },
-    routing: {}
+    routing: {},
+    errors: {message: 'no error'},
 };

@@ -4,32 +4,37 @@
 import React from 'react';
 import Chip from 'material-ui/Chip';
 
-const styles = {
-    chip: {
-        margin: 4,
-    },
-    wrapper: {
-        display: 'inline-flex',
-        flexWrap: 'wrap',
-    }
-};
+import {styles} from './styles';
 
+// export default class Vote extends React.Component {
+//
+//     render() {
+//         const { children, handleUnvote } = this.props;
+//         return (
+//             <div style={styles.wrapper}>
+//
+//                 <Chip
+//                     onRequestDelete={handleUnvote}
+//                     style={styles.chip}
+//                 >
+//                     {children}
+//                 </Chip>
+//
+//             </div>
+//         );
+//     }
+// }
 
-export default class Vote extends React.Component {
+export const Vote = ({userId, name, removeVote}) => {
+    return(
+        <div style={styles.wrapper}>
+            <Chip
+                 onRequestDelete={() => console.log('chip clicked')}
+                 style={styles.chip}
+            >
+                {name}
+            </Chip>
 
-    render() {
-        const { children, handleUnvote } = this.props;
-        return (
-            <div style={styles.wrapper}>
-
-                <Chip
-                    onRequestDelete={handleUnvote}
-                    style={styles.chip}
-                >
-                    {children}
-                </Chip>
-
-            </div>
-        );
-    }
+        </div>
+    );
 }
