@@ -2,36 +2,29 @@
  * Created by jonlazarini on 31/05/17.
  */
 import {ADD_VOTE, REMOVE_VOTE} from '../actionTypes';
-import omit from 'lodash/omit';
-// import extend from 'lodash/extend';
-// import clone from 'lodash/clone';
+import Immutable from 'immutable';
+
 import {initialState} from '../initialState';
 
 export default function votes(state=initialState.votes, action) {
 
     const { type, key, userId, author} = action;
 
-    // const cloclo = Object.assign({}, state, clone(state[key]))
-    // console.log('cloclo', cloclo)
-
-    console.log('STATE', state)
-    console.log('userId', userId)
-    console.log('key', state[key])
-
     switch(type) {
         case ADD_VOTE:
-            return {
-                ...state,
-                [key]: {
-                    ...state[key],
-                    [userId]: author
-                },
-
-            };
+            // in votes node, getting 'key':{'userId'} property and add author to it
+            return Immutable.fromJS(state).setIn([key, userId], author).toJS();
+            // return {
+            //     ...state,
+            //     [key]: {
+            //         ...state[key],
+            //         [userId]: author
+            //     },
+            //
+            // };
 
         case REMOVE_VOTE:
-            // return omit(Object.assign({}, state), userId);
-            return omit(Object.assign({}, state), state[key]);
+            return Immutable.fromJS(state).deleteIn([key, userId], author).toJS();
 
         default:
             return state

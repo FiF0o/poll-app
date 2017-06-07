@@ -2,7 +2,7 @@
  * Created by jonlazarini on 20/05/17.
  */
 import React from 'react';
-import map from 'lodash/map';
+import { map }from 'lodash';
 import {Poll} from './Poll';
 import {Grid} from '../Grids/';
 

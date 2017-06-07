@@ -28,7 +28,7 @@ return(
         <div>
             {
                 hasVoted(votes, auth.uid) ?
-                    <FlatButton label="Unvote" secondary={true} onTouchTap={removeVote('firstPoll', 'firstUser')} />
+                    <FlatButton label="Unvote" secondary={true} onTouchTap={removeVote(pollId, auth.uid)} />
                     :
                     <FlatButton label="Vote" secondary={true} onTouchTap={addVote(pollId, auth.uid, auth.displayName)}/>
             }

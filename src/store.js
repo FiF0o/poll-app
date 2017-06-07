@@ -5,17 +5,17 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import createHistory from 'history/createBrowserHistory';
-import { routerMiddleware } from 'react-router-redux'
+import { routerMiddleware } from 'react-router-redux';
+import { errorMiddleware, } from './middlewares/errorMiddleware'
 
 import reducers from './reducers';
 
 import {initialState} from './initialState';
 
-// import { myMiddleware } from './middlewares/myMiddleware';
 export const history = createHistory();
 const routingMiddleware = routerMiddleware(history);
 
-const middleware = [ thunk, createLogger(), routingMiddleware ];
+const middleware = [ thunk, createLogger(), routingMiddleware, errorMiddleware ];
 const enhancers = [];
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
