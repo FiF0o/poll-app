@@ -25,11 +25,11 @@ import {styles} from './styles';
 //     }
 // }
 
-export const Vote = ({userId, name, removeVote}) => {
+export const Vote = ({name, removeVote}) => {
     return(
         <div style={styles.wrapper}>
             <Chip
-                 onRequestDelete={() => console.log('chip clicked')}
+                 onRequestDelete={removeVote()}
                  style={styles.chip}
             >
                 {name}

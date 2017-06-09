@@ -21,7 +21,7 @@ return(
                     key={i}
                     name={v}
                     userId={i}
-                    removeVote={removeVote}
+                    removeVote={() => removeVote(pollId, auth.uid)}
                 />
             ))
         }
