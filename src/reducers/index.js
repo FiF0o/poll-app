@@ -7,7 +7,6 @@ import polls from './polls';
 import users from './users';
 import auth from './auth';
 import votes from './votes';
-import errors from './errors'
 
 
 const reducers = combineReducers({
@@ -15,7 +14,6 @@ const reducers = combineReducers({
     users,
     auth,
     votes,
-    errors,
     routing: routerReducer
 });
 

@@ -54,5 +54,5 @@ export const initialState = {
         }
     },
     routing: {},
-    errors: {message: 'no error'},
+    // errors: {message: 'no error'},
 };

@@ -6,7 +6,6 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import createHistory from 'history/createBrowserHistory';
 import { routerMiddleware } from 'react-router-redux';
-import { errorMiddleware, } from './middlewares/errorMiddleware'
 
 import reducers from './reducers';
 
@@ -15,7 +14,7 @@ import {initialState} from './initialState';
 export const history = createHistory();
 const routingMiddleware = routerMiddleware(history);
 
-const middleware = [ thunk, createLogger(), routingMiddleware, errorMiddleware ];
+const middleware = [ thunk, createLogger(), routingMiddleware ];
 const enhancers = [];
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
