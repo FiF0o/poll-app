@@ -1,7 +1,7 @@
 /**
  * Created by jonlazarini on 20/05/17.
  */
-import {ADD_POLL, REMOVE_POLL, ATTEMPT_ADD_POLL} from '../actionTypes';
+import {ADD_POLL, REMOVE_POLL, ATTEMPT_ADD_POLL, ATTEMPT_REMOVE_POLL} from '../actionTypes';
 import {database} from '../database/firebase'
 
 export const addPoll = ({name, description, uid, key}) => {
@@ -22,20 +22,27 @@ export const removePoll = (key) => {
     }
 };
 
+const pollsRef = database.ref('polls');
 export const addPollToDb = (name, description, uid) => {
-    const pollsRef = database.ref('polls');
     return (dispatch) => {
         const payload = {
             name,
             description,
             uid,
-            key: Date.now()
         };
         pollsRef.push(payload)
             .then(() => {
-                console.log(`${{...payload}} added to the DB!`);
-                // addPoll(payload) to follow from middleware
                 dispatch({type: ATTEMPT_ADD_POLL});
         })
     }
 };
+
+export const removePollFromDb = (key) => {
+     return (dispatch) => {
+         pollsRef.child(key).remove()
+             .then(() => {
+                 dispatch(removePoll(key))
+                 // dispatch({type: ATTEMPT_REMOVE_POLL})
+         })
+     }
+}
