@@ -32,13 +32,10 @@ export default class NewPoll extends Component {
 
     handleSubmit(e) {
         const { name, description } = this.state;
-        const uid = true ? 'firstUser' : Math.floor(Math.random() * 1000 );
+        const {uid} = this.props.auth;
+        // const uid = true ? 'firstUser' : Math.floor(Math.random() * 1000 );
 
         this.addNewPoll(e, name, description, uid);
-        this.setState({
-            name: 'tamere',
-            description: 'vier'
-        })
     }
 
     render() {

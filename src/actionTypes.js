@@ -3,6 +3,7 @@
  */
 export const ADD_POLL = 'ADD_POLL';
 export const REMOVE_POLL = 'REMOVE_POLL';
+export const ATTEMPT_ADD_POLL = 'ATTEMPT_ADD_POLL';
 
 exports.ADD_USER = 'ADD_USER';
 export const ATTEMPT_ADD_USER = 'ATTEMPT_ADD_USER';

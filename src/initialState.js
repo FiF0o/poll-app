@@ -1,6 +1,7 @@
 /**
  * Created by jonlazarini on 20/05/17.
  */
+//TODO Could normalize state even in a simplier way using byId and allId nodes storing references then .reduce to render relational nodes
 export const initialState = {
     auth: {
         status: 'ANONYMOUS',
@@ -10,7 +11,7 @@ export const initialState = {
         uid: null
     },
     polls: {
-        'firstPoll': {
+        /*'firstPoll': {
             name: 'poll name',
             description: 'Marv Luvvhini est un peu un vier.',
             timeStamp: Date.now() - 600,
@@ -21,7 +22,7 @@ export const initialState = {
             description: 'lorem ipsum.',
             timeStamp: Date.now() - 600,
             uid: 'secondUser',
-        }
+        }*/
     },
     votes: {
         'firstPoll': {
@@ -34,7 +35,7 @@ export const initialState = {
         }
     },
     users: {
-        'firstUser': {
+        /*'firstUser': {
             displayName: 'Marv Zgegouz',
             email: 'trompette@kikou.com',
             photoURL: 'http://placehold.it/150x150',
@@ -51,7 +52,7 @@ export const initialState = {
             email: 'third@kikou.com',
             photoURL: 'http://placehold.it/150x150',
             uid: 'thirdUser'
-        }
+        }*/
     },
     routing: {},
     // errors: {message: 'no error'},
