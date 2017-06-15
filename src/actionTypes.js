@@ -5,6 +5,7 @@ export const ADD_POLL = 'ADD_POLL';
 export const REMOVE_POLL = 'REMOVE_POLL';
 
 exports.ADD_USER = 'ADD_USER';
+export const ATTEMPT_ADD_USER = 'ATTEMPT_ADD_USER';
 
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_OUT = 'SIGN_OUT';

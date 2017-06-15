@@ -1,7 +1,7 @@
 /**
  * Created by jonlazarini on 09/06/17.
  */
-import { HAS_ERRORED, ATTEMPT_LOGIN } from '../actionTypes';
+import { HAS_ERRORED, ATTEMPT_LOGIN, ATTEMPT_ADD_USER } from '../actionTypes';
 import {signedIn, signedOut} from '../actions/auth';
 import {auth, database} from '../database/firebase';
 import pick from 'lodash/pick';
@@ -18,12 +18,16 @@ export const loginMiddleware = store => next => action => {
         {
             console.log('LOGGING IN...');
             auth.onAuthStateChanged((user) => {
-                if(user) {
+                // for some reasons before this request, a uid token with null properties gets returned
+                //TODO ??? chainable then? https://firebase.google.com/docs/auth/web/google-signin
+                if(user.email !== null) {
                     store.dispatch(signedIn(user));
                     let u = pick(user, ['displayName', 'photoURL', 'email', 'uid']);
                     // write user to the DB
                     usersRef.child(user.uid)
                         .set(u);
+                    // fires next middleware to add the user in our Redux state
+                    store.dispatch({type: ATTEMPT_ADD_USER})
                 } else
                     store.dispatch(signedOut())
             })
