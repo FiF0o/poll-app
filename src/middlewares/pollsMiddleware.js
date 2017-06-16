@@ -1,8 +1,8 @@
 /**
  * Created by jonlazarini on 15/06/17.
  */
-import { ATTEMPT_ADD_POLL, ATTEMPT_REMOVE_POLL } from '../actionTypes';
-import { addPoll, removePoll } from '../actions/polls';
+import { ATTEMPT_ADD_POLL } from '../actionTypes';
+import { addPoll } from '../actions/polls';
 import { database } from '../database/firebase';
 
 const pollsRef = database.ref('polls');
@@ -19,6 +19,9 @@ export const pollsMiddleware = store => next => action => {
                 console.log('ADDING POLL...');
                 pollsRef.on('child_added', (snapshot) => {
                     // gives key from DB as poll key prop, timestamp sucks :/
+                    store.dispatch(addPoll({...snapshot.val(), key: snapshot.key}));
+                });
+                pollsRef.on('child_changed', (snapshot) => {
                     store.dispatch(addPoll({...snapshot.val(), key: snapshot.key}));
                 });
                 // debug

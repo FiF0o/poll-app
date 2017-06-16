@@ -1,7 +1,7 @@
 /**
  * Created by jonlazarini on 20/05/17.
  */
-import {ADD_POLL, REMOVE_POLL, ATTEMPT_ADD_POLL, ATTEMPT_REMOVE_POLL} from '../actionTypes';
+import {ADD_POLL, REMOVE_POLL, ATTEMPT_ADD_POLL} from '../actionTypes';
 import {database} from '../database/firebase'
 
 export const addPoll = ({name, description, uid, key}) => {
