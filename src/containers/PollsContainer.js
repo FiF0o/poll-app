@@ -4,7 +4,7 @@
 import { connect } from 'react-redux';
 import {Polls} from '../components/Polls';
 import {removePollFromDb} from '../actions/polls';
-import {addVote, removeVote} from '../actions/votes';
+import {addVote, addVoteToDb, removeVote} from '../actions/votes';
 
 
 const mapStateToProps = (state) => {
@@ -22,8 +22,8 @@ const mapDispatchToProps = (dispatch) => {
         deletePoll(key) {
             return () => dispatch(removePollFromDb(key));
         },
-        addVote(key, id, name) {
-            return () => dispatch(addVote(key, id, name));
+        addVote(key, name) {
+            return () => dispatch(addVoteToDb(key, name));
         },
         removeVote(key, id) {
             return () => dispatch(removeVote(key, id))

@@ -17,5 +17,6 @@ export const ATTEMPT_LOGIN = 'ATTEMPT_LOGIN';
 
 export const ADD_VOTE = 'ADD_VOTE';
 export const REMOVE_VOTE = 'REMOVE_VOTE';
+export const ADDING_VOTE = 'ADDING_VOTE';
 
 export const HAS_ERRORED = 'HAS_ERRORED';

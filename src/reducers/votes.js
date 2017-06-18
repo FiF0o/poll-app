@@ -8,12 +8,12 @@ import {initialState} from '../initialState';
 
 export default function votes(state=initialState.votes, action) {
 
-    const { type, key, userId, author} = action;
+    const { type, key, author} = action;
 
     switch(type) {
         case ADD_VOTE:
             // in votes node, getting 'key':{'userId'} property and add author to it
-            return Immutable.fromJS(state).setIn([key, userId], author).toJS();
+            return Immutable.fromJS(state).setIn([key], author).toJS();
             // return {
             //     ...state,
             //     [key]: {
@@ -24,7 +24,7 @@ export default function votes(state=initialState.votes, action) {
             // };
 
         case REMOVE_VOTE:
-            return Immutable.fromJS(state).deleteIn([key, userId], author).toJS();
+            return Immutable.fromJS(state).deleteIn([key], author).toJS();
 
         default:
             return state

@@ -9,6 +9,7 @@ import { routerMiddleware } from 'react-router-redux';
 import {loginMiddleware} from './middlewares/loginMiddleware';
 import {userMiddleware} from './middlewares/userMiddleware';
 import {pollsMiddleware} from './middlewares/pollsMiddleware';
+import {votesMiddleware} from './middlewares/votesMiddleware';
 import reducers from './reducers';
 
 import {initialState} from './initialState';
@@ -16,7 +17,7 @@ import {initialState} from './initialState';
 export const history = createHistory();
 const routingMiddleware = routerMiddleware(history);
 
-const middleware = [ thunk, createLogger(), routingMiddleware, loginMiddleware, userMiddleware, pollsMiddleware ];
+const middleware = [ thunk, createLogger(), routingMiddleware, loginMiddleware, userMiddleware, pollsMiddleware, votesMiddleware ];
 const enhancers = [];
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

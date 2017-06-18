@@ -26,12 +26,8 @@ return(
             ))
         }
         <div>
-            {
-                hasVoted(votes, auth.uid) ?
-                    <FlatButton label="Unvote" secondary={true} onTouchTap={removeVote(pollId, auth.uid)} />
-                    :
-                    <FlatButton label="Vote" secondary={true} onTouchTap={addVote(pollId, auth.uid, auth.displayName)}/>
-            }
+            <FlatButton label="Unvote" secondary={true} onTouchTap={removeVote(pollId, auth.uid)} />
+            <FlatButton label="Vote" secondary={true} onTouchTap={addVote(pollId, auth.displayName)}/>
         </div>
     </div>
 );
