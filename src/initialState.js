@@ -26,12 +26,12 @@ export const initialState = {
     },
     votes: {
         'firstPoll': {
-            'firstUser': 'Marv Zgegouz',
-            'secondUser': 'Tromblinator',
+            'dfgdfgdf': 'Marv Zgegouz',
+            'seconfdgfgdfgdfgdfdUser': 'Tromblinator',
         },
         'secondPoll': {
-            'secondUser': 'Tromblinator',
-            'thirdUser': 'thirdUser Name',
+            'fgfdgdfgdf': 'Tromblinator',
+            'gfdgdfgdfgdfgdfgdf': 'thirdUser Name',
         }
     },
     users: {

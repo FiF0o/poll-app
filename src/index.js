@@ -9,6 +9,9 @@ import { Provider } from 'react-redux';
 import {store} from './store';
 import ApplicationContainer from './containers/ApplicationContainer';
 import './index.css';
+import intializers from './initializers'
+
+intializers.forEach(intializer => intializer(store))
 
 const parentComponent =
     <MuiThemeProvider>

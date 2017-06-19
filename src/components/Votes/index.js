@@ -6,29 +6,30 @@ import FlatButton from 'material-ui/FlatButton';
 import map from 'lodash/map';
 import {Vote} from './Vote';
 
-import {hasVoted} from '../../utils/VoteMethods';
+//import {hasVoted} from '../../utils/VoteMethods';
 
 
 export const Votes = ({votes, addVote, removeVote, pollId, auth, ...props}) => {
-return(
-    <div style={{padding: '1em'}} >
-        <br/>
-        <b>Voters:</b>
-        <br/>
-        {
-            map(votes, (v, i) => (
-                <Vote
-                    key={i}
-                    name={v}
-                    userId={i}
-                    removeVote={() => removeVote(pollId, auth.uid)}
-                />
-            ))
-        }
-        <div>
-            <FlatButton label="Unvote" secondary={true} onTouchTap={removeVote(pollId, auth.uid)} />
-            <FlatButton label="Vote" secondary={true} onTouchTap={addVote(pollId, auth.displayName)}/>
+
+    return(
+        <div style={{padding: '1em'}} >
+            <br/>
+            <b>Voters:</b>
+            <br/>
+            {
+                map(votes, (v, i) => (
+                    <Vote
+                        key={i}
+                        name={v}
+                        userId={i}
+                        removeVote={() => removeVote(pollId, auth.uid)}
+                    />
+                ))
+            }
+            <div>
+                <FlatButton label="Unvote" secondary={true} onTouchTap={removeVote(pollId, auth.uid)} />
+                <FlatButton label="Vote" secondary={true} onTouchTap={addVote(pollId, auth.displayName)}/>
+            </div>
         </div>
-    </div>
-);
-}
+    );
+};
