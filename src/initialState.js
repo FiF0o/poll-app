@@ -11,48 +11,68 @@ export const initialState = {
         uid: null
     },
     polls: {
-        /*'firstPoll': {
-            name: 'poll name',
-            description: 'Marv Luvvhini est un peu un vier.',
-            timeStamp: Date.now() - 600,
-            uid: 'firstUser',
+        byId: {
+            'poll1': {
+                name: 'poll name',
+                description: 'Marv Luvvhini est un peu un vier.',
+                timeStamp: Date.now() - 600,
+                author: 'user1',
+                id: 'poll1',
+                votes: ['vote1', 'vote2']
+            },
+            'poll2': {
+                name: 'poll name 2',
+                description: 'lorem ipsum.',
+                timeStamp: Date.now() - 600,
+                author: 'user2',
+                id: 'poll2',
+                votes: ['vote3', 'vote4', 'vote5']
+            }
         },
-        'secondPoll': {
-            name: 'poll name 2',
-            description: 'lorem ipsum.',
-            timeStamp: Date.now() - 600,
-            uid: 'secondUser',
-        }*/
+        allIds: ['poll1', 'poll2']
     },
     votes: {
-        'firstPoll': {
-            'dfgdfgdf': 'Marv Zgegouz',
-            'seconfdgfgdfgdfgdfdUser': 'Tromblinator',
+        byId: {
+            'vote1': {
+                id: 'vote1',
+                author: 'user2',
+            },
+            'vote2': {
+                id: 'vote2',
+                author: 'user3',
+            },
+            'vote3': {
+                id: 'vote3',
+                author: 'user3',
+
+            },
+            'vote4': {
+                id: 'vote4',
+                author: 'user1',
+            },
+            'vote5': {
+                id: 'vote5',
+                author: 'user3',
+            },
         },
-        'secondPoll': {
-            'fgfdgdfgdf': 'Tromblinator',
-            'gfdgdfgdfgdfgdfgdf': 'thirdUser Name',
-        }
+        allIds: ['vote1', 'vote2', 'vote3', 'vote4', 'vote5'],
     },
     users: {
-        /*'firstUser': {
-            displayName: 'Marv Zgegouz',
-            email: 'trompette@kikou.com',
-            photoURL: 'http://placehold.it/150x150',
-            uid: 'firstUser'
+        byId: {
+            "user1": {
+                username: "user1",
+                name: "User 1",
+            },
+            "user2": {
+                username: "user2",
+                name: "User 2",
+            },
+            "user3": {
+                username: "user3",
+                name: "User 3",
+            }
         },
-        'secondUser': {
-            displayName: 'Tromblinator',
-            email: 'trompette@kikou.com',
-            photoURL: 'http://placehold.it/150x150',
-            uid: 'secondUser'
-        },
-        'thirdUser': {
-            displayName: 'thirdUser Name',
-            email: 'third@kikou.com',
-            photoURL: 'http://placehold.it/150x150',
-            uid: 'thirdUser'
-        }*/
+        allIds: ["user1", "user2", "user3"]
     },
     routing: {},
     // errors: {message: 'no error'},
