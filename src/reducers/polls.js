@@ -2,31 +2,98 @@
  * Created by jonlazarini on 20/05/17.
  */
 import {ADD_POLL, REMOVE_POLL} from '../actionTypes';
-import omit from 'lodash/omit';
+import { combineReducers } from 'redux';
 
 import {initialState} from '../initialState';
 
+/**
+ * @param state
+ * @param action
+ * @returns {*}
+ */
+//TODO can be a separate reducer file
+const poll = (state=initialState.polls.byId[0], action) => {
+    const { type, name, description, timeStamp, author, id } = action;
+    switch(type) {
+        case ADD_POLL:
+            return {
+                id,
+                name,
+                description,
+                timeStamp,
+                author,
+            };
+        /*case REMOVE_POLL:
+            return omit(Object.assign({}, state), id);
+         */
+        default:
+            return state;
+    }
+};
 
-export default function polls(state=initialState.polls, action) {
 
-    const { type, key, name, description, uid, timeStamp } = action;
+/**
+ * Combining reducers to normalize the state shape
+ */
 
+/**
+ * @param state
+ * @param action
+ * @returns {*}
+ */
+const byId = (state={}, action) => {
+    const { type, id } = action;
     switch(type) {
         case ADD_POLL:
             return {
                 ...state,
-                [key]: {
-                    name,
-                    description,
-                    uid,
-                    timeStamp
-                }
+                // get poll reducer here and creates the poll object to be pushed in allIds arr later
+                [id]: poll(state[id], action)
             };
-
-        case REMOVE_POLL:
-            return omit(Object.assign({}, state), key);
-
+        /*case REMOVE_POLL:
+         return omit(Object.assign({}, state), id);
+         */
         default:
             return state;
     }
+};
+
+/**
+ *
+ * @param state
+ * @param action
+ * @returns {*}
+ */
+/** Normalized state, Arrayified **/
+const allIds = (state=[], action) => {
+    const { type, id } = action;
+    switch(type) {
+        case ADD_POLL:
+            return [...state, id];
+        /*case REMOVE_POLL:
+         return omit(Object.assign({}, state), id);
+         */
+        default:
+            return state;
+    }
+};
+
+const polls = combineReducers({byId, allIds});
+
+export default polls
+
+
+//TODO Move into container perhaps?
+// Data manipulation will be done here.
+const getAllPolls = (state) =>
+    // retrieves all the polls to be rendered in the view
+    state.allIds.map(id => state.byId[id]);
+
+
+/*
+ is exported as a default function for abstraction
+ available in index reducer so we can call it from index and don't have to change this function in multiple places
+ */
+export const getPolls = (state) => {
+  return getAllPolls(state)
 };

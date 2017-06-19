@@ -4,24 +4,25 @@
 import {ADD_POLL, REMOVE_POLL, ATTEMPT_ADD_POLL} from '../actionTypes';
 import {database} from '../database/firebase'
 
-export const addPoll = ({name, description, uid, key}) => {
+export const addPoll = ({name, description, author, id }) => {
     return {
         type: ADD_POLL,
         name,
         description,
-        uid,
-        key,
-        timeStamp: Date.now()
+        timeStamp: Date.now(),
+        author,
+        id,
     }
 };
 
-export const removePoll = (key) => {
+export const removePoll = (id) => {
     return {
         type: REMOVE_POLL,
-        key
+        id
     }
 };
 
+/*
 const pollsRef = database.ref('polls');
 export const addPollToDb = (name, description, uid) => {
     return (dispatch) => {
@@ -46,3 +47,4 @@ export const removePollFromDb = (key) => {
          })
      }
 }
+*/
