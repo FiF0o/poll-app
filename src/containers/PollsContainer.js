@@ -11,7 +11,8 @@ import { getPolls } from '../reducers';
 const mapStateToProps = (state) => {
     return {
         polls: getPolls(state),
-        auth: state.auth
+        auth: state.auth,
+        users: state.users,
     };
 };
 

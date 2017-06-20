@@ -16,7 +16,8 @@ export const initialState = {
                 name: 'poll name',
                 description: 'Marv Luvvhini est un peu un vier.',
                 timeStamp: Date.now() - 600,
-                author: 'user1',
+                author: 'username 1',
+                uid: 'user1',
                 id: 'poll1',
                 votes: ['vote1', 'vote2']
             },
@@ -24,7 +25,8 @@ export const initialState = {
                 name: 'poll name 2',
                 description: 'lorem ipsum.',
                 timeStamp: Date.now() - 600,
-                author: 'user2',
+                author: 'username 2',
+                uid: 'user2',
                 id: 'poll2',
                 votes: ['vote3', 'vote4', 'vote5']
             }
@@ -60,16 +62,22 @@ export const initialState = {
     users: {
         byId: {
             "user1": {
-                username: "user1",
-                name: "User 1",
+                displayName: "username 1",
+                email: 'mail@mail.com',
+                uid: 'user1',
+                photoURL: 'https://placebear.com/100/100'
             },
             "user2": {
-                username: "user2",
-                name: "User 2",
+                displayName: "username 2",
+                email: 'mail@mail.com',
+                uid: 'user2',
+                photoURL: 'https://placebear.com/100/100'
             },
             "user3": {
-                username: "user3",
-                name: "User 3",
+                displayName: "username 3",
+                email: 'mail@mail.com',
+                uid: 'user3',
+                photoURL: 'https://placebear.com/100/100'
             }
         },
         allIds: ["user1", "user2", "user3"]

@@ -5,5 +5,5 @@
 export const isUserLogged = (user) => user.uid !== null;
 
 export const isTheCurrentUser = (user, id) => {
-    return user.uid === id
+    return user === id
 };

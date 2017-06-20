@@ -3,21 +3,21 @@
  */
 // eslint-disable-next-line
 import {SIGN_IN, SIGN_OUT, ATTEMPT_LOGIN} from '../actionTypes';
-import {auth, googleAuthProvider } from '../database/firebase';
+// import {auth, googleAuthProvider } from '../database/firebase';
 
-/*let userMock = {
+let userMock = {
     email: 'trompette@kikou.com',
-    displayName: 'Marv Zgegouz',
-    photoURL: 'http://placehold.it/150x150',
-    uid: 'firstUser'
-};*/
+    displayName: 'username 1',
+    photoURL: 'https://placebear.com/100/100',
+    uid: 'user1'
+};
 
 export const signIn = () => {
     return(dispatch) => {
-        dispatch({type: ATTEMPT_LOGIN});
+        // dispatch({type: ATTEMPT_LOGIN});
         // eslint-disable-next-line
-        // dispatch(signedIn(userMock)); //data from firebase
-        auth.signInWithPopup(googleAuthProvider)
+        dispatch(signedIn(userMock)); //data from firebase
+        // auth.signInWithPopup(googleAuthProvider)
     }
 };
 

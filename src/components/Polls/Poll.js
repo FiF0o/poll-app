@@ -9,12 +9,12 @@ import {UserAvatar} from '../Avatars';
 // import {Votes} from '../Votes';
 
 // import {getVotesForPoll} from '../../utils/PollUtils';
-// import {isTheCurrentUser} from '../../utils/UserAuth';
+import {isTheCurrentUser} from '../../utils/UserAuth';
 
 
-export const Poll = ({pollKey, name, description, author, id, auth, onDeletePoll, ...props}) => (
+export const Poll = ({pollKey, name, description, author, id, auth, pollUid, user, onDeletePoll, ...props}) => (
     <article>
-        <UserAvatar user={author} />
+        <UserAvatar user={user} />
         <Card>
             <CardTitle title={name} />
             <CardText>
@@ -23,10 +23,7 @@ export const Poll = ({pollKey, name, description, author, id, auth, onDeletePoll
             </CardText>
             <CardActions>
                 {
-                     <FlatButton label="Delete My Poll" onTouchTap={onDeletePoll}/>
-                    /*
-                    isTheCurrentUser(author, auth.uid) ? <FlatButton label="Delete My Poll" onTouchTap={onDeletePoll}/> : null
-                     */
+                    isTheCurrentUser(pollUid, auth.uid) ? <FlatButton label="Delete My Poll" onTouchTap={onDeletePoll}/> : null
                 }
             </CardActions>
 

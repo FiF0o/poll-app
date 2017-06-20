@@ -4,13 +4,14 @@
 import {ADD_POLL, REMOVE_POLL, ATTEMPT_ADD_POLL} from '../actionTypes';
 import {database} from '../database/firebase'
 
-export const addPoll = ({name, description, author, id }) => {
+export const addPoll = ({name, description, author, uid, id }) => {
     return {
         type: ADD_POLL,
         name,
         description,
         timeStamp: Date.now(),
         author,
+        uid,
         id,
     }
 };

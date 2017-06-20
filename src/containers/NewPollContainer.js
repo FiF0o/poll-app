@@ -8,9 +8,9 @@ import NewPoll from '../components/Polls/NewPoll';
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addNewPoll(e, name, description, author, id) {
+        addNewPoll(e, name, description, author, uid, id) {
             e.preventDefault();
-            dispatch(addPoll({name, description, author, id}));
+            dispatch(addPoll({name, description, author, uid, id}));
         }
     };
 };

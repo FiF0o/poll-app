@@ -14,7 +14,7 @@ import {initialState} from '../initialState';
  */
 //TODO can be a separate reducer file
 const poll = (state=initialState.polls.byId[0], action) => {
-    const { type, name, description, timeStamp, author, id } = action;
+    const { type, name, description, timeStamp, author, uid, id } = action;
     switch(type) {
         case ADD_POLL:
             return {
@@ -23,6 +23,7 @@ const poll = (state=initialState.polls.byId[0], action) => {
                 description,
                 timeStamp,
                 author,
+                uid
             };
         case REMOVE_POLL:
             return id;
