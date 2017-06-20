@@ -23,6 +23,7 @@ export const Poll = ({pollKey, name, description, author, id, auth, onDeletePoll
             </CardText>
             <CardActions>
                 {
+                     <FlatButton label="Delete My Poll" onTouchTap={onDeletePoll}/>
                     /*
                     isTheCurrentUser(author, auth.uid) ? <FlatButton label="Delete My Poll" onTouchTap={onDeletePoll}/> : null
                      */

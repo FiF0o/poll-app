@@ -8,6 +8,8 @@ import FlatButton from 'material-ui/FlatButton';
 import {styles} from './styles';
 
 
+let i = 3
+
 export default class NewPoll extends Component {
     constructor(props) {
         super(props);
@@ -34,9 +36,8 @@ export default class NewPoll extends Component {
         const { name, description } = this.state;
         // const {uid} = this.props.auth;
         // const uid = true ? 'firstUser' : Math.floor(Math.random() * 1000 );
-        let author = 'user1'
-        let i = 3
-        let id = `poll${i++}`
+        let author = 'user1';
+        let id = `poll${i++}`;
         this.addNewPoll(e, name, description, author, id);
     }
 

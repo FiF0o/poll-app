@@ -23,7 +23,7 @@ export const Polls = ({polls, auth, deletePoll, ...props}) => {
                         id={poll.id}
                         auth={auth}
                         {...poll}
-                        onDeletePoll={deletePoll}
+                        onDeletePoll={deletePoll(poll.id)}
                         key={key}
                     />
                 ))

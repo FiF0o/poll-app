@@ -3,6 +3,7 @@
  */
 import {ADD_POLL, REMOVE_POLL} from '../actionTypes';
 import { combineReducers } from 'redux';
+import Immutable from 'immutable';
 
 import {initialState} from '../initialState';
 
@@ -23,9 +24,8 @@ const poll = (state=initialState.polls.byId[0], action) => {
                 timeStamp,
                 author,
             };
-        /*case REMOVE_POLL:
-            return omit(Object.assign({}, state), id);
-         */
+        case REMOVE_POLL:
+            return id;
         default:
             return state;
     }
@@ -50,9 +50,9 @@ const byId = (state={}, action) => {
                 // get poll reducer here and creates the poll object to be pushed in allIds arr later
                 [id]: poll(state[id], action)
             };
-        /*case REMOVE_POLL:
-         return omit(Object.assign({}, state), id);
-         */
+        case REMOVE_POLL:
+            return Immutable.Map(state).delete(id).toJS();
+
         default:
             return state;
     }
@@ -65,14 +65,17 @@ const byId = (state={}, action) => {
  * @returns {*}
  */
 /** Normalized state, Arrayified **/
+
+const deleteByItem = (arr, item) => arr.filter(i => i !== item);
+
 const allIds = (state=[], action) => {
     const { type, id } = action;
     switch(type) {
         case ADD_POLL:
             return [...state, id];
-        /*case REMOVE_POLL:
-         return omit(Object.assign({}, state), id);
-         */
+        case REMOVE_POLL:
+            let newList = Immutable.List(state);
+            return deleteByItem(newList, id).toJS();
         default:
             return state;
     }
