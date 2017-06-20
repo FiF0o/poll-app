@@ -11,10 +11,11 @@ export const UserAvatar = ({user}) => (
         <ListItem
             disabled={true}
             leftAvatar={
-                <Avatar src={user.photoURL} />
+                <Avatar src={"https://placebear.com/100/100"} />
             }
         >
-            {user.displayName} - {user.email}
+            {user}
+            {/*user.displayName*/} - {/*user.email*/}
         </ListItem>
     </List>
 );
