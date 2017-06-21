@@ -6,6 +6,10 @@ import { map }from 'lodash';
 import {Poll} from './Poll';
 import {Grid} from '../Grids/';
 
+const getUserById = (arr, uid) => arr
+    .filter(u => u.uid === uid) // or [0] instead of reduce overkill...
+    .reduce((acc, o) => o, undefined);
+
 export const Polls = ({polls, auth, users, deletePoll, ...props}) => {
     return (
         <Grid
@@ -23,7 +27,7 @@ export const Polls = ({polls, auth, users, deletePoll, ...props}) => {
                         id={poll.id}
                         auth={auth}
                         pollUid={poll.uid}
-                        user={users.byId[poll.uid]}
+                        user={getUserById(users, poll.uid)}
                         {...poll}
                         onDeletePoll={deletePoll(poll.id)}
                         key={key}
@@ -33,4 +37,4 @@ export const Polls = ({polls, auth, users, deletePoll, ...props}) => {
             {/* quick ugly fix to get data and debug - user={users.byId[poll.uid]} */ }
         </Grid>
     );
-}
+};

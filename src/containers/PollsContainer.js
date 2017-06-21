@@ -6,13 +6,14 @@ import {Polls} from '../components/Polls';
 import {removePoll} from '../actions/polls';
 import {addVote, removeVote} from '../actions/votes';
 import { getPolls } from '../reducers';
+import * as fromUsersSelector from '../selectors/users';
 
 
 const mapStateToProps = (state) => {
     return {
         polls: getPolls(state),
         auth: state.auth,
-        users: state.users,
+        users: fromUsersSelector.getUsers(state.users),
     };
 };
 
