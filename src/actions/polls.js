@@ -4,7 +4,8 @@
 import {ADD_POLL, REMOVE_POLL, ATTEMPT_ADD_POLL} from '../actionTypes';
 import {database} from '../database/firebase'
 
-export const addPoll = ({name, description, author, uid, id }) => {
+//TODO Quick fix initializing votes as an empty array if undefined so that ImmutableJs can push/etc.. into it
+export const addPoll = ({name, description, author, uid, id, votes=[] }) => {
     return {
         type: ADD_POLL,
         name,
@@ -13,6 +14,7 @@ export const addPoll = ({name, description, author, uid, id }) => {
         author,
         uid,
         id,
+        votes
     }
 };
 

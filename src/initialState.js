@@ -37,24 +37,29 @@ export const initialState = {
         byId: {
             'vote1': {
                 id: 'vote1',
-                author: 'user2',
+                uid: 'user2',
+                // author: 'username 2'
             },
             'vote2': {
                 id: 'vote2',
-                author: 'user3',
+                uid: 'user3',
+                // author: 'username 3'
             },
             'vote3': {
                 id: 'vote3',
-                author: 'user3',
+                uid: 'user3',
+                // author: 'username 3'
 
             },
             'vote4': {
                 id: 'vote4',
-                author: 'user1',
+                uid: 'user1',
+                // author: 'username 1'
             },
             'vote5': {
                 id: 'vote5',
-                author: 'user3',
+                uid: 'user3',
+                // author: 'username 3'
             },
         },
         allIds: ['vote1', 'vote2', 'vote3', 'vote4', 'vote5'],

@@ -10,7 +10,9 @@ const getUserById = (arr, uid) => arr
     .filter(u => u.uid === uid) // or [0] instead of reduce overkill...
     .reduce((acc, o) => o, undefined);
 
-export const Polls = ({polls, auth, users, deletePoll, ...props}) => {
+let i = 6;
+
+export const Polls = ({polls, auth, users, deletePoll, addVote, votes, ...props}) => {
     return (
         <Grid
             cellHeight={'auto'}
@@ -30,11 +32,11 @@ export const Polls = ({polls, auth, users, deletePoll, ...props}) => {
                         user={getUserById(users, poll.uid)}
                         {...poll}
                         onDeletePoll={deletePoll(poll.id)}
+                        addVote={addVote(poll.id, auth.uid, `vote${i++}`)}
                         key={key}
                     />
                 ))
             }
-            {/* quick ugly fix to get data and debug - user={users.byId[poll.uid]} */ }
         </Grid>
     );
 };

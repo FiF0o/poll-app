@@ -1,7 +1,7 @@
 /**
  * Created by jonlazarini on 20/05/17.
  */
-import {ADD_POLL, REMOVE_POLL} from '../actionTypes';
+import {ADD_POLL, REMOVE_POLL, ADD_VOTE} from '../actionTypes';
 import { combineReducers } from 'redux';
 import Immutable from 'immutable';
 
@@ -14,7 +14,7 @@ import {initialState} from '../initialState';
  */
 //TODO can be a separate reducer file
 const poll = (state=initialState.polls.byId[0], action) => {
-    const { type, name, description, timeStamp, author, uid, id } = action;
+    const { type, name, description, timeStamp, author, uid, id, votes } = action;
     switch(type) {
         case ADD_POLL:
             return {
@@ -23,10 +23,18 @@ const poll = (state=initialState.polls.byId[0], action) => {
                 description,
                 timeStamp,
                 author,
-                uid
+                uid,
+                votes
             };
         case REMOVE_POLL:
             return id;
+        case ADD_VOTE:
+            return {
+                pollKey: action.pollKey,
+                uid,
+                voteId: action.voteId
+            };
+
         default:
             return state;
     }
@@ -53,7 +61,9 @@ const byId = (state={}, action) => {
             };
         case REMOVE_POLL:
             return Immutable.Map(state).delete(id).toJS();
-
+        case ADD_VOTE:
+            return Immutable.fromJS(state).updateIn([action.pollKey, 'votes'], list => list.push(id)).toJS()
+                //Immutable.fromJS(state[action.pollKey].votes).push(id).toJS();
         default:
             return state;
     }

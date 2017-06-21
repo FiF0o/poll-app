@@ -5,19 +5,20 @@ import {ADD_VOTE, REMOVE_VOTE} from '../actionTypes';
 import { database } from '../database/firebase';
 import {ADDING_VOTE} from '../actionTypes';
 
-export const addVote = (key, author) => {
+export const addVote = (pollKey, uid, id) => {
     return {
         type: ADD_VOTE,
-        key,
-        author
+        pollKey,
+        uid,
+        id
     }
 };
 
-export const removeVote = (key, userId) => {
+export const removeVote = (pollKey, id) => {
     return {
         type: REMOVE_VOTE,
-        key,
-        userId
+        pollKey,
+        id
     }
 };
 
