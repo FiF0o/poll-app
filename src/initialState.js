@@ -19,7 +19,7 @@ export const initialState = {
                 author: 'username 1',
                 uid: 'user1',
                 id: 'poll1',
-                votes: ['vote1', 'vote2']
+                votes: ['vote2', 'vote1']
             },
             'poll2': {
                 name: 'poll name 2',

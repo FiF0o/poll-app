@@ -1,7 +1,7 @@
 /**
  * Created by jonlazarini on 20/05/17.
  */
-import {ADD_POLL, REMOVE_POLL, ADD_VOTE} from '../actionTypes';
+import {ADD_POLL, REMOVE_POLL, ADD_VOTE, REMOVE_VOTE} from '../actionTypes';
 import { combineReducers } from 'redux';
 import Immutable from 'immutable';
 
@@ -62,8 +62,21 @@ const byId = (state={}, action) => {
         case REMOVE_POLL:
             return Immutable.Map(state).delete(id).toJS();
         case ADD_VOTE:
-            return Immutable.fromJS(state).updateIn([action.pollKey, 'votes'], list => list.push(id)).toJS()
-                //Immutable.fromJS(state[action.pollKey].votes).push(id).toJS();
+            return Immutable.fromJS(state).updateIn([action.pollKey, 'votes'], list => list.push(id)).toJS();
+        case REMOVE_VOTE:
+            /*return state[action.pollKey].votes.reduce((accumulator, currentValue) => {
+                if (currentValue === id) {
+                    return accumulator
+                } else {
+                    return [...accumulator, currentValue];
+                }
+            }, []);*/
+
+            // return state[action.pollKey].votes.filter(vote => vote !== id);
+
+            //get the index to remove in the array
+            let index = state[action.pollKey].votes.indexOf(id);
+            return Immutable.fromJS(state).updateIn([action.pollKey, 'votes'], list => list.splice(index, 1)).toJS();
         default:
             return state;
     }

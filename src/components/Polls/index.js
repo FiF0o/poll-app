@@ -11,32 +11,31 @@ const getUserById = (arr, uid) => arr
     .reduce((acc, o) => o, undefined);
 
 let i = 6;
-
-export const Polls = ({polls, auth, users, deletePoll, addVote, votes, ...props}) => {
-    return (
-        <Grid
-            cellHeight={'auto'}
-            cols={2}
-            padding={50}
-        >
-            {
-                map(polls, (poll, key) => (
-                    <Poll
-                        pollKey={key}
-                        name={poll.name}
-                        description={poll.description}
-                        author={poll.author}
-                        id={poll.id}
-                        auth={auth}
-                        pollUid={poll.uid}
-                        user={getUserById(users, poll.uid)}
-                        {...poll}
-                        onDeletePoll={deletePoll(poll.id)}
-                        addVote={addVote(poll.id, auth.uid, `vote${i++}`)}
-                        key={key}
-                    />
-                ))
-            }
-        </Grid>
-    );
-};
+export const Polls = ({polls, auth, users, deletePoll, addVote, removeVote, votes, ...props}) => (
+    <Grid
+        cellHeight={'auto'}
+        cols={2}
+        padding={50}
+    >
+        {
+            map(polls, (poll, key) => (
+                <Poll
+                    pollKey={key}
+                    name={poll.name}
+                    description={poll.description}
+                    author={poll.author}
+                    id={poll.id}
+                    auth={auth}
+                    pollUid={poll.uid}
+                    user={getUserById(users, poll.uid)}
+                    {...poll}
+                    onDeletePoll={deletePoll(poll.id)}
+                    addVote={addVote(poll.id, auth.uid, `vote${i++}`)}
+                    removeVote={removeVote(poll.id, 'vote1')}
+                    key={key}
+                />
+                )
+            )
+        }
+    </Grid>
+);

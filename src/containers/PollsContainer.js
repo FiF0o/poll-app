@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
         polls: getPolls(state),
         auth: state.auth,
         users: fromUsersSelector.getUsers(state.users),
-        votes: fromVotesSelector.getVotes(state.votes)
+        votes: fromVotesSelector.getVotes(state.votes),
     };
 };
 
@@ -27,9 +27,9 @@ const mapDispatchToProps = (dispatch) => {
         addVote(key, userId, id) {
             return () => dispatch(addVote(key, userId, id));
         },
-        /*removeVote(key, id) {
+        removeVote(key, id) {
             return () => dispatch(removeVote(key, id))
-        }*/
+        }
     };
 };
 
