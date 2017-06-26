@@ -6,9 +6,14 @@ const getAllVotes = (state) =>
 
 export const getVotes = (state) => getAllVotes(state);
 
-export const getVotesForPoll = (state, votes, polls) => {
-    const allPolls = polls.allIds.map(p => polls.byId[p]);
-    console.log('allPolls', allPolls)
-    const listVotes = allPolls.map(p => p.votes.map(v => votes.byId[v]));
-    console.log('listVotes', listVotes)
-};
+const getById = collection => id => collection.byId[id];
+
+const expandPollVotes = votes => poll => Object.assign({}, poll, {
+    // ...poll
+    votes: poll.votes.map(getById(votes))
+});
+
+export const getPollsAndVotes = (polls, votes) =>
+    polls.allIds
+        .map(getById(polls))
+        .map(expandPollVotes(votes));

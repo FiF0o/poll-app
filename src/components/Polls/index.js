@@ -11,7 +11,7 @@ const getUserById = (arr, uid) => arr
     .reduce((acc, o) => o, undefined);
 
 let i = 6;
-export const Polls = ({polls, auth, users, deletePoll, addVote, removeVote, votes, ...props}) => (
+export const Polls = ({polls, auth, users, deletePoll, addVote, removeVote, ...props}) => (
     <Grid
         cellHeight={'auto'}
         cols={2}

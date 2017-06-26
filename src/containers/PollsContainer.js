@@ -5,17 +5,15 @@ import { connect } from 'react-redux';
 import {Polls} from '../components/Polls';
 import {removePoll} from '../actions/polls';
 import {addVote, removeVote} from '../actions/votes';
-import { getPolls } from '../reducers';
 import * as fromUsersSelector from '../selectors/users';
 import * as fromVotesSelector from '../selectors/votes';
 
 
 const mapStateToProps = (state) => {
     return {
-        polls: getPolls(state),
+        polls: fromVotesSelector.getPollsAndVotes(state.polls, state.votes),
         auth: state.auth,
         users: fromUsersSelector.getUsers(state.users),
-        votes: fromVotesSelector.getVotes(state.votes),
     };
 };
 
