@@ -6,7 +6,7 @@ import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
 import {UserAvatar} from '../Avatars';
-// import {Votes} from '../Votes';
+import {Votes} from '../Votes';
 
 // import {getVotesForPoll} from '../../utils/PollUtils';
 import {isTheCurrentUser} from '../../utils/UserAuth';
@@ -25,8 +25,13 @@ export const Poll = ({pollKey, name, description, author, id, auth, pollUid, use
                 {
                     isTheCurrentUser(pollUid, auth.uid) ? <FlatButton label="Delete My Poll" onTouchTap={onDeletePoll} /> : null
                 }
-                <FlatButton label="Unvote" onTouchTap={removeVote} />
-                <FlatButton label="Add Vote" onTouchTap={addVote} />
+                <Votes
+                    votes={props.votes}
+                    addVote={addVote}
+                    removeVote={removeVote}
+                    pollId={id}
+                    auth={auth}
+                />
             </CardActions>
 
         </Card>

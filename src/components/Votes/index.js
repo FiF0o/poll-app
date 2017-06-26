@@ -20,15 +20,14 @@ export const Votes = ({votes, addVote, removeVote, pollId, auth, ...props}) => {
                 map(votes, (v, i) => (
                     <Vote
                         key={i}
-                        name={v}
-                        userId={i}
-                        removeVote={() => removeVote(pollId, auth.uid)}
+                        name={v.uid}
+                        {...v}
                     />
                 ))
             }
             <div>
                 <FlatButton label="Unvote" secondary={true} onTouchTap={removeVote(pollId, auth.uid)} />
-                <FlatButton label="Vote" secondary={true} onTouchTap={addVote(pollId, auth.displayName)}/>
+                <FlatButton label="Vote" secondary={true} onTouchTap={addVote} />
             </div>
         </div>
     );

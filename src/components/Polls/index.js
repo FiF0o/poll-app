@@ -31,7 +31,7 @@ export const Polls = ({polls, auth, users, deletePoll, addVote, removeVote, ...p
                     {...poll}
                     onDeletePoll={deletePoll(poll.id)}
                     addVote={addVote(poll.id, auth.uid, `vote${i++}`)}
-                    removeVote={removeVote(poll.id, 'vote1')}
+                    removeVote={removeVote}
                     key={key}
                 />
                 )
