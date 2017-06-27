@@ -16,6 +16,7 @@ export const initialState = {
                 name: 'poll name',
                 description: 'Marv Luvvhini est un peu un vier.',
                 timeStamp: Date.now() - 600,
+                //TODO Remove author key and use a users selector instead to avoid duplications...
                 author: 'username 1',
                 uid: 'user1',
                 id: 'poll1',
