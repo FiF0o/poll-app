@@ -27,7 +27,7 @@ export const loginMiddleware = store => next => action => {
                     usersRef.child(user.uid)
                         .set(u);
                     // fires next middleware to add the user in our Redux state
-                    store.dispatch({type: ATTEMPT_ADD_USER})
+                    store.dispatch({type: ATTEMPT_ADD_USER}) // MW
                 } else
                     store.dispatch(signedOut())
             })
