@@ -1,7 +1,7 @@
 /**
  * Created by jonlazarini on 09/06/17.
  */
-import { HAS_ERRORED, ATTEMPT_LOGIN, ATTEMPT_ADD_USER } from '../actionTypes';
+import { ATTEMPT_LOGIN, ATTEMPT_ADD_USER } from '../actionTypes';
 import {signedIn, signedOut} from '../actions/auth';
 import {auth, database} from '../database/firebase';
 import pick from 'lodash/pick';

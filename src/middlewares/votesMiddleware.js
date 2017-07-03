@@ -2,10 +2,10 @@
  * Created by jonlazarini on 15/06/17.
  */
 import { ADDING_VOTE } from '../actionTypes';
-import { addVote } from '../actions/votes';
-import { database } from '../database/firebase';
+// import { addVote } from '../actions/votes';
+// import { database } from '../database/firebase';
 
-const votesRef = database.ref('votes');
+// const votesRef = database.ref('votes');
 
 export const votesMiddleware = store => next => action => {
     let result = next(action);
@@ -17,10 +17,10 @@ export const votesMiddleware = store => next => action => {
             try
             {
                 console.log('ADDING VOTE...');
-                votesRef.on('child_added', (snapshot) => {
+                // votesRef.on('child_added', (snapshot) => {
                     // gives key from DB as poll key prop, timestamp sucks :/
-                    store.dispatch(addVote(snapshot.key, snapshot.val()));
-                });
+                    // store.dispatch(addVote(snapshot.key, snapshot.val()));
+                // });
                 // debug
                 // throw new Error(`:'(`);
             }
