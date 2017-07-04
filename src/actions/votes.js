@@ -5,7 +5,7 @@ import {ADD_VOTE, REMOVE_VOTE} from '../actionTypes';
 import { database } from '../database/firebase';
 // import {ADDING_VOTE} from '../actionTypes';
 
-const addVote = (pollId, uid, voteId) => {
+export const addVote = (pollId, uid, {voteId}) => {
     return {
         type: ADD_VOTE,
         pollId,
@@ -14,7 +14,7 @@ const addVote = (pollId, uid, voteId) => {
     }
 };
 
-export const removeVote = (pollId, uid, voteId) => {
+export const removeVote = (pollId, uid, {voteId}) => {
     return {
         type: REMOVE_VOTE,
         pollId,
@@ -36,6 +36,6 @@ export const addVoteToDb = ({pollId, uid}) => {
     return (dispatch) => {
         votesRef.push({uid, timeStamp: Date.now(), pollId})
             // .then(() => dispatch({type: ADDING_VOTE, key}))
-            .then((snap) => dispatch(addVote(pollId, uid, snap.key)))
+            // .then((snap) => dispatch(addVote(pollId, uid, snap.key)))
     }
 };

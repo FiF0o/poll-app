@@ -10,8 +10,15 @@ import {store} from './store';
 import ApplicationContainer from './containers/ApplicationContainer';
 import './index.css';
 // import intializers from './initializers'
+import { ListeningToAuthChanges, ListeningToPolls, ListeningForUsers, ListeningToVotes } from './utils/listeners/';
 
 // intializers.forEach(intializer => intializer(store));
+
+
+store.dispatch(ListeningToAuthChanges());
+store.dispatch(ListeningToPolls());
+store.dispatch(ListeningForUsers());
+store.dispatch(ListeningToVotes());
 
 const parentComponent =
     <MuiThemeProvider>

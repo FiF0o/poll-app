@@ -40,7 +40,7 @@ export const addPollToDb = ({name, description, author, uid}) => {
             .then((snap) => {
                 // TODO Add listeners to the app
                 // dispatch({type: ATTEMPT_ADD_POLL});
-                dispatch(addPoll({name, description, author, uid, id: snap.key}))
+                // dispatch(addPoll({name, description, author, uid, id: snap.key}))
         })
     }
 };
@@ -50,7 +50,7 @@ export const removePollFromDb = (key) => {
          pollsRef.child(key).remove()
              .then(() => {
                  // dispatch({type: ATTEMPT_REMOVE_POLL})
-                 dispatch(removePoll(key))
+                 // dispatch(removePoll(key))
          })
      }
 };

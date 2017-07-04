@@ -16,9 +16,9 @@ export const userMiddleware = store => next => action => {
         try
         {
             console.log('ADDING USER...');
-            usersRef.on('child_added', (snapshot) => {
-                store.dispatch(addUser(snapshot.val()));
-            });
+            // usersRef.on('child_added', (snapshot) => {
+            //     store.dispatch(addUser(snapshot.val()));
+            // });
             // debug
             // throw new Error(`:'(`);
         }
