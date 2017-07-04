@@ -8,16 +8,16 @@ import {combineReducers} from 'redux';
 import {initialState} from '../initialState';
 
 const vote = (state=initialState.votes.byId[0], action) => {
-    const { type, uid, id} = action;
+    const { type, uid, voteId} = action;
     switch(type) {
         case ADD_VOTE:
             return {
                 uid,
-                id
+                voteId
             };
         case REMOVE_VOTE:
             return {
-                id
+                voteId
             };
         default:
             return state
@@ -25,28 +25,28 @@ const vote = (state=initialState.votes.byId[0], action) => {
 };
 
 const byId = (state=initialState.votes.byId, action) => {
-  const { type, id } = action;
+  const { type, voteId } = action;
     switch (type) {
         case ADD_VOTE:
             // in votes node, getting 'key':{'userId'} property and add author to it
             return {
                 ...state,
-                [id]: vote(state[id], action)
+                [voteId]: vote(state[voteId], action)
             };
         case REMOVE_VOTE:
-            return Immutable.fromJS(state).delete(id).toJS();
+            return Immutable.fromJS(state).delete(voteId).toJS();
         default:
             return state
     }
 };
 
 const allIds = (state=initialState.votes.allIds, action) => {
-    const { type, id } = action;
+    const { type, voteId } = action;
     switch (type) {
         case ADD_VOTE:
-            return [...state, id];
+            return [...state, voteId];
         case REMOVE_VOTE:
-            let ind = state.indexOf(id);
+            let ind = state.indexOf(voteId);
             // gets a key
             return Immutable.fromJS(state).deleteIn([ind]).toJS();
         default:

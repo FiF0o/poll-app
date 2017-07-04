@@ -14,7 +14,7 @@ import {initialState} from '../initialState';
  */
 //TODO can be a separate reducer file
 const poll = (state=initialState.polls.byId[0], action) => {
-    const { type, name, description, timeStamp, author, uid, id, votes } = action;
+    const { type, name, description, timeStamp, author, uid, id, voters } = action;
     switch(type) {
         case ADD_POLL:
             return {
@@ -24,13 +24,14 @@ const poll = (state=initialState.polls.byId[0], action) => {
                 timeStamp,
                 author,
                 uid,
-                votes
+                // votes,
+                voters
             };
         case REMOVE_POLL:
             return id;
         case ADD_VOTE:
             return {
-                pollKey: action.pollKey,
+                pollId: action.pollId,
                 uid,
                 voteId: action.voteId
             };
@@ -51,7 +52,7 @@ const poll = (state=initialState.polls.byId[0], action) => {
  * @returns {*}
  */
 const byId = (state={}, action) => {
-    const { type, id } = action;
+    const { type, id, uid } = action;
     switch(type) {
         case ADD_POLL:
             return {
@@ -62,9 +63,9 @@ const byId = (state={}, action) => {
         case REMOVE_POLL:
             return Immutable.Map(state).delete(id).toJS();
         case ADD_VOTE:
-            return Immutable.fromJS(state).updateIn([action.pollKey, 'votes'], list => list.push(id)).toJS();
+            return Immutable.fromJS(state).updateIn([action.pollId, 'voters'], list => list.push({uid, voteId: action.voteId})).toJS();
         case REMOVE_VOTE:
-            /*return state[action.pollKey].votes.reduce((accumulator, currentValue) => {
+            /*return state[action.pollId].votes.reduce((accumulator, currentValue) => {
                 if (currentValue === id) {
                     return accumulator
                 } else {
@@ -72,11 +73,11 @@ const byId = (state={}, action) => {
                 }
             }, []);*/
 
-            // return state[action.pollKey].votes.filter(vote => vote !== id);
+            // return state[action.pollId].votes.filter(vote => vote !== id);
 
             //get the index to remove in the array
-            let index = state[action.pollKey].votes.indexOf(id);
-            return Immutable.fromJS(state).updateIn([action.pollKey, 'votes'], list => list.splice(index, 1)).toJS();
+            let index = state[action.pollId].voters.indexOf(uid);
+            return Immutable.fromJS(state).updateIn([action.pollId, 'voters'], list => list.splice(index, 1)).toJS();
         default:
             return state;
     }

@@ -20,7 +20,9 @@ export const initialState = {
                 author: 'username 1',
                 uid: 'user1',
                 id: 'poll1',
-                votes: ['vote2', 'vote1']
+                // votes: ['vote1', 'vote2'],
+                //TODO Add voters selector when passing down the state
+                voters: [{uid: 'user2', voteId: 'vote1'}, {uid:'user3', voteId: 'vote2'}]
             },
             'poll2': {
                 name: 'poll name 2',
@@ -29,41 +31,42 @@ export const initialState = {
                 author: 'username 2',
                 uid: 'user2',
                 id: 'poll2',
-                votes: ['vote3', 'vote4']
+                // votes: ['vote3', 'vote4'],
+                voters: [{uid: 'user3', voteId:'vote3'}, {uid: 'user1', voteId:'vote4'}]
             }
         },
         allIds: ['poll1', 'poll2']
     },
+    // stores relationship here (polls <-> votes <- users) and
     votes: {
         byId: {
             'vote1': {
                 id: 'vote1',
                 uid: 'user2',
-                // author: 'username 2'
+                timeStamp: Date.now(),
+                pollId: 'poll1'
             },
             'vote2': {
                 id: 'vote2',
                 uid: 'user3',
-                // author: 'username 3'
+                timeStamp: Date.now(),
+                pollId: 'poll1'
             },
             'vote3': {
                 id: 'vote3',
                 uid: 'user3',
-                // author: 'username 3'
+                timeStamp: Date.now(),
+                pollId: 'poll2'
 
             },
             'vote4': {
                 id: 'vote4',
                 uid: 'user1',
-                // author: 'username 1'
-            },
-            'vote5': {
-                id: 'vote5',
-                uid: 'user3',
-                // author: 'username 3'
+                timeStamp: Date.now(),
+                pollId: 'poll2'
             },
         },
-        allIds: ['vote1', 'vote2', 'vote3', 'vote4', 'vote5'],
+        allIds: ['vote1', 'vote2', 'vote3', 'vote4',],
     },
     users: {
         byId: {
@@ -71,19 +74,23 @@ export const initialState = {
                 displayName: "username 1",
                 email: 'mail@mail.com',
                 uid: 'user1',
-                photoURL: 'https://placebear.com/100/100'
+                photoURL: 'https://placebear.com/100/100',
+                // polls: ['poll1'],
+                // TODO We could reference votes as well for simplicity, can't be arsed to create selectors
             },
             "user2": {
                 displayName: "username 2",
                 email: 'mail@mail.com',
                 uid: 'user2',
-                photoURL: 'https://placebear.com/100/100'
+                photoURL: 'https://placebear.com/100/100',
+                // polls: ['poll2'],
             },
             "user3": {
                 displayName: "username 3",
                 email: 'mail@mail.com',
                 uid: 'user3',
-                photoURL: 'https://placebear.com/100/100'
+                photoURL: 'https://placebear.com/100/100',
+                // polls: []
             }
         },
         allIds: ["user1", "user2", "user3"]

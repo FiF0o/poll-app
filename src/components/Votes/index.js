@@ -5,19 +5,21 @@ import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import map from 'lodash/map';
 import {Vote} from './Vote';
+import { hasVoted } from '../../utils/VoteMethods';
 
-import {hasVoted} from '../../utils/VoteMethods';
+const getVoteIdForUser = (voters, uid) => voters
+    .filter(v => v.uid === uid)
+    .map(vote => vote.voteId)[0];
 
-
-export const Votes = ({votes, addVote, removeVote, pollId, auth, ...props}) => (
+export const Votes = ({voters, addVote, removeVote, pollId, auth, polls, ...props}) => (
     <div style={{padding: '1em'}} >
         <br/>
         <b>Voters:</b>
         <br/>
         {
-            map(votes, (v, i) => (
+            map(voters, (v, i) => (
                 <Vote
-                    key={i}
+                    key={v.voteId}
                     name={v.uid}
                     {...v}
                 />
@@ -25,8 +27,8 @@ export const Votes = ({votes, addVote, removeVote, pollId, auth, ...props}) => (
         }
         <div>
             {
-                hasVoted(votes.map(u => u.uid), auth.uid) ?
-                    <FlatButton label="Unvote" secondary={true} onTouchTap={removeVote(pollId, auth.uid)} />
+                hasVoted(voters.map(u => u.uid), auth.uid) ?
+                    <FlatButton label="Unvote" secondary={true} onTouchTap={removeVote(pollId, auth.uid, getVoteIdForUser(voters, auth.uid))} />
                     :
                     <FlatButton label="Vote" secondary={true} onTouchTap={addVote} />
             }

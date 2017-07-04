@@ -3,30 +3,39 @@
  */
 import {ADD_VOTE, REMOVE_VOTE} from '../actionTypes';
 import { database } from '../database/firebase';
-import {ADDING_VOTE} from '../actionTypes';
+// import {ADDING_VOTE} from '../actionTypes';
 
-const addVote = (pollKey, uid, id) => {
+const addVote = (pollId, uid, voteId) => {
     return {
         type: ADD_VOTE,
-        pollKey,
+        pollId,
         uid,
-        id
+        voteId
     }
 };
 
-export const removeVote = (pollKey, id) => {
+export const removeVote = (pollId, uid, voteId) => {
     return {
         type: REMOVE_VOTE,
-        pollKey,
-        id
+        pollId,
+        uid,
+        voteId
     }
 };
 
 const votesRef = database.ref('votes');
-export const addVoteToDb = ({pollKey, uid}) => {
+export const removeVoteFromDB = (pollId, uid, voteKey) => {
+// export const removeVoteFromDB = (pollKey, uid, voteKey) => (dispatch) => votesRef...
     return (dispatch) => {
-        votesRef.push(uid)
+        votesRef.child(voteKey).remove()
+            .then(() => dispatch(removeVote(pollId, uid, voteKey)))
+    };
+};
+
+export const addVoteToDb = ({pollId, uid}) => {
+    return (dispatch) => {
+        votesRef.push({uid, timeStamp: Date.now(), pollId})
             // .then(() => dispatch({type: ADDING_VOTE, key}))
-            .then((snap) => dispatch(addVote(pollKey, uid, snap.key)))
+            .then((snap) => dispatch(addVote(pollId, uid, snap.key)))
     }
 };

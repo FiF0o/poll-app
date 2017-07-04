@@ -12,7 +12,7 @@ import {Votes} from '../Votes';
 import {isTheCurrentUser} from '../../utils/UserAuth';
 
 
-export const Poll = ({pollKey, name, description, author, id, auth, pollUid, user, onDeletePoll, addVote, removeVote, ...props}) => (
+export const Poll = ({pollKey, name, description, author, id, auth, pollUid, user, onDeletePoll, addVote, removeVote, polls, ...props}) => (
     <article>
         <UserAvatar user={user} />
         <Card>
@@ -25,12 +25,14 @@ export const Poll = ({pollKey, name, description, author, id, auth, pollUid, use
                 {
                     isTheCurrentUser(pollUid, auth.uid) ? <FlatButton label="Delete My Poll" onTouchTap={onDeletePoll} /> : null
                 }
+                {/*votes={props.votes}*/}
                 <Votes
-                    votes={props.votes}
+                    voters={props.voters}
                     addVote={addVote}
                     removeVote={removeVote}
                     pollId={id}
                     auth={auth}
+                    polls={polls}
                 />
             </CardActions>
 

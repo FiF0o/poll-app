@@ -32,6 +32,7 @@ export const Polls = ({polls, auth, users, deletePoll, addVote, removeVote, ...p
                     addVote={addVote(poll.id, auth.uid)}
                     removeVote={removeVote}
                     key={key}
+                    polls={polls}
                 />
                 )
             )

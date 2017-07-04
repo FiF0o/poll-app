@@ -1,11 +1,11 @@
 /**
  * Created by jonlazarini on 20/05/17.
  */
-import {ADD_POLL, REMOVE_POLL, ATTEMPT_ADD_POLL} from '../actionTypes';
+import {ADD_POLL, REMOVE_POLL } from '../actionTypes';
 import {database} from '../database/firebase';
 
 //TODO Quick fix initializing votes as an empty array if undefined so that ImmutableJs can push/etc.. into it
-export const addPoll = ({name, description, author, uid, id, votes=[] }) => {
+export const addPoll = ({name, description, author, uid, id, voters=[] }) => {
     return {
         type: ADD_POLL,
         name,
@@ -14,7 +14,8 @@ export const addPoll = ({name, description, author, uid, id, votes=[] }) => {
         author,
         uid,
         id,
-        votes
+        // votes,
+        voters
     }
 };
 

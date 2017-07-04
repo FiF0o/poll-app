@@ -17,6 +17,7 @@ export const loginMiddleware = store => next => action => {
         try
         {
             console.log('LOGGING IN...');
+            //TODO Probably best to avoid listeners/cb as it will fire events/actions when users are added or check whether user already exists
             auth.onAuthStateChanged((user) => {
                 // for some reasons before this request, a uid token with null properties gets returned
                 //TODO ??? chainable then? https://firebase.google.com/docs/auth/web/google-signin
