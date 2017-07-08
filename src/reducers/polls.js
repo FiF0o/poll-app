@@ -63,7 +63,9 @@ const byId = (state={}, action) => {
         case REMOVE_POLL:
             return Immutable.Map(state).delete(id).toJS();
         case ADD_VOTE:
-            return Immutable.fromJS(state).updateIn([action.pollId, 'voters'], list => list.push({uid, voteId: action.voteId})).toJS();
+            return Immutable.fromJS(state).updateIn([action.pollId, 'voters'], list => {
+                return list.push({uid, voteId: action.voteId})
+            }).toJS();
         case REMOVE_VOTE:
             /*return state[action.pollId].votes.reduce((accumulator, currentValue) => {
                 if (currentValue === id) {

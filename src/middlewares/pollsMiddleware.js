@@ -17,13 +17,13 @@ export const pollsMiddleware = store => next => action => {
             try
             {
                 console.log('ADDING POLL...');
-                pollsRef.on('child_added', (snapshot) => {
-                    // gives key from DB as poll key prop, timestamp sucks :/
-                    store.dispatch(addPoll({...snapshot.val(), id: snapshot.key}));
-                });
-                pollsRef.on('child_changed', (snapshot) => {
-                    store.dispatch(addPoll({...snapshot.val(), id: snapshot.key}));
-                });
+                // pollsRef.on('child_added', (snapshot) => {
+                //     // gives key from DB as poll key prop, timestamp sucks :/
+                //     store.dispatch(addPoll({...snapshot.val(), id: snapshot.key}));
+                // });
+                // pollsRef.on('child_changed', (snapshot) => {
+                //     store.dispatch(addPoll({...snapshot.val(), id: snapshot.key}));
+                // });
                 // debug
                 // throw new Error(`:'(`);
             }

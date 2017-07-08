@@ -17,7 +17,7 @@ const votesRef = database.ref('/votes');
 export const ListeningToAuthChanges = () => {
     return (dispatch) => {
         auth.onAuthStateChanged((user) => {
-            if (user) {
+            if (user.email !== null) {
                 dispatch(signedIn(user));
                 let u = pick(user, ['displayName', 'photoURL', 'email', 'uid']);
                 usersRef.child(user.uid)
