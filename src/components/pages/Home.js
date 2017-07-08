@@ -4,7 +4,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { RequestMessagingPermissions } from '../../../functions/RequestMessagingPermissions';
+// import { RequestMessagingPermissions } from '../../../functions/RequestMessagingPermissions';
 
 
 export const Home = ({currentUser}) => (
@@ -23,7 +23,7 @@ export const Home = ({currentUser}) => (
             <br/>
             <br/>
             <div>
-                <button onClick={() => {RequestMessagingPermissions(currentUser)} }>get token</button>
+                {/*<button onClick={() => {RequestMessagingPermissions(currentUser)} }>get token</button>*/}
             </div>
         </div>
         :

@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { auth, googleAuthProvider } from '../database/firebase';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import { RequestMessagingPermissions } from '../../functions/RequestMessagingPermissions';
+// import { RequestMessagingPermissions } from '../../functions/RequestMessagingPermissions';
 
 
 export default class SignIn extends Component {
@@ -28,7 +28,7 @@ export default class SignIn extends Component {
                 // grab the user from the Promise
                 const { user } = snap;
                 // init FCM - and service workers job once server token is successfully given/assigned to the user
-                RequestMessagingPermissions(user);
+                // RequestMessagingPermissions(user);
 
             })
             .catch((err) => console.error(err));
