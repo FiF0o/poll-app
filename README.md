@@ -27,6 +27,17 @@ my-app/
     logo.svg
 ```
 
+
+## App Scaffolding
+
+```
+_App
+__Store
+____ConnectedRouter (Router)
+______Routes (container AppNav, Page(s)/Route(s))
+________Containers (wrapping Components and Redux lifecycle)
+```
+
 For the project to build, **these files must exist with exact filenames**:
 
 * `public/index.html` is the page template;
