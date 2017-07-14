@@ -1,6 +1,10 @@
 // Karma configuration
 // Generated on Thu Jul 13 2017 13:45:13 GMT+0100 (BST)
-var webpack = require('webpack');
+/** var webpack = require('webpack');
+ * Cannot install webpack with RCA otherwise throws error when running test
+ * remove webpack dependency
+ * We will stick with jest
+ *  */
 
 module.exports = function(config) {
   config.set({

@@ -1,4 +1,4 @@
-import SignIn from '../src/components/SignIn/SignIn';
+import SignIn from '../components/SignIn/SignIn';
 
 describe("A test ", () => {
     it("Should work", () => {

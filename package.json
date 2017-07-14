@@ -21,8 +21,7 @@
     "react-tap-event-plugin": "2.0.1",
     "redux": "3.6.0",
     "redux-logger": "3.0.6",
-    "redux-thunk": "2.2.0",
-    "webpack": "3.2.0"
+    "redux-thunk": "2.2.0"
   },
   "dependencies": {
     "firebase": "3.8.0",
@@ -39,8 +38,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "rca-test": "react-scripts test --env=jsdom",
-    "test": "karma start ",
+    "test": "react-scripts test --env=jsdom",
+    "karma-test": "karma start ",
     "eject": "react-scripts eject"
   }
 }
