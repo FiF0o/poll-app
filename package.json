@@ -12,6 +12,7 @@
     "karma-jasmine": "1.1.0",
     "karma-sourcemap-loader": "0.3.7",
     "karma-webpack": "2.0.4",
+    "lighthouse": "2.2.1",
     "material-ui": "0.17.4",
     "react-redux": "5.0.5",
     "react-router": "4.1.1",
@@ -39,6 +40,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "report:performance": "./node_modules/.bin/lighthouse 'https://poll-app-67a23.firebaseapp.com/#/' --output json --output-path ./reports/performance-report.json",
+    "report:test": "npm test -- --coverage",
     "karma-test": "karma start ",
     "eject": "react-scripts eject"
   }
