@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "firebase": "3.8.0",
+    "firebase-functions": "0.5.9",
     "firebase-tools": "3.6.1",
     "history": "4.6.1",
     "immutable": "3.8.1",
@@ -40,7 +41,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "report:performance": "./node_modules/.bin/lighthouse 'https://poll-app-67a23.firebaseapp.com/#/' --output json --output-path ./reports/performance-report.json",
+    "report:performance": "./node_modules/.bin/lighthouse 'https://poll-app-67a23.firebaseapp.com/#/' --output json --output html --output-path ./reports/performance-report.json",
     "report:test": "npm test -- --coverage",
     "karma-test": "karma start ",
     "eject": "react-scripts eject"

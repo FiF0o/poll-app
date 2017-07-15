@@ -11,6 +11,7 @@ import ApplicationContainer from './containers/ApplicationContainer';
 import './index.css';
 // import intializers from './initializers'
 import { ListeningToAuthChanges, ListeningToPolls, ListeningForUsers, ListeningToVotes } from './utils/listeners/';
+import registerServiceWorker from './registerServiceWorker';
 
 // intializers.forEach(intializer => intializer(store));
 
@@ -34,3 +35,4 @@ ReactDOM.render(
     parentComponent,
     root
 );
+registerServiceWorker();
