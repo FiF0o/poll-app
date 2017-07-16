@@ -22,7 +22,8 @@
     "react-tap-event-plugin": "2.0.1",
     "redux": "3.6.0",
     "redux-logger": "3.0.6",
-    "redux-thunk": "2.2.0"
+    "redux-thunk": "2.2.0",
+    "source-map-explorer": "1.4.0"
   },
   "dependencies": {
     "firebase": "3.8.0",
@@ -43,6 +44,7 @@
     "test": "react-scripts test --env=jsdom",
     "report:performance": "./node_modules/.bin/lighthouse 'https://poll-app-67a23.firebaseapp.com/#/' --output json --output html --output-path ./reports/performance-report.json",
     "report:test": "npm test -- --coverage",
+    "report:js": "./node_modules/.bin/source-map-explorer build/static/js/main.*",
     "karma-test": "karma start ",
     "eject": "react-scripts eject"
   }
