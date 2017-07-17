@@ -1,13 +1,15 @@
 /**
  * Created by jonlazarini on 03/05/17.
  */
-var database = require('../src/database/firebase').database;
-var messaging = require('../src/database/firebase').messaging;
+var database = require('../database/firebase').database;
+var messaging = require('../database/firebase').messaging;
 
 
-function sendTokenToServer(token) {
-    // firebase stuff to come
-    return console.log('sendToken:', token)
+function sendTokenToServer(user, token) {
+    return database.ref('users')
+        .child(user.uid)
+        .child('fcm-token')
+        .set(token)
 }
 
 function showToken(token) {
@@ -15,24 +17,18 @@ function showToken(token) {
 }
 
 
-exports.RequestMessagingPermissions = function(user) {
-    messaging.requestPermission() // show notification window to grant permission
-        .then(function(){
-            console.log('Permission granted!');
-            messaging.getToken();
-            console.log('getting token...');
-        })
-        .then(function(currentToken) {
-            console.log('[RequestMessagingPermissions] - TOKEN', currentToken);
-            if(currentToken) {
-                sendTokenToServer(currentToken);
-            }
+export const RequestMessagingPermissions = (loggedUser) => {
+     messaging.requestPermission() // show notification window to grant permission
+        .then(() => messaging.getToken())
+        .then((currentToken) => {
+            if(currentToken) sendTokenToServer(loggedUser, currentToken);
             else {
                 // Show permission request.
                 console.log('No Instance ID token available. Request permission to generate one.');
                 // Show permission UI.
                 // setTokenSentToServer(false);
             }
+            messaging.onMessage('onMessage does it work?')
         })
         .catch(function(err) {
             // user denied the permission
@@ -42,7 +38,7 @@ exports.RequestMessagingPermissions = function(user) {
         });
 };
 
-exports.MonitorTokens = function() {
+const MonitorTokens = () => {
     // Callback fired if Instance ID token is updated.
     messaging.onTokenRefresh(function() {
         messaging.getToken()

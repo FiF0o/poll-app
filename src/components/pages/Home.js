@@ -3,6 +3,8 @@
  */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {RequestMessagingPermissions} from '../../utils/RequestMessagingPermissions';
+
 
 export const Home = ({currentUser}) => (
     currentUser !== null ?
@@ -12,6 +14,9 @@ export const Home = ({currentUser}) => (
             <Link style={{textDecoration: 'none'}} to='/polls'>
                 <b>Link to poll page</b>
             </Link>
+            <div>
+                <button onClick={() => RequestMessagingPermissions()} >get notif</button>
+            </div>
             <br/>
             <br/>
             <Link style={{textDecoration: 'none'}} to='/all_polls'>

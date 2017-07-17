@@ -3,6 +3,11 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "public": "build"
+    "public": "build",
+    "rewrites": [
+    ],
+    "headers": [
+      { "source":"/service-worker.js", "headers": [{"key": "Cache-Control", "value": "no-cache"}] }
+    ]
   }
 }

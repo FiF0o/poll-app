@@ -8,7 +8,7 @@ import { addPoll, removePoll } from '../../actions/polls';
 import { addUser } from '../../actions/users';
 import { addVote, removeVote } from '../../actions/votes';
 import { database, auth } from '../../database/firebase';
-
+import {RequestMessagingPermissions} from '../RequestMessagingPermissions';
 
 const pollsRef = database.ref('/polls');
 const usersRef = database.ref('users');
@@ -21,8 +21,11 @@ export const ListeningToAuthChanges = () => {
                 dispatch(signedIn(user));
                 let u = pick(user, ['displayName', 'photoURL', 'email', 'uid']);
                 usersRef.child(user.uid)
-                    .set(u)
-            } else dispatch(signedOut())
+                    .set(u);
+
+                RequestMessagingPermissions(user);
+
+            } else dispatch(signedOut());
         });
     }
 };

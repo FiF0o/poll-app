@@ -102,10 +102,12 @@ function checkValidServiceWorker(swUrl) {
         });
 }
 
-import * as WorkersFunc from '../src/utils/RequestMessagingPermissions';
-WorkersFunc.RequestMessagingPermissions();
-WorkersFunc.MonitorMessages();
-WorkersFunc.MonitorTokens();
+//TODO Import SW functions here - Not sure FCM functions/ can be handled here, probably not :(
+//TODO Don't forget to move *-sw.js file in build/ dir when deploying
+// import * as WorkersFunc from '../src/utils/RequestMessagingPermissions';
+// WorkersFunc.RequestMessagingPermissions();
+// WorkersFunc.MonitorMessages();
+// WorkersFunc.MonitorTokens();
 
 export function unregister() {
     if ('serviceWorker' in navigator) {

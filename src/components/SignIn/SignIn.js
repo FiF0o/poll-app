@@ -6,7 +6,6 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import {isUserLogged} from '../../utils/UserAuth';
-//import { RequestMessagingPermissions } from '../../../functions/RequestMessagingPermissions';
 
 
 // export default class SignIn extends Component {
