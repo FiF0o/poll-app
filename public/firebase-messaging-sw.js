@@ -12,24 +12,9 @@ importScripts('https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js');
 // Initialize the Firebase app in the service worker by passing in the
 // messagingSenderId.
 
-// var tokens = require('../src/config/tokens');
-/*apiKey: 'AIzaSyD7cuPVp63lxC00Q8iGilrfIUMI3GJgKnc',
-authDomain: 'poll-app-67a23.firebaseapp.com',
-databaseURL: 'https://poll-app-67a23.firebaseio.com',
-projectId: 'poll-app-67a23',
-storageBucket: 'poll-app-67a23.appspot.com',*/
-
 const config = {
     messagingSenderId: '471457051155'
 };
-/*const config = {
-    apiKey: tokens.apiKey,
-    authDomain: tokens.authDomain,
-    databaseURL: tokens.databaseURL,
-    projectId: tokens.projectId,
-    storageBucket: tokens.storageBucket,
-    messagingSenderId: tokens.messagingSenderId
-};*/
 
 firebase.initializeApp(config);
 
@@ -71,7 +56,7 @@ messaging.setBackgroundMessageHandler(function(payload) {
 
  token from FCM: emQGZ7Gf6no:APA91bELc0D1Q7GLts66kIROfPXO-qAJY0FcLhRHrK2iwHV1aV_O6x_sVeHl5pL2a7y3AewUCzO2yZyWEgBAUnkNFgPJgnHPU72K7tI9jw-RLzvSIJfrd7kR8mqxwHbJ9dvO7GSz1rFH
  *
- curl -X POST --header "Authorization: key=AIzaSyD7cuPVp63lxC00Q8iGilrfIUMI3GJgKnc" --header "Content-Type: application/json" https://fcm.googleapis.com/fcm/send -d "{"to":"AAAAbcUHshM:APA91bFlJOH_C5md_ynLdQuNkBpgeMaKfvBPXSGpMaBEIgs1HqC4yuIbasCtHs0KOkcdjlCzJMrbwI9tjKRrvPYcFbM_pbGS4GCp0V8loAz6xDkvEqOit9DAN-xm7kGqjm6GEtFwt4Vg","priority":"high","notification":{"body": "blabla"}}"﻿
+ curl -X POST --header "Authorization: key=<token>" --header "Content-Type: application/json" https://fcm.googleapis.com/fcm/send -d "{"to":"AAAAbcUHshM:APA91bFlJOH_C5md_ynLdQuNkBpgeMaKfvBPXSGpMaBEIgs1HqC4yuIbasCtHs0KOkcdjlCzJMrbwI9tjKRrvPYcFbM_pbGS4GCp0V8loAz6xDkvEqOit9DAN-xm7kGqjm6GEtFwt4Vg","priority":"high","notification":{"body": "blabla"}}"﻿
  curl -X POST --header "Authorization: key='AAAAbcUHshM:APA91bFlJOH_C5md_ynLdQuNkBpgeMaKfvBPXSGpMaBEIgs1HqC4yuIbasCtHs0KOkcdjlCzJMrbwI9tjKRrvPYcFbM_pbGS4GCp0V8loAz6xDkvEqOit9DAN-xm7kGqjm6GEtFwt4Vg'" --header "Content-Type: application/json" https://fcm.googleapis.com/fcm/send -d "{"to":"AAAAbcUHshM:APA91bFlJOH_C5md_ynLdQuNkBpgeMaKfvBPXSGpMaBEIgs1HqC4yuIbasCtHs0KOkcdjlCzJMrbwI9tjKRrvPYcFbM_pbGS4GCp0V8loAz6xDkvEqOit9DAN-xm7kGqjm6GEtFwt4Vg","priority":"high","notification":{"body": "blabla"}}"﻿
  *
  */
