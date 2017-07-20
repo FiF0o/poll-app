@@ -59,6 +59,37 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
-    console.log(`[SW] Fetching...`)
+    console.log(`[SW] Fetching... ${e.request.url}`)
     //TODO Ajax example here to cache image(s)
+    e.respondWith(
+        caches.match(e.request)
+            .then((res) => {
+                console.log(`[SW] Found in cache: ${res}`)
+                if (res) return res;
+
+                // Not in the cache, fetch and cache
+                else {
+                    let requestClone = e.request.clone();
+                    console.log(`[SW] Resource not found in cache, fetching... ${e.request}`);
+                    window.fetch(requestClone)
+                        .then((res) => {
+                            if(!res) {
+                                console.log(`[SW] Not response from fetch`)
+                                return res;
+                            }
+                            else {
+                                let responseClone = res.clone();
+                                caches.open(cacheName)
+                                    .then((cache) => {
+                                        // put fetch response in the current cache
+                                        cache.put(e.request, responseClone);
+                                        console.log(`[SW] New Data Cached`, e.request.url)
+                                        return res
+                                    })
+                            }
+                        })
+                        .catch((err) => console.error(err));
+                }
+            })
+    )
 });
