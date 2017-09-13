@@ -27,13 +27,9 @@ describe('deleteByItem function', () => {
         const voteToRemove = 'vote1'
         const expectedVotes = ['vote2']
         const hasBeenRemoved = Remover(mockVotes, voteToRemove)
-        expect(hasBeenRemoved).toEqual(expect.arrayContaining(expectedVotes))
-    })
-    
-    it('should return the same list if the id given is not in the list', () => {
-        const voteToRemove = 'vote3'
-        const hasBeenRemoved = Remover(mockVotes, voteToRemove)
-        expect(hasBeenRemoved).toEqual(expect.arrayContaining(mockVotes))
+        
+        expect(hasBeenRemoved).toEqual(expect.arrayContaining('toto'))
+
     })
 
 })
@@ -56,6 +52,9 @@ describe('hasVoted method', () => {
 })
 
 
+
 /**
  * Methods for FCM functions
  */
+
+

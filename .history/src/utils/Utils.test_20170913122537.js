@@ -21,19 +21,8 @@ const arrMock = [{
 
 describe('deleteByItem function', () => {
 
-    const mockVotes = ['vote1', 'vote2']
-
     it('should remove the correct item in the list', () => {
-        const voteToRemove = 'vote1'
-        const expectedVotes = ['vote2']
-        const hasBeenRemoved = Remover(mockVotes, voteToRemove)
-        expect(hasBeenRemoved).toEqual(expect.arrayContaining(expectedVotes))
-    })
     
-    it('should return the same list if the id given is not in the list', () => {
-        const voteToRemove = 'vote3'
-        const hasBeenRemoved = Remover(mockVotes, voteToRemove)
-        expect(hasBeenRemoved).toEqual(expect.arrayContaining(mockVotes))
     })
 
 })
@@ -43,10 +32,14 @@ describe('hasVoted method', () => {
     const mockVoteList = ['user1', 'user2'];
     const voter = 'user1';
     const didVote = hasVoted(mockVoteList, voter)
+    // hasVoted()
+    it('should accept an array and an id as parameters', () => {
+        // test map and string?
+    })
     
     it('should return true if the id is found in the list', () => {
         expect(didVote).toBe(true)
-        expect(didVote).not.toBe(false)
+        expect(didVote).not.toBe(true)
     })
     
     it('should return false if the id is not in the list', () => {
@@ -56,6 +49,9 @@ describe('hasVoted method', () => {
 })
 
 
+
 /**
  * Methods for FCM functions
  */
+
+

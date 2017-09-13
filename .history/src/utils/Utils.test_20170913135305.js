@@ -1,7 +1,6 @@
 import SignIn from '../components/SignIn/SignIn';
 import { deleteByItem as Remover } from './deleteByItem';
 import { hasVoted } from './VoteMethods';
-import { getVotesForPoll } from './PollUtils';
 
 const arrMock = [{
     name: 'poll name',
