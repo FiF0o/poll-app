@@ -62,10 +62,13 @@ describe('getVotesForPoll method', () => {
         {uid: 'user3', voteId: '1a'}
     ]
     const id = '0'
-    const expectedVote = {uid: 'user2', voteId: '0a'}
+    const expectedVote = [{uid: 'user2', voteId: '0a'}]
+
+    console.log(getVotesForPoll(mockVotes, id))
+    // console.log('getVotesForPoll', getVotesForPoll(mockVotes.map(v => v.uid), pollId))
 
     it('should get the correct votes for the poll', () => {
-        expect(getVotesForPoll(mockVotes, id)).toEqual(expectedVote)
+        expect(getVotesForPoll(mockVotes, id)).toContainEqual(expectedVote)
     })
 })
 
