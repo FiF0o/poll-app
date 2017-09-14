@@ -12,12 +12,18 @@ notifications:
 node_js:
   - '6'
 before_script:
-#  - npm prune
+  - npm prune
 script:
-#  - npm run cover
-#  - npm run check-coverage
-#  - npm run build
+# test & report
+  - npm run test && npm run report:js
+#  - npm run report:performance 
+  - npm run report:js
+# check coverage
+# build
+  - npm run build
+# deploy
 after_success:
-#  - npm run report-coverage:codecov
-#  - npm run report-coverage:codacy
-#  - npm run semantic-release
+  - npm run deploy
+# send coverage report
+# release/publish
+# open
