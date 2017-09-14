@@ -15,15 +15,15 @@ before_script:
   - npm prune
 script:
 # test & report
-  - npm run test && npm run report:js
+  - npm run report:test
 #  - npm run report:performance 
-  - npm run report:js
+#  - npm run report:js
 # check coverage
 # build
   - npm run build
 # deploy
-after_success:
   - npm run deploy
+after_success:
 # send coverage report
+  - npm run report:coverage
 # release/publish
-# open
