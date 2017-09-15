@@ -1,29 +1,27 @@
-
 sudo: false
 language: node_js
 cache:
   directories:
-    - node_modules
+  - node_modules
 branches:
   only:
-    - master
+  - master
 notifications:
   email: false
 node_js:
-  - '6'
+- '6'
 before_script:
-  - npm prune
+- npm prune
 script:
-# test & report
-  - npm run report:test
-#  - npm run report:performance 
-#  - npm run report:js
-# check coverage
-# build
-  - npm run build
-# deploy
-  - npm run deploy
+- npm run report:test
+- npm run build
+- npm run deploy
 after_success:
-# send coverage report
-  - npm run report:coverage
-# release/publish
+- npm run report:coverage
+deploy:
+  provider: firebase
+  token:
+    secure: B01YDTw7SLWjn993CS4rP1voz0dpUKK99R3koe2YpaNyF4q2scQ7gYfprXpXMlQTTjyy2/lQ1Vak5n7MkAJ2mGDiNN3ikhZUl6NfKx2qIctRoMwBWVBz8NI7soRRm4grBjsbRRIN1XyqSwZ2RH4ZHGWRECxBHwM9ky1YTM4+sqJxFVI1sz1/ooWocTWoqC4his/cQMrY48HWlh1SoN6BPt4HGb+pWTMIaH6HRNRENfA94U4F7tI1XHiziBD7/qXcHWaR73mCIXoKYeM0uBvM5nYOy8qgRtaRcve6BZmPmO5PyHp9QuzkXKM2Ot6XSBENX6uuJg5ITEnZrajAci6G4jAT0NU5n83xk+2d0BBm529koLhKWIdm/xgg/S2OpeabRHhypxy9zHQTW1EJonc6fY4By0lwgqNllATI4SQQ5SPkieOdqHHTvDu6C6fuqdpZzk6towhjge9qIXD51m3AlfxUnmU4y1l7iOEzVW53m4bAIziNeNFagwniRM4lLRfpln5/9dHgDtxIHYL2O0UfKxNJm/awuyZT1897Kf6oQIgplaf9TnpCBfgCqnQ5YTfix04EGo/quUG4Mi9pgdClbqXtOkytVvYQB2BGrUuQ23weY8BMgerFYCkwVVyV8+96Xff6jjX+33Uq55PwJXYIkmNfNKrYq8b/FfLMcpjVsrg=
+env:
+  global:
+  - secure: B01YDTw7SLWjn993CS4rP1voz0dpUKK99R3koe2YpaNyF4q2scQ7gYfprXpXMlQTTjyy2/lQ1Vak5n7MkAJ2mGDiNN3ikhZUl6NfKx2qIctRoMwBWVBz8NI7soRRm4grBjsbRRIN1XyqSwZ2RH4ZHGWRECxBHwM9ky1YTM4+sqJxFVI1sz1/ooWocTWoqC4his/cQMrY48HWlh1SoN6BPt4HGb+pWTMIaH6HRNRENfA94U4F7tI1XHiziBD7/qXcHWaR73mCIXoKYeM0uBvM5nYOy8qgRtaRcve6BZmPmO5PyHp9QuzkXKM2Ot6XSBENX6uuJg5ITEnZrajAci6G4jAT0NU5n83xk+2d0BBm529koLhKWIdm/xgg/S2OpeabRHhypxy9zHQTW1EJonc6fY4By0lwgqNllATI4SQQ5SPkieOdqHHTvDu6C6fuqdpZzk6towhjge9qIXD51m3AlfxUnmU4y1l7iOEzVW53m4bAIziNeNFagwniRM4lLRfpln5/9dHgDtxIHYL2O0UfKxNJm/awuyZT1897Kf6oQIgplaf9TnpCBfgCqnQ5YTfix04EGo/quUG4Mi9pgdClbqXtOkytVvYQB2BGrUuQ23weY8BMgerFYCkwVVyV8+96Xff6jjX+33Uq55PwJXYIkmNfNKrYq8b/FfLMcpjVsrg=

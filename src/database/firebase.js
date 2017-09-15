@@ -6,7 +6,6 @@ import firebase from 'firebase';
 // import { tokens } from '../config/tokens';
 let tokens;
 if(process.env.NODE_ENV === 'development') {
-    // console.log(process.env.NODE_ENV)
     tokens = require('../config/tokens').tokens
 }
 // otherwise is in production and use env variables
