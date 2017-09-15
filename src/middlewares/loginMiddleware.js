@@ -1,7 +1,11 @@
 /**
  * Created by jonlazarini on 09/06/17.
  */
-import { ATTEMPT_LOGIN, ATTEMPT_ADD_USER } from '../actionTypes';
+/* eslint-disable */
+import { 
+    ATTEMPT_LOGIN, 
+    ATTEMPT_ADD_USER 
+} from '../actionTypes';
 import {signedIn, signedOut} from '../actions/auth';
 import {auth, database} from '../database/firebase';
 import pick from 'lodash/pick';

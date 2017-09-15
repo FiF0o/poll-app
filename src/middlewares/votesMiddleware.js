@@ -1,11 +1,12 @@
 /**
  * Created by jonlazarini on 15/06/17.
  */
+/* eslint-disable */
 import { ADDING_VOTE } from '../actionTypes';
-// import { addVote } from '../actions/votes';
-// import { database } from '../database/firebase';
+import { addVote } from '../actions/votes';
+import { database } from '../database/firebase';
 
-// const votesRef = database.ref('votes');
+const votesRef = database.ref('votes');
 
 export const votesMiddleware = store => next => action => {
     let result = next(action);

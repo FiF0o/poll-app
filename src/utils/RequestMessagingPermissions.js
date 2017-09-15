@@ -38,6 +38,7 @@ export const RequestMessagingPermissions = (loggedUser) => {
         });
 };
 
+/* eslint-disable */
 const MonitorTokens = () => {
     // Callback fired if Instance ID token is updated.
     messaging.onTokenRefresh(function() {

@@ -1,6 +1,7 @@
 /**
  * Created by jonlazarini on 15/06/17.
  */
+/* eslint-disable */
 import { ATTEMPT_ADD_POLL } from '../actionTypes';
 import { addPoll } from '../actions/polls';
 import { database } from '../database/firebase';

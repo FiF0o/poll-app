@@ -1,6 +1,7 @@
 /**
  * Created by jonlazarini on 15/06/17.
  */
+/* eslint-disable */
 import { ATTEMPT_ADD_USER } from '../actionTypes';
 import { addUser } from '../actions/users';
 import { database } from '../database/firebase';
