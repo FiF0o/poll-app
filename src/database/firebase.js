@@ -1,7 +1,8 @@
 /**
  * Created by jonlazarini on 24/04/17.
  */
-import firebase from 'firebase';
+require('dotenv').config();
+ import firebase from 'firebase';
 import { tokens } from '../config/tokens';
 
 // Initialize Firebase
