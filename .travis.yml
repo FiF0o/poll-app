@@ -15,7 +15,10 @@ before_script:
 script:
 - npm run report:test
 - npm run build
-- npm run deploy
 after_success:
 - npm run report:coverage
+- "echo 'installing FCM dependencies'"
+- pwd && ls
+- cd ./functions && npm install && cd ../
+- "echo 'FCM dependencies installed'"
 - firebase deploy --token=${FIREBASE_TOKEN}
