@@ -3,16 +3,17 @@
  */
 require('dotenv').config();
  import firebase from 'firebase';
-import { tokens } from '../config/tokens';
+// TODO 
+// import { tokens } from '../config/tokens';
 
 // Initialize Firebase
 const config = {
-    apiKey: process.env.APIKEY || tokens.apiKey,
-    authDomain: process.env.AUTHDOMAIN || tokens.authDomain,
-    databaseURL: process.env.DATABASEURL || tokens.databaseURL,
-    projectId: process.env.PROJECTID || tokens.projectId,
-    storageBucket: process.env.STORAGEBUCKET || tokens.storageBucket,
-    messagingSenderId: process.env.MESSAGINGSENDERID || tokens.messagingSenderId
+    apiKey: process.env.APIKEY,
+    authDomain: process.env.AUTHDOMAIN,
+    databaseURL: process.env.DATABASEURL,
+    projectId: process.env.PROJECTID,
+    storageBucket: process.env.STORAGEBUCKET,
+    messagingSenderId: process.env.MESSAGINGSENDERID,
 };
 
 firebase.initializeApp(config);
