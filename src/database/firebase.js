@@ -6,12 +6,12 @@ import { tokens } from '../config/tokens';
 
 // Initialize Firebase
 const config = {
-    apiKey: tokens.apiKey,
-    authDomain: tokens.authDomain,
-    databaseURL: tokens.databaseURL,
-    projectId: tokens.projectId,
-    storageBucket: tokens.storageBucket,
-    messagingSenderId: tokens.messagingSenderId
+    apiKey: process.env.APIKEY || tokens.apiKey,
+    authDomain: process.env.AUTHDOMAIN || tokens.authDomain,
+    databaseURL: process.env.DATABASEURL || tokens.databaseURL,
+    projectId: process.env.PROJECTID || tokens.projectId,
+    storageBucket: process.env.STORAGEBUCKET || tokens.storageBucket,
+    messagingSenderId: process.env.MESSAGINGSENDERID || tokens.messagingSenderId
 };
 
 firebase.initializeApp(config);

@@ -7,8 +7,6 @@
     "babel-preset-es2015": "6.24.1",
     "babel-preset-react": "6.24.1",
     "babel-register": "6.26.0",
-    "codacy-coverage": "2.0.3",
-    "istanbul": "0.4.5",
     "jasmine-core": "2.6.4",
     "karma": "1.7.0",
     "karma-chrome-launcher": "2.2.0",
@@ -49,6 +47,7 @@
     "report:performance": "./node_modules/.bin/lighthouse 'https://poll-app-67a23.firebaseapp.com' --output json --output html --output-path ./reports/performance-report.json",
     "report:test": "npm test -- --coverage",
     "report:js": "./node_modules/.bin/source-map-explorer build/static/js/main.*",
+    "report:coverage": "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage",
     "karma-test": "karma start ",
     "eject": "react-scripts eject",
     "deploy": "./node_modules/.bin/firebase deploy"
