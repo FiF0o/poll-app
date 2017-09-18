@@ -11,7 +11,6 @@ if(process.env.NODE_ENV === 'development') {
 // otherwise is in production and use env variables
 
 // Initialize Firebase
-console.log('process.env', process.env)
 const config = {
     apiKey: process.env.REACT_APP_APIKEY || tokens.apiKey,
     authDomain: process.env.REACT_APP_AUTHDOMAIN || tokens.authDomain,
@@ -20,7 +19,6 @@ const config = {
     storageBucket: process.env.REACT_APP_STORAGEBUCKET || tokens.storageBucket,
     messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID || tokens.messagingSenderId
 };
-console.log('config', config)
 
 firebase.initializeApp(config);
 
