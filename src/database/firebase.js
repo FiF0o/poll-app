@@ -1,8 +1,8 @@
 /**
  * Created by jonlazarini on 24/04/17.
  */
-require('dotenv').config();
 import firebase from 'firebase';
+require('dotenv').config();
 // import { tokens } from '../config/tokens';
 let tokens;
 if(process.env.NODE_ENV === 'development') {
@@ -13,12 +13,12 @@ if(process.env.NODE_ENV === 'development') {
 // Initialize Firebase
 console.log('process.env', process.env)
 const config = {
-    apiKey: process.env.APIKEY || tokens.apiKey,
-    authDomain: process.env.AUTHDOMAIN || tokens.authDomain,
-    databaseURL: process.env.DATABASEURL || tokens.databaseURL,
-    projectId: process.env.PROJECTID || tokens.projectId,
-    storageBucket: process.env.STORAGEBUCKET || tokens.storageBucket,
-    messagingSenderId: process.env.MESSAGINGSENDERID || tokens.messagingSenderId
+    apiKey: process.env.REACT_APP_APIKEY || tokens.apiKey,
+    authDomain: process.env.REACT_APP_AUTHDOMAIN || tokens.authDomain,
+    databaseURL: process.env.REACT_APP_DATABASEURL || tokens.databaseURL,
+    projectId: process.env.REACT_APP_PROJECTID || tokens.projectId,
+    storageBucket: process.env.REACT_APP_STORAGEBUCKET || tokens.storageBucket,
+    messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID || tokens.messagingSenderId
 };
 console.log('config', config)
 

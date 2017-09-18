@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
 
 import { Provider } from 'react-redux';
 
@@ -12,6 +11,7 @@ import './index.css';
 // import intializers from './initializers'
 import { ListeningToAuthChanges, ListeningToPolls, ListeningForUsers, ListeningToVotes } from './utils/listeners/';
 import registerServiceWorker from './registerServiceWorker';
+injectTapEventPlugin();
 
 // intializers.forEach(intializer => intializer(store));
 

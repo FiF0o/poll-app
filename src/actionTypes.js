@@ -6,7 +6,8 @@ export const REMOVE_POLL = 'REMOVE_POLL';
 export const ATTEMPT_ADD_POLL = 'ATTEMPT_ADD_POLL';
 export const ATTEMPT_REMOVE_POLL = 'ATTEMPT_REMOVE_POLL';
 
-exports.ADD_USER = 'ADD_USER';
+// exports.ADD_USER = 'ADD_USER';
+export const ADD_USER = 'ADD_USER';
 export const ATTEMPT_ADD_USER = 'ATTEMPT_ADD_USER';
 
 export const SIGN_IN = 'SIGN_IN';
