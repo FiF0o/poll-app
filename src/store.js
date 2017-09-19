@@ -3,7 +3,6 @@
  */
 import { applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import { createLogger } from 'redux-logger';
 import createHistory from 'history/createBrowserHistory';
 import { routerMiddleware } from 'react-router-redux';
 import {loginMiddleware} from './middlewares/loginMiddleware';
@@ -16,8 +15,13 @@ import {initialState} from './initialState';
 
 export const history = createHistory();
 const routingMiddleware = routerMiddleware(history);
+const middlewares = [ thunk, routingMiddleware, loginMiddleware, userMiddleware, pollsMiddleware, votesMiddleware ];
 
-const middleware = [ thunk, createLogger(), routingMiddleware, loginMiddleware, userMiddleware, pollsMiddleware, votesMiddleware ];
+if(process.env.NODE_ENV !== 'production') {
+    const { logger } = require('redux-logger');
+    middlewares.push(logger)
+}
+
 const enhancers = [];
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -26,7 +30,7 @@ export const store = createStore(
     reducers,
     initialState,
     composeEnhancers(
-        applyMiddleware(...middleware),
+        applyMiddleware(...middlewares),
         ...enhancers
     )
 );
