@@ -22,3 +22,4 @@ after_success:
 - cd ./functions && npm install && cd ../
 - "echo 'FCM dependencies installed'"
 - firebase deploy --token=${FIREBASE_TOKEN}
+- "open 'poll-app-67a23.firebaseapp.com'"
