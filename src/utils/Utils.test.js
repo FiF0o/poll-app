@@ -2,6 +2,7 @@ import SignIn from '../components/SignIn/SignIn';
 import { deleteByItem as Remover } from './deleteByItem';
 import { hasVoted } from './VoteMethods';
 import { getVotesForPoll } from './PollUtils';
+import { isUserLogged, isTheCurrentUser } from './UserAuth'
 
 const arrMock = [{
     name: 'poll name',
@@ -66,6 +67,28 @@ describe('getVotesForPoll method', () => {
 
     it('should get the correct votes for the poll', () => {
         expect(getVotesForPoll(mockVotes, id)).toEqual(expectedVote)
+    })
+})
+
+describe('isUserLoggedIn method', () => {
+    const authMock = {
+        uid: null
+    }
+    const loggedUser = {
+        uid: '123'
+    }
+
+    it('should return if the user is logged in', () => {
+        expect(isUserLogged(loggedUser)).toBe(true)
+    })
+})
+
+describe('isTheCurrentUser method', () => {
+    let authUid = '123'
+    let pollUid = '123'
+
+    it('should return true if pollUid and authUid are the same', () => {
+        expect(isTheCurrentUser(authUid, pollUid)).toBe(true)
     })
 })
 
