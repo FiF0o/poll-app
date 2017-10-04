@@ -59,6 +59,8 @@
     "karma-test": "karma start ",
     "eject": "react-scripts eject",
     "deploy": "./node_modules/.bin/firebase deploy",
-    "analyze": "source-map-explorer build/static/js/main.*"
+    "analyze": "source-map-explorer build/static/js/main.*",
+    "ie11": "box_name='win7-ie11' vagrant up",
+    "ie11:open": "open http://10.0.2.2:3000"
   }
 }

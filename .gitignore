@@ -25,3 +25,5 @@ src/config/tokens.js
 
 #cloud functions
 functions/node_modules
+
+.vagrant/
