@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Polls /> component should render correctly 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "flexWrap": "wrap",
+      "justifyContent": "space-around",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "boxSizing": "border-box",
+        "color": "rgba(0, 0, 0, 0.54)",
+        "fontSize": 14,
+        "fontWeight": 500,
+        "lineHeight": "48px",
+        "muiPrepared": true,
+        "paddingLeft": 16,
+        "width": "100%",
+      }
+    }
+  >
+    <b />
+  </div>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "flexWrap": "wrap",
+        "height": "auto",
+        "margin": -25,
+        "muiPrepared": true,
+        "width": "100%",
+      }
+    }
+  />
+</div>
+`;

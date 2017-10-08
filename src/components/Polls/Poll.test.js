@@ -1,7 +1,6 @@
 import React from 'react'
 import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card';
 import { shallow } from 'enzyme'
-
 import { Poll } from './Poll'
 import { UserAvatar } from '../Avatars';
 import { Votes } from '../Votes'
