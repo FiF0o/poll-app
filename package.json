@@ -51,7 +51,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build && npm run build:sw",
     "build:sw": "find ./public -name '*-sw.js' -exec cp {} ./build ';'",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test -u --env=jsdom",
     "report:performance": "./node_modules/.bin/lighthouse 'https://poll-app-67a23.firebaseapp.com' --output json --output html --output-path ./reports/performance-report.json",
     "report:test": "npm test -- --coverage",
     "report:js": "./node_modules/.bin/source-map-explorer build/static/js/main.*",
