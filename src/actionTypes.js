@@ -21,3 +21,6 @@ export const REMOVE_VOTE = 'REMOVE_VOTE';
 export const ADDING_VOTE = 'ADDING_VOTE';
 
 export const HAS_ERRORED = 'HAS_ERRORED';
+
+export const FETCHING_POLLS = 'FETCHING_POLLS';
+export const FETCHED_POLLS = 'FETCHED_POLLS';

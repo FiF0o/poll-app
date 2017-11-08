@@ -1,7 +1,7 @@
 /**
  * Created by jonlazarini on 04/07/17.
  */
-import { database } from '../database';
+// import { database } from '../database';
 import { FETCHING_POLLS, FETCHED_POLLS } from '../actionTypes';
 
 function fetchingPolls() {
@@ -17,19 +17,17 @@ export const fetchedPolls = (polls) => {
     }
 };
 
-const firebaseRequest = (node) => node;
+// const firebaseRequest = (node) => node;
 
 export const getPollsAsync = () => dispatch => {
   dispatch(fetchingPolls())
-    firebaseRequest('/path/to/firebase')
-        .then((data) => {
-            console.log('data', data)
-            return data
-        }) // to json() ? response.polls
-        .then((polls) => {
-            console.log('polls', polls)
-            dispatch(fetchedPolls(shapeDataToState(polls)))
-        })
+    // return firebaseRequest('/path/to/firebase/polls')
+    return window.fetch('/path/to/firebase/polls')
+        .then(data => data.json())
+        .then(polls => dispatch(fetchedPolls(polls))
+            // dispatch(fetchedPolls(shapeDataToState(polls)))
+        )
+        // .catch(err => dispatch(failureFetching(err)))
 };
 
 // store.dispatch(getPollsAsync()) // on login
