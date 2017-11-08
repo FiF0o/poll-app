@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 // const {MockFirebase} = require('firebase-mock');
 import {fetchedPolls, getPollsAsync} from '../actions/asyncActions';
-import {FETCHING_POLLS, FETCHED_POLLS} from '../ActionTypes';
+import {FETCHING_POLLS, FETCHED_POLLS} from '../actionTypes';
 import fetchMock from 'fetch-mock';
 
 const middlewares = [thunk];
