@@ -94,7 +94,9 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ## The app
 The Po'Poll app is based on material design principles and uses [material-ui](http://www.material-ui.com/#/) library.
 
-It uses [firebase](https://firebase.google.com/) as a backend and is also deployed with it.
+It uses [firebase](https://firebase.google.com/) as a backend and is also deployed with it.<br>
+
+Living styleguide [Storybook](https://fif0o.github.io/poll-app/storybook-static).
 
 ## Improvements
 - CI/CD
