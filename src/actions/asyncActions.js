@@ -22,7 +22,7 @@ export const fetchedPolls = (polls) => {
 export const getPollsAsync = () => dispatch => {
   dispatch(fetchingPolls())
     // return firebaseRequest('/path/to/firebase/polls')
-    return window.fetch('/path/to/firebase/polls')
+    return fetch('/path/to/firebase/polls')
         .then(data => data.json())
         .then(polls => dispatch(fetchedPolls(polls))
             // dispatch(fetchedPolls(shapeDataToState(polls)))

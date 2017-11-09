@@ -13,6 +13,7 @@ exports[`<Polls /> component should render correctly 1`] = `
   <div
     style={
       Object {
+        "MozBoxSizing": "border-box",
         "boxSizing": "border-box",
         "color": "rgba(0, 0, 0, 0.54)",
         "fontSize": 14,
@@ -29,10 +30,19 @@ exports[`<Polls /> component should render correctly 1`] = `
   <div
     style={
       Object {
-        "display": "flex",
+        "WebkitBoxLines": "multiple",
+        "WebkitFlexWrap": "wrap",
+        "display": Array [
+          "-webkit-box",
+          "-moz-box",
+          "-ms-flexbox",
+          "-webkit-flex",
+          "flex",
+        ],
         "flexWrap": "wrap",
         "height": "auto",
         "margin": -25,
+        "msFlexWrap": "wrap",
         "muiPrepared": true,
         "width": "100%",
       }
