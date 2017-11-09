@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 // import renderer from 'react-test-renderer';
 /* import undecorated Component/Container  of connect() from {Polls} Component */
 import { shallowWithStore } from 'enzyme-redux';
-import { createMockStore } from 'redux-test-utils';
+import { createMockStore, createMockDispatch } from 'redux-test-utils';
 import PollsContainer from './PollsContainer';
 
 const state = {
@@ -46,8 +46,24 @@ const state = {
 describe('<PollsContainer />', () => {
     it('should render correctly with a state tree', () => {
         const store = createMockStore(state);
-        const wrapper = shallowWithStore(<PollsContainer />, store)
+        const wrapper = shallowWithStore(<PollsContainer />, store);
 
         expect(wrapper.length).toBe(1);
+    });
+
+    it(`should dispatch a 'addVote' action`, () => {
+        const store = createMockStore(state);
+        const action = {
+            type: 'REMOVE_VOTE',
+            pollId: '123',
+            uid: 'asd',
+            voteId: '456'
+        };
+        const wrapper = shallowWithStore(<PollsContainer />, store);
+
+        store.dispatch(action);
+
+        expect(store.getState()).toBe(state);
+        expect(store.getActions()).toEqual([action]);
     });
 });
