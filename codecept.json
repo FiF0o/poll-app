@@ -1,0 +1,23 @@
+{
+  "tests": "./bdd/*_test.js",
+  "timeout": 10000,
+  "output": "./output",
+  "helpers": {
+    "WebDriverIO": {
+      "url": "http://localhost:3000",
+      "browser": "chrome",
+      "restart": true
+    }
+  },
+  "include": {
+    "I": "./bdd/steps_file.js",
+    "Smth": "./bdd/pages/Smth.js"
+  },
+  "bootstrap": false,
+  "mocha": {
+    "reporterOptions": {
+      "mochaFile": "./bdd/output/result.xml"
+    }
+  },
+  "name": "bdd"
+}
