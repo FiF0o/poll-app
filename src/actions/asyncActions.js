@@ -8,14 +8,14 @@ function fetchingPolls() {
     return {
         type: FETCHING_POLLS
     }
-};
+}
 
 export const fetchedPolls = (polls) => {
     return {
         type: FETCHED_POLLS,
         polls
     }
-};
+}
 
 // const firebaseRequest = (node) => node;
 
@@ -28,7 +28,7 @@ export const getPollsAsync = () => dispatch => {
             // dispatch(fetchedPolls(shapeDataToState(polls)))
         )
         // .catch(err => dispatch(failureFetching(err)))
-};
+}
 
 // store.dispatch(getPollsAsync()) // on login
 

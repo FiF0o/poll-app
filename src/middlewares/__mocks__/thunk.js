@@ -1,6 +1,6 @@
 /* Mock redux-thunk - Stub Redux Middleware */
 module.exports = {
-    __createMw: function(middleWare) {
+    __createMw(middleWare) {
         const store = {
             getState: jest.fn(() => ({})),
             dispatch: jest.fn(),

@@ -7,9 +7,11 @@
 /coverage
 /reports
 __snapshots__
+output
 
 # production
 /build
+storybook-static
 
 # misc
 .DS_Store

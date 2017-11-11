@@ -25,7 +25,7 @@ export const ListeningToAuthChanges = () => {
 
                 RequestMessagingPermissions(user);
 
-            } else dispatch(signedOut());
+            } else {dispatch(signedOut())};
         });
     }
 };

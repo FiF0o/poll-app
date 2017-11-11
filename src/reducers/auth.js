@@ -31,4 +31,4 @@ export default function auth(state=initialState.auth, action) {
         default:
             return state;
     }
-};
+}

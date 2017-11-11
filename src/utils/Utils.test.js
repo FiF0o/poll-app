@@ -1,5 +1,5 @@
 import SignIn from '../components/SignIn/SignIn';
-import { deleteByItem as Remover } from './deleteByItem';
+import { deleteByItem as remover } from './deleteByItem';
 import { hasVoted } from './VoteMethods';
 import { getVotesForPoll } from './PollUtils';
 import { isUserLogged, isTheCurrentUser } from './UserAuth'
@@ -27,13 +27,13 @@ describe('deleteByItem function', () => {
     it('should remove the correct item in the list', () => {
         const voteToRemove = 'vote1'
         const expectedVotes = ['vote2']
-        const hasBeenRemoved = Remover(mockVotes, voteToRemove)
+        const hasBeenRemoved = remover(mockVotes, voteToRemove)
         expect(hasBeenRemoved).toEqual(expect.arrayContaining(expectedVotes))
     })
     
     it('should return the same list if the id given is not in the list', () => {
         const voteToRemove = 'vote3'
-        const hasBeenRemoved = Remover(mockVotes, voteToRemove)
+        const hasBeenRemoved = remover(mockVotes, voteToRemove)
         expect(hasBeenRemoved).toEqual(expect.arrayContaining(mockVotes))
     })
 

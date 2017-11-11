@@ -13,13 +13,11 @@ admin.initializeApp(functions.config().firebase);
 
 exports.newPollAlert = functions.database.ref('/polls/{poll}').onWrite((event) => {
     const poll = event.data.val();
-    console.log('///// poll /////', poll)
 
     const getTokens = admin.database().ref('users').once('value').then((snapshot) => {
         const tokens = [];
         snapshot.forEach((user) => {
             const token = user.child('fcm-token').val();
-            console.log('///// token /////', token)
             if (token) tokens.push(token);
         });
         return tokens;
@@ -28,8 +26,6 @@ exports.newPollAlert = functions.database.ref('/polls/{poll}').onWrite((event) =
     const getAuthor = admin.auth().getUser(poll.uid);
 
     Promise.all([getTokens, getAuthor]).then(([tokens, author]) => {
-        console.log('///// tokens /////', tokens)
-        console.log('///// author /////', author)
         const payload = {
             notification: {
                 title: `New Poll from ${author.displayName}`,

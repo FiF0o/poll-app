@@ -17,5 +17,5 @@ export default class PollPage extends Component {
                 <PollsContainer />
             </section>
         );
-    };
+    }
 }
