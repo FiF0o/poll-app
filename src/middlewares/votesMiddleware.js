@@ -8,8 +8,8 @@ import { database } from '../database/firebase';
 
 const votesRef = database.ref('votes');
 
+/* Thunk  */
 export const votesMiddleware = store => next => action => {
-    let result = next(action);
     const { type } = action;
 
     // when logging in we write to the user to DB
@@ -35,5 +35,5 @@ export const votesMiddleware = store => next => action => {
         default:
             return null;
     }
-    return result;
+    return next(action);
 };
