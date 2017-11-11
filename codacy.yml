@@ -1,0 +1,7 @@
+engines:
+  exclude_paths:
+    - build/**
+    - bdd/**
+    - .storybook/
+    - storybook-static
+    - '**/*.test.js'
