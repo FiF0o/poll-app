@@ -68,7 +68,7 @@
     "bdd:server": "npm run bdd:install-selenium && ./node_modules/.bin/webdriver-manager start --standalone",
     "bdd:run":"./node_modules/.bin/codeceptjs run --steps",
     "report:performance": "./node_modules/.bin/lighthouse 'https://poll-app-67a23.firebaseapp.com' --output json --output html --output-path ./reports/performance-report.json",
-    "report:test": "npm test -- --coverage",
+    "report:test": "npm test -- --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!src/story",
     "report:js": "./node_modules/.bin/source-map-explorer build/static/js/main.*",
     "report:coverage": "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage",
     "karma-test": "karma start ",
