@@ -19,12 +19,12 @@ export const fetchedPolls = (polls) => {
 
 // const firebaseRequest = (node) => node;
 
-export const getPollsAsync = () => dispatch => {
+export const getPollsAsync = () => (dispatch) => {
   dispatch(fetchingPolls())
     // return firebaseRequest('/path/to/firebase/polls')
     return fetch('/path/to/firebase/polls')
-        .then(data => data.json())
-        .then(polls => dispatch(fetchedPolls(polls))
+        .then((data) => data.json())
+        .then((polls) => dispatch(fetchedPolls(polls))
             // dispatch(fetchedPolls(shapeDataToState(polls)))
         )
         // .catch(err => dispatch(failureFetching(err)))

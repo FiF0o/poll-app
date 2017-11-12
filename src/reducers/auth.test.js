@@ -16,7 +16,7 @@ describe('auth reducer', () => {
 
     it('should handle SIGN_IN', () => {
         expect(
-            auth(undefined, {
+            auth({}, {
                 type: 'SIGN_IN',
                 email: 'mail@mail.com',
                 displayName: 'First',

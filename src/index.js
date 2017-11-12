@@ -9,17 +9,17 @@ import {store} from './store';
 import ApplicationContainer from './containers/ApplicationContainer';
 import './index.css';
 // import intializers from './initializers'
-import { ListeningToAuthChanges, ListeningToPolls, ListeningForUsers, ListeningToVotes } from './utils/listeners/';
+import { listeningToAuthChanges, listeningToPolls, listeningForUsers, listeningToVotes } from './utils/listeners/';
 import registerServiceWorker from './registerServiceWorker';
 injectTapEventPlugin();
 
 // intializers.forEach(intializer => intializer(store));
 
 
-store.dispatch(ListeningToAuthChanges());
-store.dispatch(ListeningToPolls());
-store.dispatch(ListeningForUsers());
-store.dispatch(ListeningToVotes());
+store.dispatch(listeningToAuthChanges());
+store.dispatch(listeningToPolls());
+store.dispatch(listeningForUsers());
+store.dispatch(listeningToVotes());
 
 const parentComponent =
     <MuiThemeProvider>

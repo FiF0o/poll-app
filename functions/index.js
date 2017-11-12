@@ -18,7 +18,7 @@ exports.newPollAlert = functions.database.ref('/polls/{poll}').onWrite((event) =
         const tokens = [];
         snapshot.forEach((user) => {
             const token = user.child('fcm-token').val();
-            if (token) tokens.push(token);
+            if (token) {tokens.push(token)};
         });
         return tokens;
     });

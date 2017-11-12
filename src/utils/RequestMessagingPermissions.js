@@ -13,18 +13,18 @@ function sendTokenToServer(user, token) {
 }
 
 function showToken(token) {
-    return console.log('Show token:', token)
+    return `Show token:' ${token}`
 }
 
 
-export const RequestMessagingPermissions = (loggedUser) => {
+export const requestMessagingPermissions = (loggedUser) => {
      messaging.requestPermission() // show notification window to grant permission
         .then(() => messaging.getToken())
         .then((currentToken) => {
-            if(currentToken) sendTokenToServer(loggedUser, currentToken);
+            if(currentToken) {sendTokenToServer(loggedUser, currentToken);}
             else {
                 // Show permission request.
-                console.log('No Instance ID token available. Request permission to generate one.');
+                return 'No Instance ID token available. Request permission to generate one.';
                 // Show permission UI.
                 // setTokenSentToServer(false);
             }
@@ -39,7 +39,7 @@ export const RequestMessagingPermissions = (loggedUser) => {
 };
 
 /* eslint-disable */
-const MonitorTokens = () => {
+const monitorTokens = () => {
     // Callback fired if Instance ID token is updated.
     messaging.onTokenRefresh(function() {
         messaging.getToken()

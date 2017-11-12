@@ -61,7 +61,7 @@ self.addEventListener('fetch', (e) => {
     e.respondWith(
         caches.match(e.request)
             .then((res) => {
-                if (res) return res;
+                if (res) {return res;}
 
                 // Not in the cache, fetch and cache
                 else {
@@ -81,7 +81,7 @@ self.addEventListener('fetch', (e) => {
                                     })
                             }
                         })
-                        .catch((err) => console.error(err));
+                        .catch((err) => err);
                 }
             })
     )

@@ -7,7 +7,7 @@ import {Poll} from './Poll';
 import {Grid} from '../Grids/';
 
 const getUserById = (arr, uid) => arr
-    .filter(u => u.uid === uid) // or [0] instead of reduce overkill...
+    .filter((u) => u.uid === uid) // or [0] instead of reduce overkill...
     .reduce((acc, o) => o, undefined);
 
 export const Polls = ({polls, auth, users, deletePoll, addVote, removeVote, ...props}) => (

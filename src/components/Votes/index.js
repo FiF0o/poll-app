@@ -8,8 +8,8 @@ import {Vote} from './Vote';
 import { hasVoted } from '../../utils/VoteMethods';
 
 const getVoteIdForUser = (voters, uid) => voters
-    .filter(v => v.uid === uid)
-    .map(vote => vote.voteId)[0];
+    .filter((v) => v.uid === uid)
+    .map((vote) => vote.voteId)[0];
 
 export const Votes = ({voters, addVote, removeVote, pollId, auth, polls, ...props}) => (
     <div style={{padding: '1em'}} >

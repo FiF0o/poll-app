@@ -63,7 +63,7 @@ const byId = (state={}, action) => {
         case REMOVE_POLL:
             return Immutable.Map(state).delete(id).toJS();
         case ADD_VOTE:
-            return Immutable.fromJS(state).updateIn([action.pollId, 'voters'], list => {
+            return Immutable.fromJS(state).updateIn([action.pollId, 'voters'], (list) => {
                 return list.push({uid, voteId: action.voteId})
             }).toJS();
         case REMOVE_VOTE:
@@ -79,7 +79,7 @@ const byId = (state={}, action) => {
 
             //get the index to remove in the array
             let index = state[action.pollId].voters.indexOf(uid);
-            return Immutable.fromJS(state).updateIn([action.pollId, 'voters'], list => list.splice(index, 1)).toJS();
+            return Immutable.fromJS(state).updateIn([action.pollId, 'voters'], (list) => list.splice(index, 1)).toJS();
         default:
             return state;
     }
@@ -93,7 +93,7 @@ const byId = (state={}, action) => {
  */
 /** Normalized state, Arrayified **/
 
-const deleteByItem = (arr, item) => arr.filter(i => i !== item);
+const deleteByItem = (arr, item) => arr.filter((i) => i !== item);
 
 const allIds = (state=[], action) => {
     const { type, id } = action;
@@ -117,7 +117,7 @@ export default polls
 // Data manipulation will be done here.
 const getAllPolls = (state) =>
     // retrieves all the polls to be rendered in the view
-    state.allIds.map(id => state.byId[id]);
+    state.allIds.map((id) => state.byId[id]);
 
 
 /*

@@ -1,6 +1,6 @@
 const INTERVAL = 3000 // ms
 
-const tick = store => {
+const tick = (store) => {
     const { dispatch } = store;
     setInterval(() => {
         dispatch({type: 'TICK'})

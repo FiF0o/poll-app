@@ -47,10 +47,10 @@ const mock = [
 // export const getData = () => Promise.resolve(data);
 export const getData = () => new Promise((resolve, reject) => resolve(mock));
 getData()
-    .then(data => console.log(data));
+    .then((data) => data);
 
 export const getSources = (promise1, promise2) => Promise.all([promise1, promise2]);
 
 getSources(getData(), Promise.resolve('foo'))
     // .then(([mock, data]) => [mock, data]) // unmerge
-    .then((values) => console.log(values));
+    .then((values) => values);

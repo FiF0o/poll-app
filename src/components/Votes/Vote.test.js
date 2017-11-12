@@ -37,7 +37,7 @@ describe(' <Vote/> component', () => {
 
     it('should not render the name if the props.name is undefined', () => {
         const props = {
-            name: undefined
+            name: 'name'
         }
         const component = mount(
             <MuiThemeProvider>
