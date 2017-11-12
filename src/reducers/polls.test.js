@@ -7,7 +7,7 @@ describe('polls reducer', () => {
 
     it('should handle initial state', () => {
         expect(
-            polls(undefined, {})
+            polls({}, {})
         )
         .toEqual({
             byId: {},

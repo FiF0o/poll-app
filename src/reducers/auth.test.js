@@ -1,9 +1,10 @@
 import auth from './auth';
+import {initialState} from '../initialState';
 
 describe('auth reducer', () => {
     it('should handle initial state', () => {
         expect(
-            auth(undefined, {})
+            auth(initialState.auth, {})
         )
         .toEqual({
             status: 'ANONYMOUS',

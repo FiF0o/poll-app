@@ -8,7 +8,7 @@ import {Grid} from '../Grids/';
 
 const getUserById = (arr, uid) => arr
     .filter((u) => u.uid === uid) // or [0] instead of reduce overkill...
-    .reduce((acc, o) => o, undefined);
+    .reduce((acc, o) => o, {});
 
 export const Polls = ({polls, auth, users, deletePoll, addVote, removeVote, ...props}) => (
     <Grid

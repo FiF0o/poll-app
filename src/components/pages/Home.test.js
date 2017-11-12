@@ -19,7 +19,7 @@ function setup() {
             </Provider>
         </MuiThemeProvider>
       ).toJSON();
-};
+}
 
 describe('<Home />', () => {
     it('should render correctly', () => {

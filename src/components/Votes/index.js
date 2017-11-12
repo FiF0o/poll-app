@@ -27,7 +27,7 @@ export const Votes = ({voters, addVote, removeVote, pollId, auth, polls, ...prop
         }
         <div>
             {
-                hasVoted(voters.map(u => u.uid), auth.uid) ?
+                hasVoted(voters.map((u) => u.uid), auth.uid) ?
                     <FlatButton label="Unvote" secondary={true} onTouchTap={removeVote(pollId, auth.uid, getVoteIdForUser(voters, auth.uid))} />
                     :
                     <FlatButton label="Vote" secondary={true} onTouchTap={addVote} />
