@@ -1,27 +1,6 @@
 {
   "rules": {
     ".read": "auth != null",
-    ".write": "auth != null",
-    "polls": {
-      ".read": true,
-      ".write": "auth !== null",
-      "$pollId": {
-        ".validate": "newData.hasChildren(['description', 'name'])"
-      }
-    },
-    "votes": {
-      ".read": true,
-      ".write": "auth != null",
-      "$voteId": {
-        ".validate": "newData.hasChildren(['timeStamp'])"
-      }
-    },
-    "users": {
-      ".write": "auth.uid != null",
-      "$userId": {
-        ".write": "$userId == auth.uid",
-        ".validate": "newData.hasChildren(['displayName', 'email','uid'])"
-      }
-    }
+    ".write": "auth != null"
   }
 }

@@ -11,13 +11,9 @@
   },
   "include": {
     "I": "./bdd/steps_file.js",
-    "Smth": "./bdd/pages/Smth.js"
+    "Homepage": "./bdd/pages/Homepage"
   },
   "bootstrap": false,
-  "mocha": {
-    "reporterOptions": {
-      "mochaFile": "./bdd/output/result.xml"
-    }
-  },
-  "name": "bdd"
+  "mocha": {},
+  "name": "poll-app"
 }
