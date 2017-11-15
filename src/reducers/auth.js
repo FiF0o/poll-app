@@ -1,10 +1,16 @@
-const auth = (state={}, action) => {
-  const {type} = action;
+import {/*ATTEMPT_LOG_IN, HAS_ERRORED,*/ LOG_IN, USER_LOGGED} from '../constants'
+import {initialState} from '../initialState'
+
+const auth = (state=initialState.auth, action) => {
+  const {type, email, displayName, photoURL, uid} = action;
   switch(type) {
-    case 'ATTEMPT_LOGIN':
+    case LOG_IN:
       return {
-        type: 'SIGNING_IN',
-        status: 'NOT_LOGGED'
+        status: USER_LOGGED,
+        email,
+        displayName,
+        photoURL,
+        uid
       };
     default:
       return state;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import FlatButton from 'material-ui/FlatButton';
+import AuthContainer from './containers/AuthContainer';
 
 class App extends Component {
   render() {
@@ -13,7 +13,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <MuiThemeProvider>
-          <FlatButton>Button</FlatButton>
+          <AuthContainer />
         </MuiThemeProvider>
       </div>
     );

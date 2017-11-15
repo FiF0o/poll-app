@@ -1,3 +1,9 @@
 export const initialState = {
-    auth: {}
+    auth: {
+        status: 'ANONYMOUS',
+        email: null,
+        displayName: null,
+        photoURL: null,
+        uid: null
+    }
 };
