@@ -7,6 +7,8 @@ import {signIn} from '../actions/auth';
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
+    errorMessage: state.errors  ,
+    isLoading: state.isLoading
   }
 };
 

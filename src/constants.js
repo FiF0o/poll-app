@@ -1,4 +1,4 @@
-export const ATTEMPT_LOG_IN = 'ATTEMPT_LOG_IN';
+export const ATTEMPT_LOGIN = 'ATTEMPT_LOGIN';
 export const LOG_IN = 'LOG_IN';
 export const LOGGED_IN = 'LOGGED_IN';
 export const LOGGED_OUT = 'LOGGED_OUT';

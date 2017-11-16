@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
-
+import {Error} from '../Error'
 // const defaultProps = {
 //   disabled: false,
 //   isOnBackground: false,
@@ -20,8 +20,14 @@ import FlatButton from 'material-ui/FlatButton';
 //   value: PropTypes.string
 // };
 
-export const Auth = ({signIn, ...props}) => (
+export const Auth = ({email, displayName, photoURL, uid, signIn, isLoading, errorMessage, ...props}) => (
 	<div>
+		{
+			isLoading  && <p>...Loading...</p>
+		}
+		{
+			errorMessage && <Error {...errorMessage} />
+		}
 		{
 			JSON.stringify({...props})
 		}
