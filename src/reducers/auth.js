@@ -2,16 +2,15 @@ import {ATTEMPT_LOGIN, LOG_IN, USER_LOGGED, LOGGED_OUT} from '../constants'
 import {initialState} from '../initialState'
 
 const auth = (state=initialState.auth, action) => {
-  const {type, email, displayName, photoURL, uid, isLoading} = action;
+  const {type, email, displayName, photoURL, uid} = action;
   switch(type) {
     case ATTEMPT_LOGIN:
       return {
-        isLoading
+        isLoading: true
       }
     case LOG_IN:
       return {
         status: USER_LOGGED,
-        type,
         email,
         displayName,
         photoURL,

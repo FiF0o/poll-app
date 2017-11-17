@@ -1,0 +1,1 @@
+export const errorMock = `something happened :'(`;
