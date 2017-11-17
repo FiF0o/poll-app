@@ -9,6 +9,8 @@ import {createStore, compose, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import reducers from './reducers';
 
+import {usersListeners} from './listeners';
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const middleware = [
@@ -22,6 +24,9 @@ let store = createStore(
     applyMiddleware(...middleware)
   )
 );
+
+store.dispatch(usersListeners());
+
 
 injectTapEventPlugin();
 ReactDOM.render(

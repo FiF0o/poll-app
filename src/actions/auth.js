@@ -1,12 +1,5 @@
-import {ATTEMPT_LOGIN, LOG_IN, HAS_ERRORED} from '../constants';
-// import {auth, googleAuthProvider } from '../database';
-
-let userMock = {
-  email: 'trompette@kikou.com',
-  displayName: 'username 1',
-  photoURL: 'https://placebear.com/100/100',
-  uid: 'user1'
-};
+import {ATTEMPT_LOGIN, LOG_IN, HAS_ERRORED, LOGGED_OUT} from '../constants';
+import {signinWithGoogle} from '../utils/signinWithGoogle';
 
 const signInError = (error) => ({
   type: HAS_ERRORED,
@@ -16,14 +9,30 @@ const signInError = (error) => ({
 export const signIn = () =>
   (dispatch) => {
     dispatch({type: ATTEMPT_LOGIN});
-    // dispatch(signInError('pwned!!!!!!!!!'));
-    dispatch(signedIn(userMock));
+    signinWithGoogle()
+      .then((result) => {
+        // const user = result.user
+        console.log('user', result)
+      })
+      .catch((error) => dispatch(signInError(error.message)));
   };
 
-export const signedIn = ({user, email, displayName, photoURL, uid}) => ({
+export const signedIn = ({email, displayName, photoURL, uid}) => ({
   type: LOG_IN,
   email,
   displayName,
   photoURL,
   uid
 });
+
+export const signOut = () => {
+  return(dispatch) => {
+      dispatch(signedOut());
+  }
+};
+
+export const signedOut = () => {
+  return {
+    type: LOGGED_OUT
+  }
+};

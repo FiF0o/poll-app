@@ -9,7 +9,8 @@ const errors = (state=initialState.errorMessage, action) => {
         errorMessage
       }
     default:
-      return state;
+      // clears error
+      return null;
   }   
 };
 

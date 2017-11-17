@@ -1,4 +1,4 @@
-import {ATTEMPT_LOGIN, LOG_IN, USER_LOGGED} from '../constants'
+import {ATTEMPT_LOGIN, LOG_IN, USER_LOGGED, LOGGED_OUT} from '../constants'
 import {initialState} from '../initialState'
 
 const auth = (state=initialState.auth, action) => {
@@ -16,6 +16,14 @@ const auth = (state=initialState.auth, action) => {
         displayName,
         photoURL,
         uid
+      };
+    case LOGGED_OUT:
+      return {
+        status: 'ANONYMOUS',
+        email: null,
+        displayName: null,
+        photoURL: null,
+        uid: null
       };
     default:
       return state;

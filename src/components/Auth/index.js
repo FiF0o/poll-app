@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
 import {Error} from '../Error'
 // const defaultProps = {
@@ -20,7 +20,7 @@ import {Error} from '../Error'
 //   value: PropTypes.string
 // };
 
-export const Auth = ({email, displayName, photoURL, uid, signIn, isLoading, errorMessage, ...props}) => (
+export const Auth = ({email, displayName, photoURL, uid, signIn, signOut, isLoading, errorMessage, ...props}) => (
 	<div>
 		{
 			isLoading  && <p>...Loading...</p>
@@ -34,11 +34,14 @@ export const Auth = ({email, displayName, photoURL, uid, signIn, isLoading, erro
 		<FlatButton onTouchTap={() => signIn()} >
 			Sign in
 		</FlatButton>
+		<FlatButton onTouchTap={() => signOut()} >
+			Sign out
+		</FlatButton>
 	</div>
 );
 
-Auth.defaultProps = {
-};
+// Auth.defaultProps = {
+// };
 
-Auth.propTypes = {
-};
+// Auth.propTypes = {
+// };
