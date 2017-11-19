@@ -52,7 +52,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom",
+    "test": "node scripts/test.js --env=jsdom --browser",
     "bdd:install": "./node_modules/.bin/selenium-standalone install",
     "bdd:start": "./node_modules/.bin/selenium-standalone start",
     "bdd": "./node_modules/.bin/codeceptjs run --steps",
