@@ -5,10 +5,11 @@ import {signIn, signOut} from '../actions/auth';
 
 
 const mapStateToProps = (state) => {
+  const {auth, errorMessage, isLoading} = state;
   return {
-    auth: state.auth,
-    errorMessage: state.errors,
-    isLoading: state.isLoading
+    auth,
+    errorMessage,
+    isLoading
   }
 };
 

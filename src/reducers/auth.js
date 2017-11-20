@@ -1,5 +1,5 @@
-import {ATTEMPT_LOGIN, LOG_IN, USER_LOGGED, LOGGED_OUT} from '../constants'
-import {initialState} from '../initialState'
+import {ATTEMPT_LOGIN, LOG_IN, USER_LOGGED, LOGGED_OUT} from '../constants';
+import {initialState} from '../initialState';
 
 const auth = (state=initialState.auth, action) => {
   const {type, email, displayName, photoURL, uid} = action;

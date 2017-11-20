@@ -1,20 +1,25 @@
-import {ATTEMPT_LOGIN, LOG_IN, HAS_ERRORED, LOGGED_OUT} from '../constants';
+import {ATTEMPT_LOGIN, LOG_IN, HAS_ERRORED, CLEAR_ERROR, LOGGED_OUT} from '../constants';
 import {signinWithGoogle} from '../utils/signinWithGoogle';
 
-const signInError = (error) => ({
+const signInError = (errorMessage) => ({
   type: HAS_ERRORED,
-  errorMessage: error
+  errorMessage
 });
 
 export const signIn = () =>
   (dispatch) => {
+    dispatch({type: CLEAR_ERROR});
     dispatch({type: ATTEMPT_LOGIN});
     signinWithGoogle()
       .then((result) => {
-        // const user = result.user
-        console.log('user', result)
+        const {user} = result;
+        if(user) {
+          dispatch(signedIn({...user}));
+        }
       })
-      .catch((error) => dispatch(signInError(error.message)));
+      .catch((error) => {
+        dispatch(signInError(error.message));
+      });
   };
 
 export const signedIn = ({email, displayName, photoURL, uid}) => ({

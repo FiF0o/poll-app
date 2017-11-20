@@ -1,47 +1,70 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
-import {Error} from '../Error'
-// const defaultProps = {
-//   disabled: false,
-//   isOnBackground: false,
-//   name: null,
-//   onClick: null,
-//   type: 'button',
-//   value: null
-// };
+import {Error} from '../Error';
 
-// const defaultPropTypes = {
-//   disabled: PropTypes.bool,
-//   isOnBackground: PropTypes.bool,
-//   name: PropTypes.string,
-//   onClick: PropTypes.func,
-//   type: PropTypes.oneOf(['button', 'submit', 'reset']).isRequired,
-//   value: PropTypes.string
-// };
+const defaultProps = {
+	auth: {
+		email: null,
+		displayName: null,
+		photoURL: null,
+		uid: null
+	},
+	signIn: ()=> {},
+	signOut: ()=> {}
+};
 
-export const Auth = ({email, displayName, photoURL, uid, signIn, signOut, isLoading, errorMessage, ...props}) => (
+const defaultPropTypes = {
+	auth: PropTypes.shape({
+		email: PropTypes.string,
+		displayName: PropTypes.string,
+		photoURL: PropTypes.string,
+		uid: PropTypes.string
+	}),
+	signIn: PropTypes.func,
+	signOut: PropTypes.func
+};
+
+
+export const Auth = ({auth, signIn, signOut, errorMessage, isLoading}) => (
 	<div>
 		{
-			isLoading  && <p>...Loading...</p>
+			isLoading && <p>...Loading...</p>
 		}
 		{
 			errorMessage && <Error {...errorMessage} />
 		}
 		{
-			JSON.stringify({...props})
+			!auth.email ?
+			<p>you are not logged in</p> :
+				<div className='profile'>
+					<p>{auth.email}</p>
+					<p>{auth.displayName}</p>
+					<p>{auth.photoURL}</p>
+					<p>{auth.uid}</p>
+				</div>
 		}
-		<FlatButton onTouchTap={() => signIn()} >
-			Sign in
-		</FlatButton>
-		<FlatButton onTouchTap={() => signOut()} >
-			Sign out
-		</FlatButton>
+		{
+			auth.email ?
+			<FlatButton
+				id='sign-out'
+				onTouchTap={() => signOut()} >
+				Sign out
+			</FlatButton>
+		:
+			<FlatButton
+				id={'sign-in'}
+				onTouchTap={() => signIn()} >
+				Sign in
+			</FlatButton>
+		}
 	</div>
 );
 
-// Auth.defaultProps = {
-// };
+Auth.defaultProps = {
+	...defaultProps
+};
 
-// Auth.propTypes = {
-// };
+Auth.propTypes = {
+	...defaultPropTypes
+};
