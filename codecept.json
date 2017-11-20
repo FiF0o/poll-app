@@ -1,19 +1,24 @@
 {
-  "tests": "./bdd/*_test.js",
-  "timeout": 10000,
   "output": "./output",
   "helpers": {
     "WebDriverIO": {
       "url": "http://localhost:3000",
       "browser": "chrome",
       "restart": true
+    },
+    "Modal": {
+      "require": "./bdd/helpers/changetab_helper.js"
     }
   },
   "include": {
     "I": "./bdd/steps_file.js",
     "Homepage": "./bdd/pages/Homepage"
   },
-  "bootstrap": false,
   "mocha": {},
+  "bootstrap": false,
+  "teardown": null,
+  "hooks": [],
+  "tests": "./bdd/*_test.js",
+  "timeout": 10000,
   "name": "poll-app"
 }
