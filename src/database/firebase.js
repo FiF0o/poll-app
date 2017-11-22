@@ -14,9 +14,11 @@ firebase.initializeApp(config);
 
 export default firebase;
 
-export const database = firebase.database()
+export const database = firebase.database();
 
-export const auth = firebase.auth()
-export const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
-export const AnonymousAuthProvider = new firebase.auth().signInAnonymously()
-export const messaging = firebase.messaging();
+export const auth = firebase.auth();
+export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+export const AnonymousAuthProvider = new firebase.auth().signInAnonymously();
+
+// TODO WTF? why is it making the app crash?
+if(process.env.NODE_ENV !== 'test') module.messaging = firebase.messaging();
