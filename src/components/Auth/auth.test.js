@@ -8,7 +8,8 @@ describe('<Auth /> component', () => {
     const stub = {
       ...authMock
     }
-    const wrapper = shallow(<Auth {...stub} />);
+    const wrapper = shallow(<Auth {...stub}/>);
+
     expect(wrapper.length).toEqual(1);
   });
 });

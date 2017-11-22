@@ -10,6 +10,10 @@ import {usersListeners} from './listeners';
 store.dispatch(usersListeners());
 injectTapEventPlugin();
 
+/**
+ * firebase-messaging has been disabled to prevent errors when testing
+ * will cause issues when using FCM
+ */
 ReactDOM.render(
   <Provider store={store} >
     <App />

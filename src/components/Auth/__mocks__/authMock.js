@@ -1,10 +1,10 @@
+import {initialState} from '../../../initialState';
+const {auth, isLoading, errorMessage} = initialState;
+
 export const authMock = {
-  email: 'mail@mail.com',
-  displayName: 'displayName',
-  photoURL: 'image.jpg',
-  uid: '123',
+  auth,
   signIn: jest.fn(),
   signOut: jest.fn(),
-  isLoading: false,
-  errorMessage: null
+  isLoading,
+  errorMessage
 }
