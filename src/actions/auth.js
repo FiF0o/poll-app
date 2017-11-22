@@ -6,11 +6,11 @@ const signInError = (errorMessage) => ({
   errorMessage
 });
 
-export const signIn = () =>
+export const signIn = (withGoogle = signinWithGoogle) =>
   (dispatch) => {
     dispatch({type: CLEAR_ERROR});
     dispatch({type: ATTEMPT_LOGIN});
-    signinWithGoogle()
+    withGoogle()
       .then((result) => {
         const {user} = result;
         if(user) {
